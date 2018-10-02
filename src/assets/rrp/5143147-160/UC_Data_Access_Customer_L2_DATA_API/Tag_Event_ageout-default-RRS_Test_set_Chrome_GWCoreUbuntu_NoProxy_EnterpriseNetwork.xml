@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:10:58.419" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/Tag_Event_ageout.robot" id="s1" name="Tag Event ageout">
+<kw type="setup" name="SuiteSetup and Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:10:59.099" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:10:59.099" starttime="20180822 00:10:58.702"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:59.100" starttime="20180822 00:10:59.099"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:59.100" starttime="20180822 00:10:58.702"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:10:59.103" starttime="20180822 00:10:59.100"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:59.103" starttime="20180822 00:10:58.702"></status>
+</kw>
+<test id="s1-t1" name="2097 Functionality-Test ageout for facility with ageout configured">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:10:59.110" starttime="20180822 00:10:59.105"></status>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${ts}</var>
+</assign>
+<msg timestamp="20180822 00:10:59.111" level="INFO">${ts} = 1534921859.11</msg>
+<status status="PASS" endtime="20180822 00:10:59.111" starttime="20180822 00:10:59.111"></status>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${ts * ${epochResolution}}</arg>
+</arguments>
+<assign>
+<var>${ts}</var>
+</assign>
+<msg timestamp="20180822 00:10:59.112" level="INFO">${ts} = 1534921859110</msg>
+<status status="PASS" endtime="20180822 00:10:59.112" starttime="20180822 00:10:59.111"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=303402662C3A5F904C001000</arg>
+<arg>event=cycle_count</arg>
+<arg>num_tags=${tags}</arg>
+<arg>facility=WEEMINFAC</arg>
+<arg>time=${ts - ${WEEMINFAC_ageout_time - ${timeDiff}}}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:59.145" starttime="20180822 00:10:59.112"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:11:01.157" starttime="20180822 00:10:59.146"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=continue</arg>
+<arg>event=cycle_count</arg>
+<arg>num_tags=${tags}</arg>
+<arg>facility=WEEMINFAC</arg>
+<arg>time=${ts - ${WEEMINFAC_ageout_time + ${timeDiff}}}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:11:01.168" starttime="20180822 00:11:01.158"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:11:03.179" starttime="20180822 00:11:01.168"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:11:04.381" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:11:04.381" starttime="20180822 00:11:03.180"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed arrival tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:11:04.382" starttime="20180822 00:11:04.382"></status>
+</kw>
+<tags>
+<tag>2097</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:11:04.383" critical="yes" starttime="20180822 00:10:59.104"></status>
+</test>
+<test id="s1-t2" name="2098 Functionality-Test ageout for other facility with ageout configured">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:11:04.390" starttime="20180822 00:11:04.384"></status>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${ts}</var>
+</assign>
+<msg timestamp="20180822 00:11:04.391" level="INFO">${ts} = 1534921864.39</msg>
+<status status="PASS" endtime="20180822 00:11:04.391" starttime="20180822 00:11:04.390"></status>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${ts * ${epochResolution}}</arg>
+</arguments>
+<assign>
+<var>${ts}</var>
+</assign>
+<msg timestamp="20180822 00:11:04.391" level="INFO">${ts} = 1534921864390</msg>
+<status status="PASS" endtime="20180822 00:11:04.391" starttime="20180822 00:11:04.391"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=303402662C3A5F904C001000</arg>
+<arg>event=cycle_count</arg>
+<arg>num_tags=${tags}</arg>
+<arg>facility=TONY-WILSON</arg>
+<arg>time=${ts - ${WEEMINFAC_ageout_time - ${timeDiff}}}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:11:04.399" starttime="20180822 00:11:04.392"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:11:06.411" starttime="20180822 00:11:04.399"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=continue</arg>
+<arg>event=cycle_count</arg>
+<arg>num_tags=${tags}</arg>
+<arg>facility=TONY-WILSON</arg>
+<arg>time=${ts - ${WEEMINFAC_ageout_time + 60000}}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:11:06.420" starttime="20180822 00:11:06.411"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:11:08.432" starttime="20180822 00:11:06.420"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=continue</arg>
+<arg>event=cycle_count</arg>
+<arg>num_tags=${tags}</arg>
+<arg>facility=TONY-WILSON</arg>
+<arg>time=${ts - ${TONYWILSON_ageout_time + 10000}}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:11:08.441" starttime="20180822 00:11:08.432"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:11:10.452" starttime="20180822 00:11:08.441"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:11:10.720" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:11:10.720" starttime="20180822 00:11:10.453"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed arrival tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:11:10.721" starttime="20180822 00:11:10.721"></status>
+</kw>
+<tags>
+<tag>2098</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:11:10.722" critical="yes" starttime="20180822 00:11:04.383"></status>
+</test>
+<test id="s1-t3" name="2099 Negative-Test ageout for facility with ageout unconfigured">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:11:10.729" starttime="20180822 00:11:10.724"></status>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${ts}</var>
+</assign>
+<msg timestamp="20180822 00:11:10.730" level="INFO">${ts} = 1534921870.73</msg>
+<status status="PASS" endtime="20180822 00:11:10.730" starttime="20180822 00:11:10.729"></status>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${ts * ${epochResolution}}</arg>
+</arguments>
+<assign>
+<var>${ts}</var>
+</assign>
+<msg timestamp="20180822 00:11:10.730" level="INFO">${ts} = 1534921870729</msg>
+<status status="PASS" endtime="20180822 00:11:10.731" starttime="20180822 00:11:10.730"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=303402662C3A5F904C001000</arg>
+<arg>event=cycle_count</arg>
+<arg>num_tags=${tags}</arg>
+<arg>facility=NEW</arg>
+<arg>time=${ts - ${WEEMINFAC_ageout_time - ${timeDiff}}}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:11:10.738" starttime="20180822 00:11:10.731"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:11:12.749" starttime="20180822 00:11:10.738"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=continue</arg>
+<arg>event=cycle_count</arg>
+<arg>num_tags=${tags}</arg>
+<arg>facility=NEW</arg>
+<arg>time=${ts - ${WEEMINFAC_ageout_time + ${timeDiff}}}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:11:12.760" starttime="20180822 00:11:12.749"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:11:14.771" starttime="20180822 00:11:12.760"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=continue</arg>
+<arg>event=cycle_count</arg>
+<arg>num_tags=${tags}</arg>
+<arg>facility=NEW</arg>
+<arg>time=${ts - ${TONYWILSON_ageout_time + ${timeDiff}}}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:11:14.781" starttime="20180822 00:11:14.772"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:11:16.793" starttime="20180822 00:11:14.782"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=continue</arg>
+<arg>event=cycle_count</arg>
+<arg>num_tags=${tags}</arg>
+<arg>facility=NEW</arg>
+<arg>time=${ts - ${TONYWILSON_ageout_time - ${timeDiff}}}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:11:16.803" starttime="20180822 00:11:16.793"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:11:18.816" starttime="20180822 00:11:16.803"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:11:19.094" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:11:19.094" starttime="20180822 00:11:18.816"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed arrival tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:11:19.095" starttime="20180822 00:11:19.094"></status>
+</kw>
+<tags>
+<tag>2099</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:11:19.095" critical="yes" starttime="20180822 00:11:10.722"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:11:19.098" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:11:19.098" starttime="20180822 00:11:19.097"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:11:19.099" starttime="20180822 00:11:19.098"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:11:19.099" starttime="20180822 00:11:19.097"></status>
+</kw>
+<doc>This test suite will test the Ageout functionality of RRP
+Please add the following line to environment of the
+inventory-service in the docker-compose.yml file of the DUT.
+ageOuts: "WEEMINFAC:10,TONY-WILSON:60"</doc>
+<status status="PASS" endtime="20180822 00:11:19.099" starttime="20180822 00:10:58.421"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="3">Critical Tests</stat>
+<stat fail="0" pass="3">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">2097</stat>
+<stat fail="0" pass="1">2098</stat>
+<stat fail="0" pass="1">2099</stat>
+<stat fail="0" pass="3">common</stat>
+<stat fail="0" pass="3">dst</stat>
+<stat fail="0" pass="2">functionality</stat>
+<stat fail="0" pass="1">negative</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Tag Event ageout" pass="3">Tag Event ageout</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

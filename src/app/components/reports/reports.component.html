@@ -1,0 +1,70 @@
+<mat-card class="example-card">
+  <mat-card-header>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="reportsForm">
+      <mat-form-field>
+        <mat-select placeholder="Select Project" formControlName="selectedPrj"
+                    (selectionChange)="getPrj()">
+          <mat-option *ngFor="let prj of reportsData" [value]="prj.projectCode">
+            {{prj.projectName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile *ngIf="selectedPrjData">
+    <div *ngFor="let obj of selectedPrjData.summary">
+      <h5><span>{{obj.title}}:</span><span>{{obj.value}}</span></h5>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      2
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title> Summary</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="100px" *ngIf="selectedPrjData" rows=".8">
+      <mat-grid-tile [colspan]="1" [rowspan]="3">
+
+
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="3">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title><h4>Charts</h4></mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <ngx-charts-pie-chart [view]="view" [scheme]="colorScheme" [results]="selectedPrjData.data"
+                                  [legend]="showLegend" [explodeSlices]="explodeSlices" [labels]="showLabels"
+                                  [doughnut]="doughnut" [gradient]="true">
+            </ngx-charts-pie-chart>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="5">
+        <mat-tab-group value="primary">
+          <mat-tab *ngFor="let tab of selectedPrjData.reportsList">
+            <ng-template mat-tab-label>{{tab.title}}</ng-template>
+            <iframe frameborder="0" height="700" src="src/assets/data/rrp/5143147-160/mailText.html"></iframe>
+          </mat-tab>
+       <!--   <mat-tab>
+            <ng-template mat-tab-label>{{tab.title}}</ng-template>
+            <iframe frameborder="0" height="700" src="src/assets/data/rrp/5143147-160/mailText.html"></iframe>
+          </mat-tab>-->
+        </mat-tab-group>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+
+</mat-card>
+

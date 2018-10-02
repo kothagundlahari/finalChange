@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:12:51.609" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/Tag_Event_filter_whitelist.robot" id="s1" name="Tag Event filter whitelist">
+<kw type="setup" name="SuiteSetup and Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:12:52.360" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:12:52.360" starttime="20180822 00:12:51.889"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:52.361" starttime="20180822 00:12:52.360"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:12:52.361" starttime="20180822 00:12:51.889"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:12:52.365" starttime="20180822 00:12:52.362"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:12:52.365" starttime="20180822 00:12:51.889"></status>
+</kw>
+<test id="s1-t1" name="2100 Functionality-Test tags with good prefix only">
+<kw type="setup" name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:12:53.024" starttime="20180822 00:12:52.366"></status>
+</kw>
+<kw name="Send ${tags} tags with prefix ${good_prefix1} expected count ${tags}">
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${prefix}43639F84191AD22901607</arg>
+<arg>event=arrival</arg>
+<arg>num_tags=${tag_count}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:53.098" starttime="20180822 00:12:53.026"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<msg timestamp="20180822 00:12:53.599" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" endtime="20180822 00:12:53.599" starttime="20180822 00:12:53.098"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${count}</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:53.835" starttime="20180822 00:12:53.599"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:12:54.082" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:12:54.082" starttime="20180822 00:12:53.836"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed arrival tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:54.083" starttime="20180822 00:12:54.082"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:12:54.083" starttime="20180822 00:12:53.025"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:12:54.089" starttime="20180822 00:12:54.083"></status>
+</kw>
+<kw name="Send ${tags} tags with prefix ${good_prefix2} expected count ${tags}">
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${prefix}43639F84191AD22901607</arg>
+<arg>event=arrival</arg>
+<arg>num_tags=${tag_count}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:54.121" starttime="20180822 00:12:54.090"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<msg timestamp="20180822 00:12:54.622" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" endtime="20180822 00:12:54.622" starttime="20180822 00:12:54.121"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${count}</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:54.901" starttime="20180822 00:12:54.622"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:12:55.171" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:12:55.171" starttime="20180822 00:12:54.901"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed arrival tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:55.172" starttime="20180822 00:12:55.171"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:12:55.172" starttime="20180822 00:12:54.090"></status>
+</kw>
+<tags>
+<tag>2100</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:12:55.172" critical="yes" starttime="20180822 00:12:52.365"></status>
+</test>
+<test id="s1-t2" name="2101 Functionality-Test tags with mix of good and bad prefix">
+<kw type="setup" name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:12:55.180" starttime="20180822 00:12:55.174"></status>
+</kw>
+<kw name="Send ${tags} tags with prefix ${good_prefix1} expected count ${tags}">
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${prefix}43639F84191AD22901607</arg>
+<arg>event=arrival</arg>
+<arg>num_tags=${tag_count}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:55.217" starttime="20180822 00:12:55.181"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<msg timestamp="20180822 00:12:55.718" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" endtime="20180822 00:12:55.718" starttime="20180822 00:12:55.217"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${count}</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:55.977" starttime="20180822 00:12:55.718"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:12:56.246" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:12:56.246" starttime="20180822 00:12:55.977"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed arrival tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:56.247" starttime="20180822 00:12:56.246"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:12:56.247" starttime="20180822 00:12:55.181"></status>
+</kw>
+<kw name="Send ${tags} tags with prefix ${bad_prefix} expected count ${tags}">
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${prefix}43639F84191AD22901607</arg>
+<arg>event=arrival</arg>
+<arg>num_tags=${tag_count}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:56.280" starttime="20180822 00:12:56.248"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<msg timestamp="20180822 00:12:56.781" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" endtime="20180822 00:12:56.781" starttime="20180822 00:12:56.281"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${count}</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:56.987" starttime="20180822 00:12:56.782"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:12:57.254" level="INFO">${status} = False</msg>
+<status status="PASS" endtime="20180822 00:12:57.254" starttime="20180822 00:12:56.988"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed arrival tags</arg>
+</arguments>
+<msg timestamp="20180822 00:12:57.255" level="FAIL">Failed arrival tags</msg>
+<status status="FAIL" endtime="20180822 00:12:57.255" starttime="20180822 00:12:57.254"></status>
+</kw>
+<status status="FAIL" endtime="20180822 00:12:57.256" starttime="20180822 00:12:56.247"></status>
+</kw>
+<tags>
+<tag>2101</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="FAIL" endtime="20180822 00:12:57.256" critical="yes" starttime="20180822 00:12:55.173">Failed arrival tags</status>
+</test>
+<test id="s1-t3" name="2102 Negative-Test tags with bad prefix only">
+<kw type="setup" name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:12:57.264" starttime="20180822 00:12:57.258"></status>
+</kw>
+<kw name="Send ${tags} tags with prefix ${bad_prefix} expected count ${0}">
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${prefix}43639F84191AD22901607</arg>
+<arg>event=arrival</arg>
+<arg>num_tags=${tag_count}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:57.301" starttime="20180822 00:12:57.265"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5</arg>
+</arguments>
+<msg timestamp="20180822 00:12:57.802" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" endtime="20180822 00:12:57.802" starttime="20180822 00:12:57.301"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${count}</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:57.811" starttime="20180822 00:12:57.802"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:12:57.823" level="INFO">${status} = False</msg>
+<status status="PASS" endtime="20180822 00:12:57.823" starttime="20180822 00:12:57.811"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed arrival tags</arg>
+</arguments>
+<msg timestamp="20180822 00:12:57.824" level="FAIL">Failed arrival tags</msg>
+<status status="FAIL" endtime="20180822 00:12:57.825" starttime="20180822 00:12:57.824"></status>
+</kw>
+<status status="FAIL" endtime="20180822 00:12:57.825" starttime="20180822 00:12:57.264"></status>
+</kw>
+<tags>
+<tag>2102</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="FAIL" endtime="20180822 00:12:57.825" critical="yes" starttime="20180822 00:12:57.257">Failed arrival tags</status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:12:57.828" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:12:57.828" starttime="20180822 00:12:57.827"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:57.829" starttime="20180822 00:12:57.828"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:12:57.829" starttime="20180822 00:12:57.827"></status>
+</kw>
+<doc>This test suite will test the filters functionality of RRP
+Please add the following line to environment of the
+inventory-service in the docker-compose.yml file of the DUT.
+filters: "303,300"</doc>
+<status status="FAIL" endtime="20180822 00:12:57.829" starttime="20180822 00:12:51.611"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="2" pass="1">Critical Tests</stat>
+<stat fail="2" pass="1">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">2100</stat>
+<stat fail="1" pass="0">2101</stat>
+<stat fail="1" pass="0">2102</stat>
+<stat fail="2" pass="1">common</stat>
+<stat fail="2" pass="1">dst</stat>
+<stat fail="0" pass="1">functionality</stat>
+<stat fail="2" pass="0">negative</stat>
+</tag>
+<suite>
+<stat fail="2" id="s1" name="Tag Event filter whitelist" pass="1">Tag Event filter whitelist</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

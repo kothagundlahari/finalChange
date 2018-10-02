@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:03:23.793" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/CompanyPrefix.robot" id="s1" name="CompanyPrefix">
+<kw type="setup" name="Suite Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:03:25.207" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:25.208" starttime="20180822 00:03:24.128"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:25.208" starttime="20180822 00:03:25.208"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:25.209" starttime="20180822 00:03:24.128"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:03:25.211" starttime="20180822 00:03:25.209"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:25.212" starttime="20180822 00:03:24.127"></status>
+</kw>
+<test id="s1-t1" name="2460 Functionality-Data with non-zero company prefix code-while required microservices are running">
+<kw type="setup" name="Clear Tags and Wait">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:03:25.219" starttime="20180822 00:03:25.214"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:25.219" starttime="20180822 00:03:25.213"></status>
+</kw>
+<kw name="Test With Company Prefix length 6 using start tags 30387890040AEF904C000000">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:03:25.224" starttime="20180822 00:03:25.220"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${0}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:25.252" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:25.252" starttime="20180822 00:03:25.224"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Empty Inventory Tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:25.252" starttime="20180822 00:03:25.252"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test Company Prefix at ${prefix_length}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:25.253" level="INFO">Test Company Prefix at 6</msg>
+<status status="PASS" endtime="20180822 00:03:25.253" starttime="20180822 00:03:25.253"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>num_tags=${50}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:25.437" starttime="20180822 00:03:25.253"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:27.449" starttime="20180822 00:03:25.437"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:27.721" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:27.721" starttime="20180822 00:03:27.449"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Validating data</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:27.722" starttime="20180822 00:03:27.722"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:27.722" starttime="20180822 00:03:25.220"></status>
+</kw>
+<kw name="Test With Company Prefix length 7 using start tags 30344B5A1C9C07904C000000">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:03:27.731" starttime="20180822 00:03:27.723"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${0}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:27.738" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:27.738" starttime="20180822 00:03:27.731"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Empty Inventory Tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:27.739" starttime="20180822 00:03:27.739"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test Company Prefix at ${prefix_length}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:27.739" level="INFO">Test Company Prefix at 7</msg>
+<status status="PASS" endtime="20180822 00:03:27.740" starttime="20180822 00:03:27.739"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>num_tags=${50}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:27.920" starttime="20180822 00:03:27.740"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:29.932" starttime="20180822 00:03:27.920"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:30.230" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:30.230" starttime="20180822 00:03:29.933"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Validating data</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:30.231" starttime="20180822 00:03:30.230"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:30.231" starttime="20180822 00:03:27.722"></status>
+</kw>
+<kw name="Test With Company Prefix length 8 using start tags 30344B5A1C9C07904C000000">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:03:30.240" starttime="20180822 00:03:30.232"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${0}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:30.247" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:30.247" starttime="20180822 00:03:30.240"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Empty Inventory Tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:30.248" starttime="20180822 00:03:30.247"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test Company Prefix at ${prefix_length}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:30.248" level="INFO">Test Company Prefix at 8</msg>
+<status status="PASS" endtime="20180822 00:03:30.248" starttime="20180822 00:03:30.248"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>num_tags=${50}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:30.439" starttime="20180822 00:03:30.249"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:32.452" starttime="20180822 00:03:30.439"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:32.780" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:32.780" starttime="20180822 00:03:32.452"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Validating data</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:32.781" starttime="20180822 00:03:32.780"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:32.781" starttime="20180822 00:03:30.231"></status>
+</kw>
+<kw name="Test With Company Prefix length 9 using start tags 302C75BCD151BB904C000000">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:03:32.790" starttime="20180822 00:03:32.782"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${0}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:32.797" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:32.797" starttime="20180822 00:03:32.791"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Empty Inventory Tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:32.798" starttime="20180822 00:03:32.797"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test Company Prefix at ${prefix_length}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:32.798" level="INFO">Test Company Prefix at 9</msg>
+<status status="PASS" endtime="20180822 00:03:32.799" starttime="20180822 00:03:32.798"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>num_tags=${50}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:32.983" starttime="20180822 00:03:32.799"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:34.995" starttime="20180822 00:03:32.984"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:35.248" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:35.249" starttime="20180822 00:03:34.995"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Validating data</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:35.249" starttime="20180822 00:03:35.249"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:35.250" starttime="20180822 00:03:32.781"></status>
+</kw>
+<kw name="Test With Company Prefix length 9 using start tags 302C75BCD151BB904C000000">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:03:35.258" starttime="20180822 00:03:35.250"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${0}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:35.264" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:35.264" starttime="20180822 00:03:35.258"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Empty Inventory Tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:35.265" starttime="20180822 00:03:35.265"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test Company Prefix at ${prefix_length}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:35.266" level="INFO">Test Company Prefix at 9</msg>
+<status status="PASS" endtime="20180822 00:03:35.266" starttime="20180822 00:03:35.265"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>num_tags=${50}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:35.450" starttime="20180822 00:03:35.266"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:37.461" starttime="20180822 00:03:35.450"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:37.765" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:37.765" starttime="20180822 00:03:37.461"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Validating data</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:37.766" starttime="20180822 00:03:37.765"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:37.766" starttime="20180822 00:03:35.250"></status>
+</kw>
+<kw name="Test With Company Prefix length 10 using start tags 3028499602D22B904C000000">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:03:37.776" starttime="20180822 00:03:37.767"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${0}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:37.784" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:37.784" starttime="20180822 00:03:37.776"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Empty Inventory Tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:37.784" starttime="20180822 00:03:37.784"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test Company Prefix at ${prefix_length}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:37.785" level="INFO">Test Company Prefix at 10</msg>
+<status status="PASS" endtime="20180822 00:03:37.785" starttime="20180822 00:03:37.784"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>num_tags=${50}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:37.971" starttime="20180822 00:03:37.785"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:39.985" starttime="20180822 00:03:37.971"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:40.294" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:40.294" starttime="20180822 00:03:39.985"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Validating data</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:40.295" starttime="20180822 00:03:40.295"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:40.296" starttime="20180822 00:03:37.766"></status>
+</kw>
+<kw name="Test With Company Prefix length 11 using start tags 30245BFB8386A3904C000000">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:03:40.313" starttime="20180822 00:03:40.296"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${0}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:40.320" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:40.320" starttime="20180822 00:03:40.313"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Empty Inventory Tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:40.321" starttime="20180822 00:03:40.321"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test Company Prefix at ${prefix_length}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:40.322" level="INFO">Test Company Prefix at 11</msg>
+<status status="PASS" endtime="20180822 00:03:40.322" starttime="20180822 00:03:40.321"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>num_tags=${50}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:40.508" starttime="20180822 00:03:40.322"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:42.520" starttime="20180822 00:03:40.509"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:42.815" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:42.815" starttime="20180822 00:03:42.521"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Validating data</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:42.816" starttime="20180822 00:03:42.816"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:42.816" starttime="20180822 00:03:40.296"></status>
+</kw>
+<kw name="Test With Company Prefix length 12 using start tags 302072FA646850504C000000">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:03:42.825" starttime="20180822 00:03:42.817"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${0}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:42.833" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:42.834" starttime="20180822 00:03:42.825"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Empty Inventory Tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:42.834" starttime="20180822 00:03:42.834"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test Company Prefix at ${prefix_length}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:42.835" level="INFO">Test Company Prefix at 12</msg>
+<status status="PASS" endtime="20180822 00:03:42.835" starttime="20180822 00:03:42.834"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>num_tags=${50}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:42.991" starttime="20180822 00:03:42.835"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:45.005" starttime="20180822 00:03:42.992"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:45.310" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:45.311" starttime="20180822 00:03:45.006"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Validating data</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:45.311" starttime="20180822 00:03:45.311"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:45.312" starttime="20180822 00:03:42.817"></status>
+</kw>
+<tags>
+<tag>2460</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:03:45.312" critical="yes" starttime="20180822 00:03:25.212"></status>
+</test>
+<test id="s1-t2" name="2461 Functionality-Data with zero company prefix code-while required microservices are running">
+<kw type="setup" name="Clear Tags and Wait">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:03:45.322" starttime="20180822 00:03:45.314"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:45.323" starttime="20180822 00:03:45.314"></status>
+</kw>
+<kw name="Test With Company Prefix length 6 using start tags 30340000003A5F904C000000">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:03:45.328" starttime="20180822 00:03:45.323"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${0}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:45.334" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:45.334" starttime="20180822 00:03:45.328"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Empty Inventory Tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:45.335" starttime="20180822 00:03:45.335"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test Company Prefix at ${prefix_length}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:45.336" level="INFO">Test Company Prefix at 6</msg>
+<status status="PASS" endtime="20180822 00:03:45.336" starttime="20180822 00:03:45.335"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>num_tags=${50}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:45.476" starttime="20180822 00:03:45.336"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:47.503" starttime="20180822 00:03:45.476"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:03:47.810" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:47.810" starttime="20180822 00:03:47.503"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Validating data</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:47.810" starttime="20180822 00:03:47.810"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:47.811" starttime="20180822 00:03:45.323"></status>
+</kw>
+<tags>
+<tag>2461</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:03:47.811" critical="yes" starttime="20180822 00:03:45.312"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:03:47.813" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:47.814" starttime="20180822 00:03:47.813"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:47.814" starttime="20180822 00:03:47.814"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:47.814" starttime="20180822 00:03:47.812"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:47.814" starttime="20180822 00:03:23.795"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">2460</stat>
+<stat fail="0" pass="1">2461</stat>
+<stat fail="0" pass="2">common</stat>
+<stat fail="0" pass="2">dst</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="CompanyPrefix" pass="2">CompanyPrefix</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

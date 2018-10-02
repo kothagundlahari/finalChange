@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:32:42.702" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Notifications/handheld_notification.robot" id="s1" name="Handheld Notification">
+<kw type="setup" name="Setup and Populate">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:32:43.439" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:32:43.439" starttime="20180822 00:32:43.006"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:32:43.439" starttime="20180822 00:32:43.439"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:32:43.439" starttime="20180822 00:32:43.006"></status>
+</kw>
+<kw name="Set Logger" library="Location">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:32:43.440" starttime="20180822 00:32:43.440"></status>
+</kw>
+<kw name="Set Logger" library="Notification">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:32:43.441" starttime="20180822 00:32:43.440"></status>
+</kw>
+<kw name="Set Logger" library="SkuMapping">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:32:43.441" starttime="20180822 00:32:43.441"></status>
+</kw>
+<kw name="Set Logger" library="Tags">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:32:43.442" starttime="20180822 00:32:43.442"></status>
+</kw>
+<kw name="Init" library="fac">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:32:43.772" starttime="20180822 00:32:43.442"></status>
+</kw>
+<kw name="Empty DB" library="fac">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:32:43.777" starttime="20180822 00:32:43.772"></status>
+</kw>
+<kw name="Test POST" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>names=SALES_FLOOR,BACKSTOCK</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:32:43.785" starttime="20180822 00:32:43.777"></status>
+</kw>
+<kw name="EmptyAllDB">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:32:43.789" starttime="20180822 00:32:43.786"></status>
+</kw>
+<kw name="Empty DB" library="SkuMapping">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:32:44.239" starttime="20180822 00:32:43.790"></status>
+</kw>
+<kw name="Empty DB" library="Notification">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:32:44.247" starttime="20180822 00:32:44.240"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:32:44.283" starttime="20180822 00:32:44.247"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:32:44.283" starttime="20180822 00:32:43.785"></status>
+</kw>
+<kw name="LoadDB">
+<kw name="Load D Bfrom File" library="Location">
+<doc>This method will populate the internal test DB if needed</doc>
+<arguments>
+<arg>${location_json}</arg>
+<arg>${true}</arg>
+</arguments>
+<assign>
+<var>${loc_size}</var>
+</assign>
+<msg timestamp="20180822 00:32:44.341" level="INFO">${loc_size} = 6</msg>
+<status status="PASS" endtime="20180822 00:32:44.341" starttime="20180822 00:32:44.284"></status>
+</kw>
+<kw name="Load D Bfrom File" library="Notification">
+<doc>This method will populate the internal test DB if needed</doc>
+<arguments>
+<arg>${notification_json}</arg>
+<arg>${true}</arg>
+</arguments>
+<assign>
+<var>${ns_size}</var>
+</assign>
+<msg timestamp="20180822 00:32:44.376" level="INFO">${ns_size} = 4</msg>
+<status status="PASS" endtime="20180822 00:32:44.376" starttime="20180822 00:32:44.342"></status>
+</kw>
+<kw name="Load D Bfrom File" library="SkuMapping">
+<doc>This method will populate the internal test DB if needed</doc>
+<arguments>
+<arg>${sku_json}</arg>
+<arg>${true}</arg>
+</arguments>
+<assign>
+<var>${sku_size}</var>
+</assign>
+<msg timestamp="20180822 00:32:44.426" level="INFO">${sku_size} = 4</msg>
+<status status="PASS" endtime="20180822 00:32:44.427" starttime="20180822 00:32:44.377"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${ns_size}</arg>
+<arg>${ns_size}</arg>
+</arguments>
+<msg timestamp="20180822 00:32:44.428" level="INFO">${ns_size} = 4</msg>
+<status status="PASS" endtime="20180822 00:32:44.428" starttime="20180822 00:32:44.427"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${loc_size}</arg>
+<arg>${loc_size}</arg>
+</arguments>
+<msg timestamp="20180822 00:32:44.429" level="INFO">${loc_size} = 6</msg>
+<status status="PASS" endtime="20180822 00:32:44.429" starttime="20180822 00:32:44.428"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${sku_size}</arg>
+<arg>${sku_size}</arg>
+</arguments>
+<msg timestamp="20180822 00:32:44.430" level="INFO">${sku_size} = 4</msg>
+<status status="PASS" endtime="20180822 00:32:44.430" starttime="20180822 00:32:44.429"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${loc_size}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:32:44.593" starttime="20180822 00:32:44.430"></status>
+</kw>
+<kw name="Test POST" library="SkuMapping">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${sku_size}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:32:44.655" starttime="20180822 00:32:44.593"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:32:44.656" starttime="20180822 00:32:44.283"></status>
+</kw>
+<kw name="Init" library="Zebra">
+<msg timestamp="20180822 00:32:54.658" level="INFO">File "/home/seduser/.local/lib/python2.7/site-packages/websocket/_app.py", line 333, in _callback
+    callback(*args)</msg>
+<msg timestamp="20180822 00:32:54.659" level="FAIL">IOError</msg>
+<status status="FAIL" endtime="20180822 00:32:54.659" starttime="20180822 00:32:44.656"></status>
+</kw>
+<status status="FAIL" endtime="20180822 00:32:54.660" starttime="20180822 00:32:43.006"></status>
+</kw>
+<test id="s1-t1" name="2621 Functionality-FullScanStart followed by FullScanComplete triggers OOS-while required microservices are running">
+<tags>
+<tag>2621</tag>
+<tag>2622</tag>
+<tag>common</tag>
+<tag>TC648</tag>
+</tags>
+<status status="FAIL" endtime="20180822 00:32:54.661" critical="yes" starttime="20180822 00:32:54.660">Parent suite setup failed:
+IOError</status>
+</test>
+<kw type="teardown" name="Teardown Server">
+<kw name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:32:54.664" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:32:54.664" starttime="20180822 00:32:54.663"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:32:54.665" starttime="20180822 00:32:54.665"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:32:54.666" starttime="20180822 00:32:54.663"></status>
+</kw>
+<kw name="Close" library="Zebra">
+<doc>Close Connection to broker</doc>
+<status status="PASS" endtime="20180822 00:32:54.666" starttime="20180822 00:32:54.666"></status>
+</kw>
+<kw name="Stop" library="webhook">
+<doc>Method to stop server</doc>
+<status status="PASS" endtime="20180822 00:32:54.667" starttime="20180822 00:32:54.667"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:32:54.667" starttime="20180822 00:32:54.662"></status>
+</kw>
+<status status="FAIL" endtime="20180822 00:32:54.667" starttime="20180822 00:32:42.704">Suite setup failed:
+IOError</status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+<stat fail="1" pass="0">2621</stat>
+<stat fail="1" pass="0">2622</stat>
+<stat fail="1" pass="0">common</stat>
+<stat fail="1" pass="0">TC648</stat>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="Handheld Notification" pass="0">Handheld Notification</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

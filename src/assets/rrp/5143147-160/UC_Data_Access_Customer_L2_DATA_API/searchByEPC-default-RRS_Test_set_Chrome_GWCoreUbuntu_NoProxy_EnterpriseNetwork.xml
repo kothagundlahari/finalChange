@@ -1,0 +1,1569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:09:04.331" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/searchByEPC.robot" id="s1" name="searchByEPC">
+<kw type="setup" name="Suite Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:09:05.015" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:09:05.015" starttime="20180822 00:09:04.600"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:05.016" starttime="20180822 00:09:05.015"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:05.016" starttime="20180822 00:09:04.600"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:09:05.019" starttime="20180822 00:09:05.016"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:05.019" starttime="20180822 00:09:04.600"></status>
+</kw>
+<test id="s1-t1" name="Search By EPC Begin">
+<kw type="setup" name="Clear Tags and Wait">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:09:05.028" starttime="20180822 00:09:05.021"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:05.029" starttime="20180822 00:09:05.021"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:05.056" starttime="20180822 00:09:05.030"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:07.067" starttime="20180822 00:09:05.057"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:07.068" starttime="20180822 00:09:05.029"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F914C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:07.074" starttime="20180822 00:09:07.069"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:09.087" starttime="20180822 00:09:07.075"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:09.087" starttime="20180822 00:09:07.068"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F924C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:09.094" starttime="20180822 00:09:09.088"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:11.105" starttime="20180822 00:09:09.094"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:11.105" starttime="20180822 00:09:09.087"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F934C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:11.112" starttime="20180822 00:09:11.107"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:13.125" starttime="20180822 00:09:11.112"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:13.125" starttime="20180822 00:09:11.106"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F944C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:13.131" starttime="20180822 00:09:13.126"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:15.143" starttime="20180822 00:09:13.132"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:15.143" starttime="20180822 00:09:13.125"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F944C000001</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac2</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:15.152" starttime="20180822 00:09:15.145"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:17.163" starttime="20180822 00:09:15.152"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:17.163" starttime="20180822 00:09:15.144"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F954C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:17.171" starttime="20180822 00:09:17.165"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:19.183" starttime="20180822 00:09:17.171"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:19.184" starttime="20180822 00:09:17.164"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F964C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:19.190" starttime="20180822 00:09:19.185"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:21.202" starttime="20180822 00:09:19.190"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:21.202" starttime="20180822 00:09:19.184"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F974C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:21.209" starttime="20180822 00:09:21.204"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:23.220" starttime="20180822 00:09:21.210"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:23.221" starttime="20180822 00:09:21.203"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F984C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:23.227" starttime="20180822 00:09:23.222"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:25.238" starttime="20180822 00:09:23.227"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:25.238" starttime="20180822 00:09:23.221"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F994C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:25.245" starttime="20180822 00:09:25.239"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:27.257" starttime="20180822 00:09:25.245"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:27.257" starttime="20180822 00:09:25.238"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc=303002662C3A5F94*</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:09:27.259" level="INFO">&amp;{params} = { facility_id=Fac1 | epc=303002662C3A5F94* }</msg>
+<status status="PASS" endtime="20180822 00:09:27.259" starttime="20180822 00:09:27.257"></status>
+</kw>
+<kw name="Search By EPC" library="Tags">
+<doc>Function to searchByEPC</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:09:28.383" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:09:28.383" starttime="20180822 00:09:27.259"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to searchByEPC request</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:28.384" starttime="20180822 00:09:28.384"></status>
+</kw>
+<kw name="Verify Search By EPC" library="Tags">
+<doc>Function to verify data from SearchByEPC</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:09:28.389" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:09:28.389" starttime="20180822 00:09:28.385"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify size</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:28.390" starttime="20180822 00:09:28.389"></status>
+</kw>
+<doc>Test Search By EPC to look for tags that starts with 3034*</doc>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>start</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:09:28.390" critical="yes" starttime="20180822 00:09:05.020"></status>
+</test>
+<test id="s1-t2" name="Search By EPC End">
+<kw type="setup" name="Clear Tags and Wait">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:09:28.399" starttime="20180822 00:09:28.392"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:28.399" starttime="20180822 00:09:28.392"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:28.404" starttime="20180822 00:09:28.400"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:30.416" starttime="20180822 00:09:28.404"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:30.416" starttime="20180822 00:09:28.399"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000001</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:30.423" starttime="20180822 00:09:30.417"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:32.435" starttime="20180822 00:09:30.423"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:32.436" starttime="20180822 00:09:30.416"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000002</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:32.442" starttime="20180822 00:09:32.437"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:34.454" starttime="20180822 00:09:32.442"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:34.454" starttime="20180822 00:09:32.436"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000003</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:34.461" starttime="20180822 00:09:34.456"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:36.473" starttime="20180822 00:09:34.461"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:36.473" starttime="20180822 00:09:34.454"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000004</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:36.480" starttime="20180822 00:09:36.474"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:38.492" starttime="20180822 00:09:36.480"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:38.492" starttime="20180822 00:09:36.473"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904D000004</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac2</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:38.499" starttime="20180822 00:09:38.494"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:40.510" starttime="20180822 00:09:38.500"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:40.511" starttime="20180822 00:09:38.492"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000005</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:40.517" starttime="20180822 00:09:40.512"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:42.528" starttime="20180822 00:09:40.518"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:42.529" starttime="20180822 00:09:40.511"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000006</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:42.535" starttime="20180822 00:09:42.530"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:44.547" starttime="20180822 00:09:42.535"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:44.547" starttime="20180822 00:09:42.529"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000007</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:44.554" starttime="20180822 00:09:44.549"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:46.565" starttime="20180822 00:09:44.554"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:46.565" starttime="20180822 00:09:44.547"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000008</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:46.572" starttime="20180822 00:09:46.566"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:48.582" starttime="20180822 00:09:46.572"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:48.582" starttime="20180822 00:09:46.565"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000009</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:48.589" starttime="20180822 00:09:48.584"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:50.602" starttime="20180822 00:09:48.589"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:50.602" starttime="20180822 00:09:48.582"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc=*4</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:09:50.604" level="INFO">&amp;{params} = { facility_id=Fac1 | epc=*4 }</msg>
+<status status="PASS" endtime="20180822 00:09:50.604" starttime="20180822 00:09:50.603"></status>
+</kw>
+<kw name="Search By EPC" library="Tags">
+<doc>Function to searchByEPC</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:09:50.921" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:09:50.921" starttime="20180822 00:09:50.604"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to searchByEPC request</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:50.922" starttime="20180822 00:09:50.922"></status>
+</kw>
+<kw name="Verify Search By EPC" library="Tags">
+<doc>Function to verify data from SearchByEPC</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:09:50.927" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:09:50.927" starttime="20180822 00:09:50.923"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify size</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:50.928" starttime="20180822 00:09:50.927"></status>
+</kw>
+<doc>Test Search By EPC to look for tags that starts with 3034*</doc>
+<tags>
+<tag>common</tag>
+<tag>end</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:09:50.928" critical="yes" starttime="20180822 00:09:28.391"></status>
+</test>
+<test id="s1-t3" name="Search By EPC Middle">
+<kw type="setup" name="Clear Tags and Wait">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:09:50.936" starttime="20180822 00:09:50.930"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:50.936" starttime="20180822 00:09:50.930"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:50.942" starttime="20180822 00:09:50.937"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:52.954" starttime="20180822 00:09:50.942"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:52.954" starttime="20180822 00:09:50.937"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F914C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:52.961" starttime="20180822 00:09:52.956"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:54.972" starttime="20180822 00:09:52.961"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:54.973" starttime="20180822 00:09:52.955"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F924C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:54.979" starttime="20180822 00:09:54.974"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:56.990" starttime="20180822 00:09:54.979"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:56.991" starttime="20180822 00:09:54.973"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F934C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:56.998" starttime="20180822 00:09:56.992"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:09:59.009" starttime="20180822 00:09:56.998"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:09:59.010" starttime="20180822 00:09:56.991"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F944C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:09:59.016" starttime="20180822 00:09:59.011"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:01.028" starttime="20180822 00:09:59.017"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:01.028" starttime="20180822 00:09:59.010"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F944C000001</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac2</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:01.036" starttime="20180822 00:10:01.030"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:03.048" starttime="20180822 00:10:01.036"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:03.048" starttime="20180822 00:10:01.028"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F954C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:03.055" starttime="20180822 00:10:03.050"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:05.067" starttime="20180822 00:10:03.055"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:05.067" starttime="20180822 00:10:03.048"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F964C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:05.074" starttime="20180822 00:10:05.069"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:07.086" starttime="20180822 00:10:05.074"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:07.086" starttime="20180822 00:10:05.067"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F974C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:07.093" starttime="20180822 00:10:07.087"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:09.105" starttime="20180822 00:10:07.093"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:09.106" starttime="20180822 00:10:07.086"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F984C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:09.112" starttime="20180822 00:10:09.107"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:11.124" starttime="20180822 00:10:09.113"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:11.125" starttime="20180822 00:10:09.106"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F994C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:11.132" starttime="20180822 00:10:11.126"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:13.143" starttime="20180822 00:10:11.132"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:13.144" starttime="20180822 00:10:11.125"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc=303002662C3A5F9*4C000000</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:10:13.145" level="INFO">&amp;{params} = { facility_id=Fac1 | epc=303002662C3A5F9*4C000000 }</msg>
+<status status="PASS" endtime="20180822 00:10:13.145" starttime="20180822 00:10:13.144"></status>
+</kw>
+<kw name="Search By EPC" library="Tags">
+<doc>Function to searchByEPC</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:10:13.435" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:10:13.435" starttime="20180822 00:10:13.146"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to searchByEPC request</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:13.436" starttime="20180822 00:10:13.436"></status>
+</kw>
+<kw name="Verify Search By EPC" library="Tags">
+<doc>Function to verify data from SearchByEPC</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:10:13.442" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:10:13.442" starttime="20180822 00:10:13.436"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify size</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:13.442" starttime="20180822 00:10:13.442"></status>
+</kw>
+<doc>Test Search By EPC to look for tags that starts with 3034*</doc>
+<tags>
+<tag>common</tag>
+<tag>middle</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:10:13.443" critical="yes" starttime="20180822 00:09:50.929"></status>
+</test>
+<test id="s1-t4" name="Search By EPC No asterisks">
+<kw type="setup" name="Clear Tags and Wait">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:10:13.452" starttime="20180822 00:10:13.445"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:13.452" starttime="20180822 00:10:13.444"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:13.457" starttime="20180822 00:10:13.453"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:15.469" starttime="20180822 00:10:13.458"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:15.469" starttime="20180822 00:10:13.452"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F914C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:15.489" starttime="20180822 00:10:15.471"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:17.500" starttime="20180822 00:10:15.489"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:17.501" starttime="20180822 00:10:15.470"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F924C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:17.508" starttime="20180822 00:10:17.502"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:19.520" starttime="20180822 00:10:17.508"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:19.520" starttime="20180822 00:10:17.501"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F934C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:19.527" starttime="20180822 00:10:19.522"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:21.539" starttime="20180822 00:10:19.527"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:21.539" starttime="20180822 00:10:19.520"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F944C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:21.545" starttime="20180822 00:10:21.541"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:23.562" starttime="20180822 00:10:21.546"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:23.562" starttime="20180822 00:10:21.539"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F944C000001</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac2</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:23.569" starttime="20180822 00:10:23.564"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:25.580" starttime="20180822 00:10:23.570"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:25.581" starttime="20180822 00:10:23.562"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F954C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:25.587" starttime="20180822 00:10:25.582"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:27.600" starttime="20180822 00:10:25.588"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:27.600" starttime="20180822 00:10:25.581"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F964C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:27.607" starttime="20180822 00:10:27.601"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:29.620" starttime="20180822 00:10:27.607"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:29.620" starttime="20180822 00:10:27.600"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F974C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:29.627" starttime="20180822 00:10:29.621"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:31.637" starttime="20180822 00:10:29.627"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:31.637" starttime="20180822 00:10:29.620"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F984C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:31.644" starttime="20180822 00:10:31.638"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:33.658" starttime="20180822 00:10:31.644"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:33.658" starttime="20180822 00:10:31.637"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F994C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:33.665" starttime="20180822 00:10:33.660"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:35.679" starttime="20180822 00:10:33.666"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:35.679" starttime="20180822 00:10:33.659"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc=303002662C3A5F944C000000</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:10:35.681" level="INFO">&amp;{params} = { facility_id=Fac1 | epc=303002662C3A5F944C000000 }</msg>
+<status status="PASS" endtime="20180822 00:10:35.681" starttime="20180822 00:10:35.679"></status>
+</kw>
+<kw name="Search By EPC" library="Tags">
+<doc>Function to searchByEPC</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:10:35.921" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:10:35.921" starttime="20180822 00:10:35.681"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to searchByEPC request</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:35.922" starttime="20180822 00:10:35.922"></status>
+</kw>
+<kw name="Verify Search By EPC" library="Tags">
+<doc>Function to verify data from SearchByEPC</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:10:35.927" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:10:35.927" starttime="20180822 00:10:35.923"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify size</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:35.928" starttime="20180822 00:10:35.928"></status>
+</kw>
+<doc>Test Search By EPC to look for a specific tags</doc>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:10:35.928" critical="yes" starttime="20180822 00:10:13.443"></status>
+</test>
+<test id="s1-t5" name="Negative Test More than one asterisks">
+<kw type="setup" name="Clear Tags and Wait">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:10:35.936" starttime="20180822 00:10:35.931"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:35.936" starttime="20180822 00:10:35.930"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F904C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:35.941" starttime="20180822 00:10:35.937"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:37.953" starttime="20180822 00:10:35.941"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:37.953" starttime="20180822 00:10:35.936"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F914C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:37.960" starttime="20180822 00:10:37.955"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:39.973" starttime="20180822 00:10:37.961"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:39.973" starttime="20180822 00:10:37.954"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F924C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:39.980" starttime="20180822 00:10:39.975"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:41.991" starttime="20180822 00:10:39.981"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:41.991" starttime="20180822 00:10:39.974"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F934C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:41.998" starttime="20180822 00:10:41.993"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:44.009" starttime="20180822 00:10:41.998"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:44.009" starttime="20180822 00:10:41.991"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F944C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:44.016" starttime="20180822 00:10:44.011"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:46.030" starttime="20180822 00:10:44.017"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:46.030" starttime="20180822 00:10:44.010"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F944C000001</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac2</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:46.037" starttime="20180822 00:10:46.031"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:48.048" starttime="20180822 00:10:46.037"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:48.048" starttime="20180822 00:10:46.030"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F954C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:48.055" starttime="20180822 00:10:48.050"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:50.067" starttime="20180822 00:10:48.056"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:50.067" starttime="20180822 00:10:48.049"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F964C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:50.073" starttime="20180822 00:10:50.068"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:52.085" starttime="20180822 00:10:50.074"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:52.085" starttime="20180822 00:10:50.067"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F974C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:52.092" starttime="20180822 00:10:52.087"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:54.103" starttime="20180822 00:10:52.093"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:54.103" starttime="20180822 00:10:52.086"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F984C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:54.111" starttime="20180822 00:10:54.105"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:56.121" starttime="20180822 00:10:54.111"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:56.121" starttime="20180822 00:10:54.103"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>start_tags=303002662C3A5F994C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:56.128" starttime="20180822 00:10:56.123"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:10:58.141" starttime="20180822 00:10:56.128"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:58.141" starttime="20180822 00:10:56.122"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc=*03002662C3A5F9*4C000000</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:10:58.142" level="INFO">&amp;{params} = { facility_id=Fac1 | epc=*03002662C3A5F9*4C000000 }</msg>
+<status status="PASS" endtime="20180822 00:10:58.142" starttime="20180822 00:10:58.141"></status>
+</kw>
+<kw name="Search By EPC" library="Tags">
+<doc>Function to searchByEPC</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:10:58.149" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:10:58.149" starttime="20180822 00:10:58.143"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to searchByEPC request</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:58.150" starttime="20180822 00:10:58.150"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc=**</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:10:58.151" level="INFO">&amp;{params} = { facility_id=Fac1 | epc=** }</msg>
+<status status="PASS" endtime="20180822 00:10:58.151" starttime="20180822 00:10:58.150"></status>
+</kw>
+<kw name="Search By EPC" library="Tags">
+<doc>Function to searchByEPC</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:10:58.157" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:10:58.157" starttime="20180822 00:10:58.151"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to searchByEPC request</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:58.158" starttime="20180822 00:10:58.157"></status>
+</kw>
+<doc>Negative test with more than one astericks</doc>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:10:58.158" critical="yes" starttime="20180822 00:10:35.929"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:10:58.160" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:10:58.160" starttime="20180822 00:10:58.159"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:10:58.160" starttime="20180822 00:10:58.160"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:58.160" starttime="20180822 00:10:58.159"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:10:58.160" starttime="20180822 00:09:04.333"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="5">Critical Tests</stat>
+<stat fail="0" pass="5">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="5">common</stat>
+<stat fail="0" pass="3">dst</stat>
+<stat fail="0" pass="1">end</stat>
+<stat fail="0" pass="1">middle</stat>
+<stat fail="0" pass="1">negative</stat>
+<stat fail="0" pass="1">start</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="searchByEPC" pass="5">searchByEPC</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,1348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:29:19.324" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L3_DATA_API/locations_post.robot" id="s1" name="Locations Post">
+<kw type="setup" name="Setup and Populate">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:29:19.976" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:19.976" starttime="20180822 00:29:19.586"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:19.977" starttime="20180822 00:29:19.976"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:19.977" starttime="20180822 00:29:19.585"></status>
+</kw>
+<kw name="Import Library" library="BuiltIn">
+<doc>Imports a library with the given name and optional arguments.</doc>
+<arguments>
+<arg>${ITAF_DIR}/testCaseApps/Locations/Location.py</arg>
+<arg>postfix=${SNAME}</arg>
+<arg>DEBUG=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:19.992" starttime="20180822 00:29:19.977"></status>
+</kw>
+<kw name="Import Library" library="BuiltIn">
+<doc>Imports a library with the given name and optional arguments.</doc>
+<arguments>
+<arg>${ITAF_DIR}/testCaseApps/Inventory/integrationTags.py</arg>
+<arg>postfix=sprint3</arg>
+<arg>WITH NAME</arg>
+<arg>Tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.005" starttime="20180822 00:29:19.992"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:29:20.008" starttime="20180822 00:29:20.005"></status>
+</kw>
+<kw name="Set Logger" library="Location">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:29:20.009" starttime="20180822 00:29:20.008"></status>
+</kw>
+<kw name="Load D Bfrom File" library="Location">
+<doc>This method will populate the internal test DB if needed</doc>
+<arguments>
+<arg>${json_file}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.013" starttime="20180822 00:29:20.009"></status>
+</kw>
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:20.016" starttime="20180822 00:29:20.013"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:20.017" starttime="20180822 00:29:19.585"></status>
+</kw>
+<test id="s1-t1" name="896 Functionality-LocationRegistration-Add new : Location POST with Single two-level hierarchy-While no activity on the sensor">
+<kw name="Test Location with size ${1}">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test using ${size}</arg>
+</arguments>
+<msg timestamp="20180822 00:29:20.018" level="INFO">Test using 1</msg>
+<status status="PASS" endtime="20180822 00:29:20.018" starttime="20180822 00:29:20.018"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>size=${size}</arg>
+<arg>start=${0}</arg>
+</arguments>
+<assign>
+<var>&amp;{dict}</var>
+</assign>
+<msg timestamp="20180822 00:29:20.019" level="INFO">&amp;{dict} = { size=1 | start=0 }</msg>
+<status status="PASS" endtime="20180822 00:29:20.019" starttime="20180822 00:29:20.018"></status>
+</kw>
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:20.022" starttime="20180822 00:29:20.019"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.060" starttime="20180822 00:29:20.023"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+<arg>useDB=${TRUE}</arg>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:20.073" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:20.074" starttime="20180822 00:29:20.061"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed ${size} Location</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.074" starttime="20180822 00:29:20.074"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:20.074" starttime="20180822 00:29:20.017"></status>
+</kw>
+<kw name="Test Location with size ${50}">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test using ${size}</arg>
+</arguments>
+<msg timestamp="20180822 00:29:20.075" level="INFO">Test using 50</msg>
+<status status="PASS" endtime="20180822 00:29:20.075" starttime="20180822 00:29:20.075"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>size=${size}</arg>
+<arg>start=${0}</arg>
+</arguments>
+<assign>
+<var>&amp;{dict}</var>
+</assign>
+<msg timestamp="20180822 00:29:20.076" level="INFO">&amp;{dict} = { size=50 | start=0 }</msg>
+<status status="PASS" endtime="20180822 00:29:20.076" starttime="20180822 00:29:20.075"></status>
+</kw>
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:20.079" starttime="20180822 00:29:20.076"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.130" starttime="20180822 00:29:20.079"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+<arg>useDB=${TRUE}</arg>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:20.176" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:20.176" starttime="20180822 00:29:20.130"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed ${size} Location</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.177" starttime="20180822 00:29:20.177"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:20.177" starttime="20180822 00:29:20.074"></status>
+</kw>
+<kw name="Test Location with size ${max}">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test using ${size}</arg>
+</arguments>
+<msg timestamp="20180822 00:29:20.178" level="INFO">Test using 100</msg>
+<status status="PASS" endtime="20180822 00:29:20.178" starttime="20180822 00:29:20.178"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>size=${size}</arg>
+<arg>start=${0}</arg>
+</arguments>
+<assign>
+<var>&amp;{dict}</var>
+</assign>
+<msg timestamp="20180822 00:29:20.179" level="INFO">&amp;{dict} = { size=100 | start=0 }</msg>
+<status status="PASS" endtime="20180822 00:29:20.179" starttime="20180822 00:29:20.178"></status>
+</kw>
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:20.183" starttime="20180822 00:29:20.179"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.264" starttime="20180822 00:29:20.183"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+<arg>useDB=${TRUE}</arg>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:20.352" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:20.352" starttime="20180822 00:29:20.265"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed ${size} Location</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.353" starttime="20180822 00:29:20.352"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:20.353" starttime="20180822 00:29:20.177"></status>
+</kw>
+<tags>
+<tag>896</tag>
+<tag>897</tag>
+<tag>898</tag>
+<tag>common</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:20.353" critical="yes" starttime="20180822 00:29:20.017"></status>
+</test>
+<test id="s1-t2" name="Location MultiPayload Testing">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:20.360" starttime="20180822 00:29:20.353"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${max}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${10}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.606" starttime="20180822 00:29:20.360"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>size=${max}</arg>
+<arg>start=${0}</arg>
+<arg>useDB=${TRUE}</arg>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:20.686" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:20.686" starttime="20180822 00:29:20.607"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed multipayload</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.687" starttime="20180822 00:29:20.686"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>multipayload</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:20.687" critical="yes" starttime="20180822 00:29:20.353"></status>
+</test>
+<test id="s1-t3" name="Max Payload">
+<kw name="Test Location with size ${max}">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test using ${size}</arg>
+</arguments>
+<msg timestamp="20180822 00:29:20.688" level="INFO">Test using 100</msg>
+<status status="PASS" endtime="20180822 00:29:20.688" starttime="20180822 00:29:20.688"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>size=${size}</arg>
+<arg>start=${0}</arg>
+</arguments>
+<assign>
+<var>&amp;{dict}</var>
+</assign>
+<msg timestamp="20180822 00:29:20.689" level="INFO">&amp;{dict} = { size=100 | start=0 }</msg>
+<status status="PASS" endtime="20180822 00:29:20.689" starttime="20180822 00:29:20.688"></status>
+</kw>
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:20.695" starttime="20180822 00:29:20.689"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.794" starttime="20180822 00:29:20.695"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+<arg>useDB=${TRUE}</arg>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:20.867" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:20.867" starttime="20180822 00:29:20.794"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed ${size} Location</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.867" starttime="20180822 00:29:20.867"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:20.867" starttime="20180822 00:29:20.687"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>max</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:20.867" critical="yes" starttime="20180822 00:29:20.687"></status>
+</test>
+<test id="s1-t4" name="Negative Max Payload+1">
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${max+1}</arg>
+<arg>start=${0}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:20.882" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:20.883" starttime="20180822 00:29:20.868"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Max Payload + 1</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.883" starttime="20180822 00:29:20.883"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>max+1</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:20.883" critical="yes" starttime="20180822 00:29:20.868"></status>
+</test>
+<test id="s1-t5" name="Functionality-LocationRegistration-Update : Multi B2B JASON File (230K) Upload-While no activity on the sensor">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:20.890" starttime="20180822 00:29:20.884"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{Multi}</arg>
+<arg>mappings_per_payload=${max}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:20.972" starttime="20180822 00:29:20.890"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>&amp;{Multi}</arg>
+<arg>useDB=${TRUE}</arg>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:21.049" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:21.049" starttime="20180822 00:29:20.972"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed 899 902</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:21.050" starttime="20180822 00:29:21.049"></status>
+</kw>
+<doc>Functionality-LocationRegistration-Add New : Multi B2B JASON File (230K) Upload with two-level hierarchy-While no activity on the sensor</doc>
+<tags>
+<tag>902</tag>
+<tag>common</tag>
+<tag>dst 899</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:21.050" critical="yes" starttime="20180822 00:29:20.883"></status>
+</test>
+<test id="s1-t6" name="Negative-LocationRegistration-Invalid : Mal formed JSON Format-While no activity on the sensor">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:21.057" starttime="20180822 00:29:21.051"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>malformed=[}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:21.061" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:21.061" starttime="20180822 00:29:21.057"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed 904</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:21.062" starttime="20180822 00:29:21.061"></status>
+</kw>
+<tags>
+<tag>904</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:21.062" critical="yes" starttime="20180822 00:29:21.050"></status>
+</test>
+<test id="s1-t7" name="Negative-LocationRegistration-Invalid location-While no activity on the sensor">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:21.066" starttime="20180822 00:29:21.063"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=locationid,int12</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:21.074" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:21.074" starttime="20180822 00:29:21.066"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed 905</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:21.074" starttime="20180822 00:29:21.074"></status>
+</kw>
+<tags>
+<tag>905</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:21.074" critical="yes" starttime="20180822 00:29:21.062"></status>
+</test>
+<test id="s1-t8" name="Negative-LocationRegistration-Invalid type-While no activity on the sensor">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:21.079" starttime="20180822 00:29:21.075"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=type,int12</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:21.086" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:21.086" starttime="20180822 00:29:21.079"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed 906</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:21.086" starttime="20180822 00:29:21.086"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=locationid,int212</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:21.103" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:21.103" starttime="20180822 00:29:21.086"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed 906</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:21.104" starttime="20180822 00:29:21.103"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=facilityid,int122</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:21.112" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:21.112" starttime="20180822 00:29:21.104"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed 906</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:21.112" starttime="20180822 00:29:21.112"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=name,int122</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:21.120" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:21.120" starttime="20180822 00:29:21.113"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed 906</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:21.121" starttime="20180822 00:29:21.120"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=childlocations,int12</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:21.128" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:21.128" starttime="20180822 00:29:21.121"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed 906</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:21.129" starttime="20180822 00:29:21.128"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=childlocations!1,2,3</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:21.135" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:21.135" starttime="20180822 00:29:21.129"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed 906</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:21.135" starttime="20180822 00:29:21.135"></status>
+</kw>
+<tags>
+<tag>906</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:21.136" critical="yes" starttime="20180822 00:29:21.075"></status>
+</test>
+<test id="s1-t9" name="911 Functionality-LocationRegistration-Add New : Multi B2B JASON File (230K) Upload with two-level hierarchy-While Sensor tag data is incoming">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:21.139" starttime="20180822 00:29:21.137"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:29:21.150" starttime="20180822 00:29:21.140"></status>
+</kw>
+<kw name="Test POST Forever" library="Location">
+<doc>This will run test_post in a seperate thread</doc>
+<arguments>
+<arg>size=${max}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>saveResults=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:21.151" starttime="20180822 00:29:21.150"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>num_tags=${max}</arg>
+<arg>max_payload=${10}</arg>
+<arg>event=random</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:21.548" starttime="20180822 00:29:21.152"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:29:23.560" starttime="20180822 00:29:21.548"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:23.925" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:23.925" starttime="20180822 00:29:23.560"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail Acceptance</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:23.926" starttime="20180822 00:29:23.925"></status>
+</kw>
+<kw name="Test POST Forever" library="Location">
+<doc>This will run test_post in a seperate thread</doc>
+<arguments>
+<arg>stop_test=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:23.926" starttime="20180822 00:29:23.926"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useDB=${TRUE}</arg>
+<arg>useGet=${TRUE}</arg>
+<arg>useUpdate=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.766" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.766" starttime="20180822 00:29:23.926"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify using DB</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.766" starttime="20180822 00:29:24.766"></status>
+</kw>
+<tags>
+<tag>911</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:24.766" critical="yes" starttime="20180822 00:29:21.136"></status>
+</test>
+<test id="s1-t10" name="1016 Functionality - POST with Payload attribute LocationID At Max">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:24.773" starttime="20180822 00:29:24.767"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=locationid,${maxlocationid_len}</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>saveResults=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.820" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.820" starttime="20180822 00:29:24.773"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed 1016</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.820" starttime="20180822 00:29:24.820"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useUpdate=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.829" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.829" starttime="20180822 00:29:24.821"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify using DB</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.830" starttime="20180822 00:29:24.829"></status>
+</kw>
+<tags>
+<tag>1016</tag>
+<tag>common</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:24.830" critical="yes" starttime="20180822 00:29:24.767"></status>
+</test>
+<test id="s1-t11" name="1017 Negative POST with Payload attribute LocationID At Max+1">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:24.835" starttime="20180822 00:29:24.831"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=locationid,${maxlocationid_len+1}</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.843" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.843" starttime="20180822 00:29:24.835"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.843" starttime="20180822 00:29:24.843"></status>
+</kw>
+<tags>
+<tag>1017</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:24.844" critical="yes" starttime="20180822 00:29:24.830"></status>
+</test>
+<test id="s1-t12" name="1018 Functionality - POST with Payload attribute name At Max">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:24.848" starttime="20180822 00:29:24.844"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=name,${maxlocationid_len}</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>saveResults=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.864" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.865" starttime="20180822 00:29:24.848"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed 1016</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.865" starttime="20180822 00:29:24.865"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useUpdate=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.873" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.873" starttime="20180822 00:29:24.865"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify using DB</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.874" starttime="20180822 00:29:24.874"></status>
+</kw>
+<tags>
+<tag>1018</tag>
+<tag>common</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:24.874" critical="yes" starttime="20180822 00:29:24.844"></status>
+</test>
+<test id="s1-t13" name="1019 Negative POST with Payload attribute name At Max+1">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:24.879" starttime="20180822 00:29:24.875"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=name,${maxlocationid_len+1}</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.888" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.888" starttime="20180822 00:29:24.879"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.889" starttime="20180822 00:29:24.888"></status>
+</kw>
+<tags>
+<tag>1019</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:24.889" critical="yes" starttime="20180822 00:29:24.875"></status>
+</test>
+<test id="s1-t14" name="1020 Functionality POST with Payload attribute Type set to group">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:24.893" starttime="20180822 00:29:24.890"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=type,group</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>saveResults=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.909" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.909" starttime="20180822 00:29:24.893"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.910" starttime="20180822 00:29:24.910"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useUpdate=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.918" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.918" starttime="20180822 00:29:24.911"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify using DB</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.919" starttime="20180822 00:29:24.918"></status>
+</kw>
+<tags>
+<tag>1020</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:24.919" critical="yes" starttime="20180822 00:29:24.889"></status>
+</test>
+<test id="s1-t15" name="1021 Functionality POST with Payload attribute Type set to sell">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:24.924" starttime="20180822 00:29:24.920"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=type,sell</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>saveResults=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.939" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.939" starttime="20180822 00:29:24.924"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.940" starttime="20180822 00:29:24.939"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useUpdate=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.948" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.948" starttime="20180822 00:29:24.940"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify using DB</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.949" starttime="20180822 00:29:24.949"></status>
+</kw>
+<tags>
+<tag>1021</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:24.949" critical="yes" starttime="20180822 00:29:24.919"></status>
+</test>
+<test id="s1-t16" name="1022 Functionality POST with Payload attribute Type set to stock">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:24.954" starttime="20180822 00:29:24.950"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=type,stock</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>saveResults=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.971" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.971" starttime="20180822 00:29:24.954"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.972" starttime="20180822 00:29:24.972"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useUpdate=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:24.980" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:24.980" starttime="20180822 00:29:24.972"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify using DB</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:24.981" starttime="20180822 00:29:24.980"></status>
+</kw>
+<tags>
+<tag>1022</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:24.981" critical="yes" starttime="20180822 00:29:24.950"></status>
+</test>
+<test id="s1-t17" name="1023 Functionality POST with Payload attribute Type set to store">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:24.986" starttime="20180822 00:29:24.982"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=type,store</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>saveResults=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:25.003" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:25.003" starttime="20180822 00:29:24.986"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:25.004" starttime="20180822 00:29:25.003"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useUpdate=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:25.012" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:25.012" starttime="20180822 00:29:25.004"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify using DB</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:25.012" starttime="20180822 00:29:25.012"></status>
+</kw>
+<tags>
+<tag>1023</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:25.012" critical="yes" starttime="20180822 00:29:24.981"></status>
+</test>
+<test id="s1-t18" name="1024 Functionality POST with Payload attribute Type set to other">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:25.017" starttime="20180822 00:29:25.014"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=type,other</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>saveResults=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:25.033" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:25.033" starttime="20180822 00:29:25.018"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:25.034" starttime="20180822 00:29:25.033"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useUpdate=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:25.042" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:25.042" starttime="20180822 00:29:25.034"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify using DB</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:25.043" starttime="20180822 00:29:25.042"></status>
+</kw>
+<tags>
+<tag>1024</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:25.043" critical="yes" starttime="20180822 00:29:25.013"></status>
+</test>
+<test id="s1-t19" name="1025 Negative POST with Payload attribute Type set to stock1">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:25.048" starttime="20180822 00:29:25.044"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=type,stock1</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:25.056" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:25.056" starttime="20180822 00:29:25.048"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:25.057" starttime="20180822 00:29:25.056"></status>
+</kw>
+<tags>
+<tag>1025</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:25.057" critical="yes" starttime="20180822 00:29:25.043"></status>
+</test>
+<test id="s1-t20" name="1026 Functionality - POST with Payload attribute childlocations At Max">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:25.061" starttime="20180822 00:29:25.058"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=childlocations@,${maxlocationid_len}</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>saveResults=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:25.077" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:25.077" starttime="20180822 00:29:25.061"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed 1026</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:25.078" starttime="20180822 00:29:25.078"></status>
+</kw>
+<kw name="Validate Results" library="Location">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>useUpdate=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:25.086" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:25.086" starttime="20180822 00:29:25.078"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify using DB</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:25.087" starttime="20180822 00:29:25.086"></status>
+</kw>
+<tags>
+<tag>1026</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:25.087" critical="yes" starttime="20180822 00:29:25.057"></status>
+</test>
+<test id="s1-t21" name="1027 Negative POST with Payload attribute childlocations At Max+1">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:29:25.092" starttime="20180822 00:29:25.088"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>adjust=childlocations@,${maxlocationid_len+1}</arg>
+<arg>start=${0}</arg>
+<arg>size=${1}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:29:25.102" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:25.102" starttime="20180822 00:29:25.092"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:25.103" starttime="20180822 00:29:25.102"></status>
+</kw>
+<tags>
+<tag>1027</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:29:25.103" critical="yes" starttime="20180822 00:29:25.087"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:29:25.105" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:25.105" starttime="20180822 00:29:25.105"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:25.106" starttime="20180822 00:29:25.105"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:25.106" starttime="20180822 00:29:25.104"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:25.106" starttime="20180822 00:29:19.326"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="21">Critical Tests</stat>
+<stat fail="0" pass="21">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">1016</stat>
+<stat fail="0" pass="1">1017</stat>
+<stat fail="0" pass="1">1018</stat>
+<stat fail="0" pass="1">1019</stat>
+<stat fail="0" pass="1">1020</stat>
+<stat fail="0" pass="1">1021</stat>
+<stat fail="0" pass="1">1022</stat>
+<stat fail="0" pass="1">1023</stat>
+<stat fail="0" pass="1">1024</stat>
+<stat fail="0" pass="1">1025</stat>
+<stat fail="0" pass="1">1026</stat>
+<stat fail="0" pass="1">1027</stat>
+<stat fail="0" pass="1">896</stat>
+<stat fail="0" pass="1">897</stat>
+<stat fail="0" pass="1">898</stat>
+<stat fail="0" pass="1">902</stat>
+<stat fail="0" pass="1">904</stat>
+<stat fail="0" pass="1">905</stat>
+<stat fail="0" pass="1">906</stat>
+<stat fail="0" pass="1">911</stat>
+<stat fail="0" pass="21">common</stat>
+<stat fail="0" pass="6">dst</stat>
+<stat fail="0" pass="1">dst 899</stat>
+<stat fail="0" pass="9">functionality</stat>
+<stat fail="0" pass="1">max</stat>
+<stat fail="0" pass="1">max+1</stat>
+<stat fail="0" pass="1">multipayload</stat>
+<stat fail="0" pass="8">negative</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Locations Post" pass="21">Locations Post</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

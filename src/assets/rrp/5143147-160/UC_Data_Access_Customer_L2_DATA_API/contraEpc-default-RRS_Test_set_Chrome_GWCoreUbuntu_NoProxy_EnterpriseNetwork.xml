@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:04:01.821" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/contraEpc.robot" id="s1" name="contraEpc">
+<kw type="setup" name="Suite Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:04:02.534" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:02.534" starttime="20180822 00:04:02.104"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:02.535" starttime="20180822 00:04:02.534"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:02.535" starttime="20180822 00:04:02.103"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:04:02.538" starttime="20180822 00:04:02.535"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:04:02.545" starttime="20180822 00:04:02.538"></status>
+</kw>
+<kw name="Empty DB" library="fac">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:04:02.548" starttime="20180822 00:04:02.545"></status>
+</kw>
+<kw name="Init" library="fac">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:04:02.862" starttime="20180822 00:04:02.548"></status>
+</kw>
+<kw name="Test POST" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>names=Fac1</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:02.866" starttime="20180822 00:04:02.863"></status>
+</kw>
+<kw name="Test GET" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expected_count=1</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:02.875" starttime="20180822 00:04:02.866"></status>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${starttime}</var>
+</assign>
+<msg timestamp="20180822 00:04:02.876" level="INFO">${starttime} = 1534921442.88</msg>
+<status status="PASS" endtime="20180822 00:04:02.876" starttime="20180822 00:04:02.875"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=random</arg>
+<arg>time=${starttime}</arg>
+<arg>start_tags=${startTag}</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0,room1,room2,room3</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:02.946" starttime="20180822 00:04:02.877"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:04:04.964" starttime="20180822 00:04:02.946"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:04.964" starttime="20180822 00:04:02.876"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${starttime}</arg>
+<arg>${starttime}</arg>
+</arguments>
+<msg timestamp="20180822 00:04:04.965" level="INFO">${starttime} = 1534921442.88</msg>
+<status status="PASS" endtime="20180822 00:04:04.965" starttime="20180822 00:04:04.965"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:04.966" starttime="20180822 00:04:02.103"></status>
+</kw>
+<test id="s1-t1" name="Create Contra EPC Context Using Gtin">
+<kw name="Post Contra Epc" library="Tags">
+<doc>POST method for /inventory/update/contraepc</doc>
+<arguments>
+<arg>gtins=34997575809411,80661224784013,17343975184277,91748109020728</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:04:04.983" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:04.983" starttime="20180822 00:04:04.967"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>ContraEpc</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:04.984" starttime="20180822 00:04:04.983"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>gtin</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:04:04.984" critical="yes" starttime="20180822 00:04:04.966"></status>
+</test>
+<test id="s1-t2" name="Create Contra EPC for Gtin already in DB">
+<kw name="Post Contra Epc" library="Tags">
+<doc>POST method for /inventory/update/contraepc</doc>
+<arguments>
+<arg>gtins=${gtin}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:04:04.994" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:04.994" starttime="20180822 00:04:04.985"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>ContraEpc</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:04.995" starttime="20180822 00:04:04.994"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>gtin2</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:04:04.995" critical="yes" starttime="20180822 00:04:04.984"></status>
+</test>
+<test id="s1-t3" name="Create Contra EPC for MAX Gtin">
+<kw name="Post Contra Epc" library="Tags">
+<doc>POST method for /inventory/update/contraepc</doc>
+<arguments>
+<arg>gtins=${gtin}#${max_gtin}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:04:05.891" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:05.891" starttime="20180822 00:04:04.996"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>ContraEpc</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:05.892" starttime="20180822 00:04:05.892"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>max_gtin</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:04:05.892" critical="yes" starttime="20180822 00:04:04.995"></status>
+</test>
+<test id="s1-t4" name="Negative Contra EPC for MAX+1 Gtin">
+<kw name="Post Contra Epc" library="Tags">
+<doc>POST method for /inventory/update/contraepc</doc>
+<arguments>
+<arg>gtins=${new_gtin}#${max_gtin+1}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:04:05.946" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:05.946" starttime="20180822 00:04:05.894"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>ContraEpc</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:05.946" starttime="20180822 00:04:05.946"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:04:05.947" critical="yes" starttime="20180822 00:04:05.893"></status>
+</test>
+<test id="s1-t5" name="Create Contra EPC Context Using epc">
+<kw name="Post Contra Epc" library="Tags">
+<doc>POST method for /inventory/update/contraepc</doc>
+<arguments>
+<arg>start_tags=${nextTag}</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>facility=Fac1</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:04:05.971" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:05.971" starttime="20180822 00:04:05.948"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>ContraEpc</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:05.972" starttime="20180822 00:04:05.971"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>epc</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:04:05.972" critical="yes" starttime="20180822 00:04:05.947"></status>
+</test>
+<test id="s1-t6" name="Negative Contra EPC for tags already in DB">
+<kw name="Post Contra Epc" library="Tags">
+<doc>POST method for /inventory/update/contraepc</doc>
+<arguments>
+<arg>start_tags=${startTag}</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>facility=Fac1</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:04:05.980" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:05.980" starttime="20180822 00:04:05.973"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>ContraEpc</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:05.980" starttime="20180822 00:04:05.980"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:04:05.980" critical="yes" starttime="20180822 00:04:05.972"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:04:05.982" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:05.982" starttime="20180822 00:04:05.981"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:05.982" starttime="20180822 00:04:05.982"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:05.982" starttime="20180822 00:04:05.981"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:05.982" starttime="20180822 00:04:01.823"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="6">Critical Tests</stat>
+<stat fail="0" pass="6">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="6">common</stat>
+<stat fail="0" pass="6">dst</stat>
+<stat fail="0" pass="1">epc</stat>
+<stat fail="0" pass="1">gtin</stat>
+<stat fail="0" pass="1">gtin2</stat>
+<stat fail="0" pass="1">max_gtin</stat>
+<stat fail="0" pass="2">negative</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="contraEpc" pass="6">contraEpc</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

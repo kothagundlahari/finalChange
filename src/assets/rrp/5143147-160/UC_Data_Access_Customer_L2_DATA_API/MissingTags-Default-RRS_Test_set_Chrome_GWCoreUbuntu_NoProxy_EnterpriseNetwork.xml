@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:08:41.853" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/MissingTags.robot" id="s1" name="MissingTags">
+<kw type="setup" name="Suite Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:08:42.525" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:08:42.525" starttime="20180822 00:08:42.129"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:42.526" starttime="20180822 00:08:42.525"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:08:42.526" starttime="20180822 00:08:42.128"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:08:42.529" starttime="20180822 00:08:42.527"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:08:42.569" starttime="20180822 00:08:42.530"></status>
+</kw>
+<kw name="Empty DB" library="fac">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:08:42.573" starttime="20180822 00:08:42.569"></status>
+</kw>
+<kw name="Init" library="fac">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:08:42.921" starttime="20180822 00:08:42.573"></status>
+</kw>
+<kw name="Test POST" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>names=Fac1,Fac2,Fac3,Fac4</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:42.945" starttime="20180822 00:08:42.922"></status>
+</kw>
+<kw name="Test GET" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expected_count=4</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:42.976" starttime="20180822 00:08:42.945"></status>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${starttime}</var>
+</assign>
+<msg timestamp="20180822 00:08:42.977" level="INFO">${starttime} = 1534921722.98</msg>
+<status status="PASS" endtime="20180822 00:08:42.977" starttime="20180822 00:08:42.977"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>${tags_to_send * 1}</arg>
+<arg>event=random</arg>
+<arg>time=${starttime}</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0,room1,room2,room3</arg>
+<arg>facility=Fac1,Fac2,Fac3,Fac4</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:45.060" starttime="20180822 00:08:42.980"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:08:49.077" starttime="20180822 00:08:45.060"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:08:49.077" starttime="20180822 00:08:42.978"></status>
+</kw>
+<kw name="Subtract Time From Date" library="DateTime">
+<doc>Subtracts time from date and returns the resulting date.</doc>
+<arguments>
+<arg>${starttime}</arg>
+<arg>time=1 day</arg>
+<arg>date_format=epoch</arg>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${starttime2}</var>
+</assign>
+<msg timestamp="20180822 00:08:49.078" level="INFO">${starttime2} = 1534835322.98</msg>
+<status status="PASS" endtime="20180822 00:08:49.079" starttime="20180822 00:08:49.078"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>${tags_to_send * 2}</arg>
+<arg>event=random</arg>
+<arg>start_tags=continue</arg>
+<arg>time=${starttime2}</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0,room1,room2,room3</arg>
+<arg>facility=Fac1,Fac2,Fac3,Fac4</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:51.669" starttime="20180822 00:08:49.080"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:08:53.687" starttime="20180822 00:08:51.669"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:08:53.687" starttime="20180822 00:08:49.079"></status>
+</kw>
+<kw name="Subtract Time From Date" library="DateTime">
+<doc>Subtracts time from date and returns the resulting date.</doc>
+<arguments>
+<arg>${starttime}</arg>
+<arg>time=2 day</arg>
+<arg>date_format=epoch</arg>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${starttime3}</var>
+</assign>
+<msg timestamp="20180822 00:08:53.689" level="INFO">${starttime3} = 1534748922.98</msg>
+<status status="PASS" endtime="20180822 00:08:53.689" starttime="20180822 00:08:53.688"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>${tags_to_send * 3}</arg>
+<arg>event=random</arg>
+<arg>start_tags=continue</arg>
+<arg>time=${starttime3}</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0,room1,room2,room3</arg>
+<arg>facility=Fac1,Fac2,Fac3,Fac4</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:56.939" starttime="20180822 00:08:53.691"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:08:58.951" starttime="20180822 00:08:56.940"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:08:58.951" starttime="20180822 00:08:53.689"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${starttime}</arg>
+<arg>${starttime}</arg>
+</arguments>
+<msg timestamp="20180822 00:08:58.952" level="INFO">${starttime} = 1534921722.98</msg>
+<status status="PASS" endtime="20180822 00:08:58.952" starttime="20180822 00:08:58.951"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${starttime2}</arg>
+<arg>${starttime2}</arg>
+</arguments>
+<msg timestamp="20180822 00:08:58.952" level="INFO">${starttime2} = 1534835322.98</msg>
+<status status="PASS" endtime="20180822 00:08:58.953" starttime="20180822 00:08:58.952"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${starttime3}</arg>
+<arg>${starttime3}</arg>
+</arguments>
+<msg timestamp="20180822 00:08:58.953" level="INFO">${starttime3} = 1534748922.98</msg>
+<status status="PASS" endtime="20180822 00:08:58.953" starttime="20180822 00:08:58.953"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:08:58.953" starttime="20180822 00:08:42.128"></status>
+</kw>
+<test id="s1-t1" name="Functional Missing Tags">
+<kw name="Test Missing Tags for starttime ${starttime}">
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(${startts} * 1000.0)</arg>
+</arguments>
+<assign>
+<var>${startts}</var>
+</assign>
+<msg timestamp="20180822 00:08:58.955" level="INFO">${startts} = 1534921722980</msg>
+<status status="PASS" endtime="20180822 00:08:58.955" starttime="20180822 00:08:58.955"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>time=${startts}</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:08:58.956" level="INFO">&amp;{params} = { facility_id=Fac1 | time=1534921722980 }</msg>
+<status status="PASS" endtime="20180822 00:08:58.956" starttime="20180822 00:08:58.956"></status>
+</kw>
+<kw name="Test End Point" library="Tags">
+<doc>Override function</doc>
+<arguments>
+<arg>missingTags</arg>
+<arg>POST</arg>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.307" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:08:59.307" starttime="20180822 00:08:58.957"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>POST to MissingTag</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:59.308" starttime="20180822 00:08:59.308"></status>
+</kw>
+<kw name="Validate Missing Tags" library="Tags">
+<doc>This method will validate the results from missingTags</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.375" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:08:59.375" starttime="20180822 00:08:59.309"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Validating MissingTag</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:59.376" starttime="20180822 00:08:59.376"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:08:59.376" starttime="20180822 00:08:58.954"></status>
+</kw>
+<kw name="Test Missing Tags for starttime ${starttime2}">
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(${startts} * 1000.0)</arg>
+</arguments>
+<assign>
+<var>${startts}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.377" level="INFO">${startts} = 1534835322980</msg>
+<status status="PASS" endtime="20180822 00:08:59.377" starttime="20180822 00:08:59.376"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>time=${startts}</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.377" level="INFO">&amp;{params} = { facility_id=Fac1 | time=1534835322980 }</msg>
+<status status="PASS" endtime="20180822 00:08:59.377" starttime="20180822 00:08:59.377"></status>
+</kw>
+<kw name="Test End Point" library="Tags">
+<doc>Override function</doc>
+<arguments>
+<arg>missingTags</arg>
+<arg>POST</arg>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.706" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:08:59.706" starttime="20180822 00:08:59.378"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>POST to MissingTag</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:59.706" starttime="20180822 00:08:59.706"></status>
+</kw>
+<kw name="Validate Missing Tags" library="Tags">
+<doc>This method will validate the results from missingTags</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.749" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:08:59.749" starttime="20180822 00:08:59.707"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Validating MissingTag</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:59.750" starttime="20180822 00:08:59.749"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:08:59.750" starttime="20180822 00:08:59.376"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functional</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:08:59.750" critical="yes" starttime="20180822 00:08:58.954"></status>
+</test>
+<test id="s1-t2" name="Negative Missing Tags with empty time">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.751" level="INFO">&amp;{params} = { facility_id=Fac1 }</msg>
+<status status="PASS" endtime="20180822 00:08:59.751" starttime="20180822 00:08:59.751"></status>
+</kw>
+<kw name="Test End Point" library="Tags">
+<doc>Override function</doc>
+<arguments>
+<arg>missingTags</arg>
+<arg>POST</arg>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.763" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:08:59.763" starttime="20180822 00:08:59.752"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>POST to MissingTag</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:59.764" starttime="20180822 00:08:59.763"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:08:59.764" critical="yes" starttime="20180822 00:08:59.750"></status>
+</test>
+<test id="s1-t3" name="Negative Missing Tags with no time">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>time=</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.766" level="INFO">&amp;{params} = { facility_id=Fac1 | time= }</msg>
+<status status="PASS" endtime="20180822 00:08:59.766" starttime="20180822 00:08:59.765"></status>
+</kw>
+<kw name="Test End Point" library="Tags">
+<doc>Override function</doc>
+<arguments>
+<arg>missingTags</arg>
+<arg>POST</arg>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.777" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:08:59.777" starttime="20180822 00:08:59.766"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>POST to MissingTag</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:59.778" starttime="20180822 00:08:59.777"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:08:59.778" critical="yes" starttime="20180822 00:08:59.764"></status>
+</test>
+<test id="s1-t4" name="Negative Missing Tags with time set to invalid value">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>time=ABC</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.779" level="INFO">&amp;{params} = { facility_id=Fac1 | time=ABC }</msg>
+<status status="PASS" endtime="20180822 00:08:59.779" starttime="20180822 00:08:59.779"></status>
+</kw>
+<kw name="Test End Point" library="Tags">
+<doc>Override function</doc>
+<arguments>
+<arg>missingTags</arg>
+<arg>POST</arg>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.789" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:08:59.789" starttime="20180822 00:08:59.780"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>POST to MissingTag</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:59.790" starttime="20180822 00:08:59.789"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:08:59.790" critical="yes" starttime="20180822 00:08:59.778"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:08:59.792" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:08:59.792" starttime="20180822 00:08:59.791"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:59.792" starttime="20180822 00:08:59.792"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:08:59.793" starttime="20180822 00:08:59.791"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:08:59.793" starttime="20180822 00:08:41.855"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="4">common</stat>
+<stat fail="0" pass="4">dst</stat>
+<stat fail="0" pass="1">functional</stat>
+<stat fail="0" pass="3">negative</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="MissingTags" pass="4">MissingTags</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

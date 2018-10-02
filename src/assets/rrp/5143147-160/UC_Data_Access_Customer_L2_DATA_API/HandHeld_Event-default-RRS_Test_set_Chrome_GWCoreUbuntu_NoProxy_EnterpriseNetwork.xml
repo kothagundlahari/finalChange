@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:07:17.877" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/HandHeld_Event.robot" id="s1" name="HandHeld Event">
+<kw type="setup" name="Setup and Populate">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:07:18.577" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:18.577" starttime="20180822 00:07:18.155"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:18.578" starttime="20180822 00:07:18.577"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:18.578" starttime="20180822 00:07:18.155"></status>
+</kw>
+<kw name="Set Logger" library="Tags">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:07:18.579" starttime="20180822 00:07:18.578"></status>
+</kw>
+<kw name="Init" library="Zebra">
+<msg timestamp="20180822 00:07:28.581" level="FAIL">IOError</msg>
+<status status="FAIL" endtime="20180822 00:07:28.581" starttime="20180822 00:07:18.579"></status>
+</kw>
+<status status="FAIL" endtime="20180822 00:07:28.582" starttime="20180822 00:07:18.154"></status>
+</kw>
+<test id="s1-t1" name="2462 Functionality-Add inventory from fixed reader ensure fixed count increments-while required microservices are running">
+<tags>
+<tag>2462</tag>
+<tag>2464</tag>
+<tag>common</tag>
+</tags>
+<status status="FAIL" endtime="20180822 00:07:28.583" critical="yes" starttime="20180822 00:07:28.582">Parent suite setup failed:
+IOError</status>
+</test>
+<test id="s1-t2" name="2463 Functionality-Add inventory from handheld reader ensure handheld count increments-while required microservices are running">
+<tags>
+<tag>2463</tag>
+<tag>common</tag>
+</tags>
+<status status="FAIL" endtime="20180822 00:07:28.585" critical="yes" starttime="20180822 00:07:28.584">Parent suite setup failed:
+IOError</status>
+</test>
+<test id="s1-t3" name="test Zebra Handheld">
+<tags>
+<tag>common</tag>
+<tag>single</tag>
+</tags>
+<status status="FAIL" endtime="20180822 00:07:28.586" critical="yes" starttime="20180822 00:07:28.586">Parent suite setup failed:
+IOError</status>
+</test>
+<test id="s1-t4" name="test Zebra Handheld Parallel with Sensor Data">
+<tags>
+<tag>common</tag>
+<tag>thread</tag>
+</tags>
+<status status="FAIL" endtime="20180822 00:07:28.587" critical="yes" starttime="20180822 00:07:28.587">Parent suite setup failed:
+IOError</status>
+</test>
+<kw type="teardown" name="Teardown and close API">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20180822 00:07:29.589" level="INFO">Slept 1 second</msg>
+<status status="PASS" endtime="20180822 00:07:29.589" starttime="20180822 00:07:28.588"></status>
+</kw>
+<kw name="Close" library="Zebra">
+<doc>Close Connection to broker</doc>
+<status status="PASS" endtime="20180822 00:07:29.590" starttime="20180822 00:07:29.589"></status>
+</kw>
+<kw name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:07:29.591" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:29.591" starttime="20180822 00:07:29.591"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:29.592" starttime="20180822 00:07:29.591"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:29.592" starttime="20180822 00:07:29.590"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:29.592" starttime="20180822 00:07:28.588"></status>
+</kw>
+<doc>This test suite will test the HandHeld</doc>
+<status status="FAIL" endtime="20180822 00:07:29.592" starttime="20180822 00:07:17.879">Suite setup failed:
+IOError</status>
+</suite>
+<statistics>
+<total>
+<stat fail="4" pass="0">Critical Tests</stat>
+<stat fail="4" pass="0">All Tests</stat>
+</total>
+<tag>
+<stat fail="1" pass="0">2462</stat>
+<stat fail="1" pass="0">2463</stat>
+<stat fail="1" pass="0">2464</stat>
+<stat fail="4" pass="0">common</stat>
+<stat fail="1" pass="0">single</stat>
+<stat fail="1" pass="0">thread</stat>
+</tag>
+<suite>
+<stat fail="4" id="s1" name="HandHeld Event" pass="0">HandHeld Event</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

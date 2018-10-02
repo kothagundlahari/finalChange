@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:26:58.735" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/Tag_Event_TTL.robot" id="s1" name="Tag Event TTL">
+<kw type="setup" name="Suite Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:26:59.405" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:26:59.405" starttime="20180822 00:26:59.016"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:26:59.406" starttime="20180822 00:26:59.405"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:26:59.406" starttime="20180822 00:26:59.016"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:26:59.410" starttime="20180822 00:26:59.406"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:26:59.410" starttime="20180822 00:26:59.015"></status>
+</kw>
+<test id="s1-t1" name="Default days ttl">
+<kw type="setup" name="Clear Tags and Wait">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:26:59.781" starttime="20180822 00:26:59.412"></status>
+</kw>
+<kw name="Test GET" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${0}</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:26:59.789" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:26:59.789" starttime="20180822 00:26:59.782"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Test for Empty</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:26:59.790" starttime="20180822 00:26:59.789"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:26:59.790" starttime="20180822 00:26:59.411"></status>
+</kw>
+<kw name="Acceptance Tag arrival">
+<arguments>
+<arg>location=seq</arg>
+<arg>num_tags=${defaultTag}</arg>
+</arguments>
+<kw name="Test Acceptance">
+<arguments>
+<arg>event=arrival</arg>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:26:59.992" starttime="20180822 00:26:59.792"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:27:02.019" starttime="20180822 00:26:59.992"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:27:02.268" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:27:02.268" starttime="20180822 00:27:02.020"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Functionality</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:27:02.269" starttime="20180822 00:27:02.269"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:27:02.269" starttime="20180822 00:26:59.791"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:27:02.270" starttime="20180822 00:26:59.790"></status>
+</kw>
+<kw name="Validate TTL" library="Tags">
+<doc>Change the TTL from DB</doc>
+<arguments>
+<arg>num_tags=${tagToTTL}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:28:02.608" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:28:02.608" starttime="20180822 00:27:02.270"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:28:02.609" starttime="20180822 00:28:02.609"></status>
+</kw>
+<tags>
+<tag>1st</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:28:02.610" critical="yes" starttime="20180822 00:26:59.410"></status>
+</test>
+<kw type="teardown" name="Suite Cleanup">
+<kw name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:28:02.613" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:28:02.613" starttime="20180822 00:28:02.612"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:28:02.613" starttime="20180822 00:28:02.613"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:28:02.614" starttime="20180822 00:28:02.612"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:28:02.614" starttime="20180822 00:28:02.611"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:28:02.614" starttime="20180822 00:26:58.736"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">1st</stat>
+<stat fail="0" pass="1">common</stat>
+<stat fail="0" pass="1">dst</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Tag Event TTL" pass="1">Tag Event TTL</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

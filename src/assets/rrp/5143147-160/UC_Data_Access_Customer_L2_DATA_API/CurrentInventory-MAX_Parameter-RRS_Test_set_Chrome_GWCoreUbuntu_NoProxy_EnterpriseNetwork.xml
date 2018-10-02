@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:05:31.353" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/CurrentInventory.robot" id="s1" name="CurrentInventory">
+<kw type="setup" name="Suite Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:05:32.712" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:32.712" starttime="20180822 00:05:31.661"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:32.713" starttime="20180822 00:05:32.713"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:05:32.713" starttime="20180822 00:05:31.661"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:05:32.717" starttime="20180822 00:05:32.714"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:05:32.787" starttime="20180822 00:05:32.717"></status>
+</kw>
+<kw name="Init" library="fac">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:05:33.150" starttime="20180822 00:05:32.787"></status>
+</kw>
+<kw name="Test POST" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>names=Fac1,Fac2,Fac3,Fac4</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:33.161" starttime="20180822 00:05:33.150"></status>
+</kw>
+<kw name="Test GET" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expected_count=4</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:33.196" starttime="20180822 00:05:33.161"></status>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${starttime}</var>
+</assign>
+<msg timestamp="20180822 00:05:33.197" level="INFO">${starttime} = 1534921533.2</msg>
+<status status="PASS" endtime="20180822 00:05:33.197" starttime="20180822 00:05:33.197"></status>
+</kw>
+<kw name="Add Time To Date" library="DateTime">
+<doc>Adds time to date and returns the resulting date.</doc>
+<arguments>
+<arg>${starttime}</arg>
+<arg>time=101 ms</arg>
+<arg>date_format=epoch</arg>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${starttime}</var>
+</assign>
+<msg timestamp="20180822 00:05:33.199" level="INFO">${starttime} = 1534921533.3</msg>
+<status status="PASS" endtime="20180822 00:05:33.199" starttime="20180822 00:05:33.198"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=random</arg>
+<arg>start_tags=303002662C3A5F904C000000</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>random_tags=${TRUE}</arg>
+<arg>location=room0,room1,room2,room3</arg>
+<arg>facility=Fac1,Fac2,Fac3,Fac4</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:40.546" starttime="20180822 00:05:33.201"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:05:42.562" starttime="20180822 00:05:40.546"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:05:42.562" starttime="20180822 00:05:33.199"></status>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${endtime}</var>
+</assign>
+<msg timestamp="20180822 00:05:42.563" level="INFO">${endtime} = 1534921542.56</msg>
+<status status="PASS" endtime="20180822 00:05:42.564" starttime="20180822 00:05:42.563"></status>
+</kw>
+<kw name="Subtract Time From Date" library="DateTime">
+<doc>Subtracts time from date and returns the resulting date.</doc>
+<arguments>
+<arg>${endtime}</arg>
+<arg>time=101 ms</arg>
+<arg>date_format=epoch</arg>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${endtime}</var>
+</assign>
+<msg timestamp="20180822 00:05:42.565" level="INFO">${endtime} = 1534921542.46</msg>
+<status status="PASS" endtime="20180822 00:05:42.565" starttime="20180822 00:05:42.564"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(${endtime} * 1000.0)</arg>
+</arguments>
+<assign>
+<var>${endtime}</var>
+</assign>
+<msg timestamp="20180822 00:05:42.566" level="INFO">${endtime} = 1534921542460</msg>
+<status status="PASS" endtime="20180822 00:05:42.566" starttime="20180822 00:05:42.565"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(${starttime} * 1000.0)</arg>
+</arguments>
+<assign>
+<var>${starttime}</var>
+</assign>
+<msg timestamp="20180822 00:05:42.567" level="INFO">${starttime} = 1534921533300</msg>
+<status status="PASS" endtime="20180822 00:05:42.567" starttime="20180822 00:05:42.566"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:05:42.567" level="INFO">&amp;{params} = { facility_id=Fac1 | expected_response_code=200 }</msg>
+<status status="PASS" endtime="20180822 00:05:42.567" starttime="20180822 00:05:42.567"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${endtime}</arg>
+<arg>${endtime}</arg>
+</arguments>
+<msg timestamp="20180822 00:05:42.568" level="INFO">${endtime} = 1534921542460</msg>
+<status status="PASS" endtime="20180822 00:05:42.568" starttime="20180822 00:05:42.568"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${starttime}</arg>
+<arg>${starttime}</arg>
+</arguments>
+<msg timestamp="20180822 00:05:42.568" level="INFO">${starttime} = 1534921533300</msg>
+<status status="PASS" endtime="20180822 00:05:42.568" starttime="20180822 00:05:42.568"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>&amp;{params}</arg>
+</arguments>
+<msg timestamp="20180822 00:05:42.569" level="INFO">&amp;{params} = { facility_id=Fac1 | expected_response_code=200 }</msg>
+<status status="PASS" endtime="20180822 00:05:42.569" starttime="20180822 00:05:42.569"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:05:42.569" starttime="20180822 00:05:31.661"></status>
+</kw>
+<test id="s1-t1" name="CurrentInventory with Facility">
+<kw name="Verify Current Inventory">
+<arguments>
+<arg>&amp;{params}</arg>
+</arguments>
+<kw name="Get Current Inventory" library="Tags">
+<doc>Function to get current inventory through /inventory/query/current</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:05:44.428" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:44.429" starttime="20180822 00:05:42.571"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Get</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:44.429" starttime="20180822 00:05:44.429"></status>
+</kw>
+<kw name="Verify Current" library="Tags">
+<doc>Function to verify data from Current</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:05:44.448" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:44.448" starttime="20180822 00:05:44.430"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Current Inventory</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:44.448" starttime="20180822 00:05:44.448"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:05:44.449" starttime="20180822 00:05:42.570"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:05:44.449" critical="yes" starttime="20180822 00:05:42.570"></status>
+</test>
+<test id="s1-t2" name="CurrentInventory with Facility, Starttime">
+<kw name="Verify Current Inventory">
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>starttime=${starttime}</arg>
+</arguments>
+<kw name="Get Current Inventory" library="Tags">
+<doc>Function to get current inventory through /inventory/query/current</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:05:45.275" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:45.275" starttime="20180822 00:05:44.451"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Get</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:45.275" starttime="20180822 00:05:45.275"></status>
+</kw>
+<kw name="Verify Current" library="Tags">
+<doc>Function to verify data from Current</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:05:45.294" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:45.294" starttime="20180822 00:05:45.275"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Current Inventory</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:45.294" starttime="20180822 00:05:45.294"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:05:45.295" starttime="20180822 00:05:44.450"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>start</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:05:45.295" critical="yes" starttime="20180822 00:05:44.449"></status>
+</test>
+<test id="s1-t3" name="CurrentInventory with Facility, Endtime">
+<kw name="Verify Current Inventory">
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>endtime=${endtime}</arg>
+</arguments>
+<kw name="Get Current Inventory" library="Tags">
+<doc>Function to get current inventory through /inventory/query/current</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:05:46.057" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:46.057" starttime="20180822 00:05:45.297"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Get</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:46.058" starttime="20180822 00:05:46.057"></status>
+</kw>
+<kw name="Verify Current" library="Tags">
+<doc>Function to verify data from Current</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:05:46.073" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:46.073" starttime="20180822 00:05:46.058"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Current Inventory</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:46.074" starttime="20180822 00:05:46.073"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:05:46.074" starttime="20180822 00:05:45.296"></status>
+</kw>
+<tags>
+<tag>3rd</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:05:46.074" critical="yes" starttime="20180822 00:05:45.296"></status>
+</test>
+<test id="s1-t4" name="CurrentInventory with Facility, Starttime, Endtime">
+<kw name="Verify Current Inventory">
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>starttime=${starttime}</arg>
+<arg>endtime=${endtime}</arg>
+</arguments>
+<kw name="Get Current Inventory" library="Tags">
+<doc>Function to get current inventory through /inventory/query/current</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:05:46.903" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:46.903" starttime="20180822 00:05:46.076"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Get</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:46.904" starttime="20180822 00:05:46.903"></status>
+</kw>
+<kw name="Verify Current" library="Tags">
+<doc>Function to verify data from Current</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:05:46.920" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:46.920" starttime="20180822 00:05:46.904"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Current Inventory</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:46.920" starttime="20180822 00:05:46.920"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:05:46.921" starttime="20180822 00:05:46.075"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:05:46.921" critical="yes" starttime="20180822 00:05:46.074"></status>
+</test>
+<test id="s1-t5" name="CurrentInventory with Facility, Starttime, Endtime, epc_state=Departed">
+<kw name="Verify Current Inventory">
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>starttime=${starttime}</arg>
+<arg>endtime=${endtime}</arg>
+<arg>epc_state=departed</arg>
+</arguments>
+<kw name="Get Current Inventory" library="Tags">
+<doc>Function to get current inventory through /inventory/query/current</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:05:47.242" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:47.242" starttime="20180822 00:05:46.923"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Get</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:47.243" starttime="20180822 00:05:47.243"></status>
+</kw>
+<kw name="Verify Current" library="Tags">
+<doc>Function to verify data from Current</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:05:47.252" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:47.252" starttime="20180822 00:05:47.243"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Current Inventory</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:47.252" starttime="20180822 00:05:47.252"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:05:47.253" starttime="20180822 00:05:46.922"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>departed</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:05:47.253" critical="yes" starttime="20180822 00:05:46.921"></status>
+</test>
+<test id="s1-t6" name="CurrentInventory with Facility, Starttime, Endtime, epc_state=present">
+<kw name="Verify Current Inventory">
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>starttime=${starttime}</arg>
+<arg>endtime=${endtime}</arg>
+<arg>epc_state=present</arg>
+</arguments>
+<kw name="Get Current Inventory" library="Tags">
+<doc>Function to get current inventory through /inventory/query/current</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:05:47.861" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:47.861" starttime="20180822 00:05:47.254"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Get</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:47.861" starttime="20180822 00:05:47.861"></status>
+</kw>
+<kw name="Verify Current" library="Tags">
+<doc>Function to verify data from Current</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:05:47.875" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:47.875" starttime="20180822 00:05:47.861"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Current Inventory</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:47.875" starttime="20180822 00:05:47.875"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:05:47.876" starttime="20180822 00:05:47.254"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>present</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:05:47.876" critical="yes" starttime="20180822 00:05:47.253"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:05:47.878" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:05:47.878" starttime="20180822 00:05:47.877"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:05:47.878" starttime="20180822 00:05:47.878"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:05:47.878" starttime="20180822 00:05:47.877"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:05:47.878" starttime="20180822 00:05:31.355"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="6">Critical Tests</stat>
+<stat fail="0" pass="6">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">3rd</stat>
+<stat fail="0" pass="6">common</stat>
+<stat fail="0" pass="1">departed</stat>
+<stat fail="0" pass="6">dst</stat>
+<stat fail="0" pass="1">present</stat>
+<stat fail="0" pass="1">start</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="CurrentInventory" pass="6">CurrentInventory</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

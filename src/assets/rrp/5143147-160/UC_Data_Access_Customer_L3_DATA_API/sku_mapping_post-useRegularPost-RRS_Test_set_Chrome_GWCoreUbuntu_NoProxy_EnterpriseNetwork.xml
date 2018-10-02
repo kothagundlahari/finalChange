@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:31:36.023" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L3_DATA_API/sku_mapping_post.robot" id="s1" name="Sku Mapping Post">
+<kw type="setup" name="Setup and Populate">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:31:36.753" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:31:36.753" starttime="20180822 00:31:36.322"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:31:36.754" starttime="20180822 00:31:36.753"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:31:36.754" starttime="20180822 00:31:36.321"></status>
+</kw>
+<kw name="Import Library" library="BuiltIn">
+<doc>Imports a library with the given name and optional arguments.</doc>
+<arguments>
+<arg>${iTAF_DIR}/testCaseApps/SkuMapping/SkuMapping.py</arg>
+<arg>postfix=${SNAME}</arg>
+<arg>WITH NAME</arg>
+<arg>SkuMapping</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:31:36.769" starttime="20180822 00:31:36.755"></status>
+</kw>
+<kw name="Import Library" library="BuiltIn">
+<doc>Imports a library with the given name and optional arguments.</doc>
+<arguments>
+<arg>${ITAF_DIR}/testCaseApps/Inventory/integrationTags.py</arg>
+<arg>postfix=${SNAME}</arg>
+<arg>WITH NAME</arg>
+<arg>Tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:31:36.782" starttime="20180822 00:31:36.769"></status>
+</kw>
+<kw name="Set Logger" library="SkuMapping">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:31:36.782" starttime="20180822 00:31:36.782"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:31:36.785" starttime="20180822 00:31:36.782"></status>
+</kw>
+<kw name="Load D Bfrom File" library="SkuMapping">
+<doc>This method will populate the internal test DB if needed</doc>
+<arguments>
+<arg>${SKU_FILE}</arg>
+</arguments>
+<assign>
+<var>${skuSize}</var>
+</assign>
+<msg timestamp="20180822 00:31:36.789" level="INFO">${skuSize} = 20000</msg>
+<status status="PASS" endtime="20180822 00:31:36.789" starttime="20180822 00:31:36.785"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${skuSize}</arg>
+<arg>${skuSize}</arg>
+</arguments>
+<msg timestamp="20180822 00:31:36.790" level="INFO">${skuSize} = 20000</msg>
+<status status="PASS" endtime="20180822 00:31:36.790" starttime="20180822 00:31:36.790"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:31:36.790" starttime="20180822 00:31:36.321"></status>
+</kw>
+<test id="s1-t1" name="802 Functionality-Enterprise Data Configuration - MAP SKU to UPC-Add new : One &lt;Max Size 5M&gt; JSON File Upload -While no activity on the sensor">
+<kw type="setup" name="Empty DB" library="SkuMapping">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:31:36.959" starttime="20180822 00:31:36.791"></status>
+</kw>
+<kw name="Test Sku with size ${max_size}">
+<kw name="Test POST" library="SkuMapping">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${size}</arg>
+<arg>start=${0}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:31:42.014" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:31:42.014" starttime="20180822 00:31:36.961"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Validate Post</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:31:42.015" starttime="20180822 00:31:42.014"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>size=${size}</arg>
+<arg>start=${0}</arg>
+<arg>useGet=${TRUE} useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:31:44.500" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:31:44.500" starttime="20180822 00:31:42.015"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Validate Results</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:31:44.500" starttime="20180822 00:31:44.500"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:31:44.500" starttime="20180822 00:31:36.960"></status>
+</kw>
+<tags>
+<tag>802</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:31:44.500" critical="yes" starttime="20180822 00:31:36.790"></status>
+</test>
+<test id="s1-t2" name="803 Functionality-Enterprise Data Configuration - MAP SKU to UPC-Add New : Multi B2B JASON File (230K) Upload-While no activity on the sensor">
+<kw type="setup" name="Empty DB" library="SkuMapping">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:31:45.338" starttime="20180822 00:31:44.501"></status>
+</kw>
+<kw name="Test POST" library="SkuMapping">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${skuSize}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1000}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:32:24.269" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:32:24.269" starttime="20180822 00:31:45.339"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Max Payload</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:32:24.269" starttime="20180822 00:32:24.269"></status>
+</kw>
+<tags>
+<tag>803</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:32:24.269" critical="yes" starttime="20180822 00:31:44.501"></status>
+</test>
+<test id="s1-t3" name="829 Functionality-Enterprise Data Configuration - MAP SKU to UPC-Add new : One &lt;Max Size 5M&gt; JSON File Upload -While Sensor tag data is incoming and L2/L3 API calls are being made">
+<kw type="setup" name="Empty DB" library="SkuMapping">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:32:29.565" starttime="20180822 00:32:24.270"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:32:29.619" starttime="20180822 00:32:29.565"></status>
+</kw>
+<kw name="Test POST Forever" library="SkuMapping">
+<doc>This will run test_post in a seperate thread</doc>
+<arguments>
+<arg>start=${0}</arg>
+<arg>size=${7000}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>saveResults=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:32:29.621" starttime="20180822 00:32:29.619"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>num_tags=${1000}</arg>
+<arg>max_payload=${100}</arg>
+<arg>event=random</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:32:35.738" starttime="20180822 00:32:29.621"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:32:39.765" starttime="20180822 00:32:35.738"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:32:40.930" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:32:40.930" starttime="20180822 00:32:39.765"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail Acceptance</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:32:40.930" starttime="20180822 00:32:40.930"></status>
+</kw>
+<kw name="Test POST Forever" library="SkuMapping">
+<doc>This will run test_post in a seperate thread</doc>
+<arguments>
+<arg>stop_test=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:32:40.976" starttime="20180822 00:32:40.931"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useDB=${TRUE}</arg>
+<arg>useGet=${TRUE}</arg>
+<arg>useUpdate=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:32:42.029" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:32:42.029" starttime="20180822 00:32:40.977"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify using DB</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:32:42.029" starttime="20180822 00:32:42.029"></status>
+</kw>
+<tags>
+<tag>829</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:32:42.029" critical="yes" starttime="20180822 00:32:24.270"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:32:42.047" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:32:42.047" starttime="20180822 00:32:42.047"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:32:42.048" starttime="20180822 00:32:42.048"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:32:42.048" starttime="20180822 00:32:42.047"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:32:42.048" starttime="20180822 00:31:36.024"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="3">Critical Tests</stat>
+<stat fail="0" pass="3">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">802</stat>
+<stat fail="0" pass="1">803</stat>
+<stat fail="0" pass="1">829</stat>
+<stat fail="0" pass="3">common</stat>
+<stat fail="0" pass="3">dst</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Sku Mapping Post" pass="3">Sku Mapping Post</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

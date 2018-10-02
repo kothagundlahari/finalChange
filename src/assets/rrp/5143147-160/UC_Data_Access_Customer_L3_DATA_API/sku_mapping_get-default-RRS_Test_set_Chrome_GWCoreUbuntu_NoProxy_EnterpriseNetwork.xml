@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:30:22.186" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L3_DATA_API/sku_mapping_get.robot" id="s1" name="Sku Mapping Get">
+<kw type="setup" name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:30:22.934" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:22.934" starttime="20180822 00:30:22.455"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:22.935" starttime="20180822 00:30:22.934"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:22.935" starttime="20180822 00:30:22.455"></status>
+</kw>
+<test id="s1-t1" name="API GET SKU Single no Param">
+<kw name="Test GET" library="sku">
+<doc>This will test based on Kwargs</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:23.349" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:23.349" starttime="20180822 00:30:22.936"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:23.349" starttime="20180822 00:30:23.349"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:23.349" critical="yes" starttime="20180822 00:30:22.935"></status>
+</test>
+<test id="s1-t2" name="API GET SKU Single invalid Param">
+<kw name="test invalid Something=better">
+<kw name="Test GET" library="sku">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>appendUrl=${url}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:23.355" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:23.355" starttime="20180822 00:30:23.351"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:23.355" starttime="20180822 00:30:23.355"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:23.355" starttime="20180822 00:30:23.350"></status>
+</kw>
+<kw name="test invalid skus=${12343}">
+<kw name="Test GET" library="sku">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>appendUrl=${url}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:23.360" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:23.360" starttime="20180822 00:30:23.356"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:23.361" starttime="20180822 00:30:23.360"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:23.361" starttime="20180822 00:30:23.356"></status>
+</kw>
+<kw name="test invalid upc=${12343}">
+<kw name="Test GET" library="sku">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>appendUrl=${url}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:23.366" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:23.366" starttime="20180822 00:30:23.361"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:23.366" starttime="20180822 00:30:23.366"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:23.366" starttime="20180822 00:30:23.361"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:23.366" critical="yes" starttime="20180822 00:30:23.350"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:30:23.368" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:23.368" starttime="20180822 00:30:23.367"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:23.368" starttime="20180822 00:30:23.368"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:23.368" starttime="20180822 00:30:23.367"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:23.368" starttime="20180822 00:30:22.188"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="2">common</stat>
+<stat fail="0" pass="1">dst</stat>
+<stat fail="0" pass="1">negative</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Sku Mapping Get" pass="2">Sku Mapping Get</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

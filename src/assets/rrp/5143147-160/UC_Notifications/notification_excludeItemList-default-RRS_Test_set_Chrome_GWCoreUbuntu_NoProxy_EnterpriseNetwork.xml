@@ -1,0 +1,2384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:33:15.254" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Notifications/notification_excludeItemList.robot" id="s1" name="notification excludeItemList">
+<kw type="setup" name="Setup and Populate">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:33:15.953" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:33:15.954" starttime="20180822 00:33:15.555"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:15.955" starttime="20180822 00:33:15.954"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:15.955" starttime="20180822 00:33:15.555"></status>
+</kw>
+<kw name="Set Logger" library="Location">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:33:15.956" starttime="20180822 00:33:15.955"></status>
+</kw>
+<kw name="Set Logger" library="Rule">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:33:15.957" starttime="20180822 00:33:15.956"></status>
+</kw>
+<kw name="Set Logger" library="SkuMapping">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:33:15.957" starttime="20180822 00:33:15.957"></status>
+</kw>
+<kw name="Set Logger" library="Tags">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:33:15.958" starttime="20180822 00:33:15.958"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Init routine to call post setup</doc>
+<status status="PASS" endtime="20180822 00:33:15.959" starttime="20180822 00:33:15.958"></status>
+</kw>
+<kw name="EmptyAllDB">
+<kw name="Empty DB" library="Location">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:33:15.963" starttime="20180822 00:33:15.960"></status>
+</kw>
+<kw name="Empty DB" library="SkuMapping">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:33:15.968" starttime="20180822 00:33:15.964"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:33:15.977" starttime="20180822 00:33:15.968"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:33:15.980" starttime="20180822 00:33:15.977"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:15.980" starttime="20180822 00:33:15.959"></status>
+</kw>
+<kw name="LoadDB">
+<kw name="Load D Bfrom File" library="Location">
+<doc>This method will populate the internal test DB if needed</doc>
+<arguments>
+<arg>${location_json}</arg>
+<arg>${true}</arg>
+</arguments>
+<assign>
+<var>${loc_size}</var>
+</assign>
+<msg timestamp="20180822 00:33:16.051" level="INFO">${loc_size} = 6</msg>
+<status status="PASS" endtime="20180822 00:33:16.051" starttime="20180822 00:33:15.981"></status>
+</kw>
+<kw name="Load D Bfrom File" library="Rule">
+<doc>This method will populate the internal test DB if needed</doc>
+<arguments>
+<arg>${notification_json}</arg>
+<arg>${true}</arg>
+</arguments>
+<assign>
+<var>${ns_size}</var>
+</assign>
+<msg timestamp="20180822 00:33:16.099" level="INFO">${ns_size} = 4</msg>
+<status status="PASS" endtime="20180822 00:33:16.099" starttime="20180822 00:33:16.051"></status>
+</kw>
+<kw name="Load D Bfrom File" library="SkuMapping">
+<doc>This method will populate the internal test DB if needed</doc>
+<arguments>
+<arg>${sku_json}</arg>
+<arg>${true}</arg>
+</arguments>
+<assign>
+<var>${sku_size}</var>
+</assign>
+<msg timestamp="20180822 00:33:16.154" level="INFO">${sku_size} = 4</msg>
+<status status="PASS" endtime="20180822 00:33:16.154" starttime="20180822 00:33:16.099"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${ns_size}</arg>
+<arg>${ns_size}</arg>
+</arguments>
+<msg timestamp="20180822 00:33:16.156" level="INFO">${ns_size} = 4</msg>
+<status status="PASS" endtime="20180822 00:33:16.156" starttime="20180822 00:33:16.155"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${loc_size}</arg>
+<arg>${loc_size}</arg>
+</arguments>
+<msg timestamp="20180822 00:33:16.157" level="INFO">${loc_size} = 6</msg>
+<status status="PASS" endtime="20180822 00:33:16.157" starttime="20180822 00:33:16.156"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${sku_size}</arg>
+<arg>${sku_size}</arg>
+</arguments>
+<msg timestamp="20180822 00:33:16.158" level="INFO">${sku_size} = 4</msg>
+<status status="PASS" endtime="20180822 00:33:16.158" starttime="20180822 00:33:16.157"></status>
+</kw>
+<kw name="Test POST" library="Location">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${loc_size}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:16.321" starttime="20180822 00:33:16.158"></status>
+</kw>
+<kw name="Test POST" library="SkuMapping">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${sku_size}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:16.383" starttime="20180822 00:33:16.322"></status>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<assign>
+<var>${currtime}</var>
+</assign>
+<msg timestamp="20180822 00:33:16.384" level="INFO">${currtime} = 2018-08-22 00:33:16.383</msg>
+<status status="PASS" endtime="20180822 00:33:16.384" starttime="20180822 00:33:16.383"></status>
+</kw>
+<kw name="Add Time To Date" library="DateTime">
+<doc>Adds time to date and returns the resulting date.</doc>
+<arguments>
+<arg>${currtime}</arg>
+<arg>365 days</arg>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${cancelTime}</var>
+</assign>
+<msg timestamp="20180822 00:33:16.389" level="INFO">${cancelTime} = 1566459196.38</msg>
+<status status="PASS" endtime="20180822 00:33:16.389" starttime="20180822 00:33:16.384"></status>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${cancelTime * ${epochResolution} }</arg>
+</arguments>
+<assign>
+<var>${cancelTime}</var>
+</assign>
+<msg timestamp="20180822 00:33:16.390" level="INFO">${cancelTime} = 1566459196383</msg>
+<status status="PASS" endtime="20180822 00:33:16.390" starttime="20180822 00:33:16.389"></status>
+</kw>
+<kw name="Subtract Time From Date" library="DateTime">
+<doc>Subtracts time from date and returns the resulting date.</doc>
+<arguments>
+<arg>${currtime}</arg>
+<arg>365 days</arg>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${activeTime}</var>
+</assign>
+<msg timestamp="20180822 00:33:16.391" level="INFO">${activeTime} = 1503387196.38</msg>
+<status status="PASS" endtime="20180822 00:33:16.391" starttime="20180822 00:33:16.390"></status>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<doc>Converts the given item to an integer number.</doc>
+<arguments>
+<arg>${activeTime * ${epochResolution}}</arg>
+</arguments>
+<assign>
+<var>${activeTime}</var>
+</assign>
+<msg timestamp="20180822 00:33:16.392" level="INFO">${activeTime} = 1503387196383</msg>
+<status status="PASS" endtime="20180822 00:33:16.392" starttime="20180822 00:33:16.391"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${cancelTime}</arg>
+<arg>${cancelTime}</arg>
+</arguments>
+<msg timestamp="20180822 00:33:16.393" level="INFO">${cancelTime} = 1566459196383</msg>
+<status status="PASS" endtime="20180822 00:33:16.393" starttime="20180822 00:33:16.393"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${activeTime}</arg>
+<arg>${activeTime}</arg>
+</arguments>
+<msg timestamp="20180822 00:33:16.394" level="INFO">${activeTime} = 1503387196383</msg>
+<status status="PASS" endtime="20180822 00:33:16.394" starttime="20180822 00:33:16.394"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:16.394" starttime="20180822 00:33:15.981"></status>
+</kw>
+<kw name="Init" library="webhook">
+<doc>Initialize routine</doc>
+<status status="PASS" endtime="20180822 00:33:16.395" starttime="20180822 00:33:16.395"></status>
+</kw>
+<kw name="Start" library="webhook">
+<doc>Method to spawn a new thread to listen for connection</doc>
+<status status="PASS" endtime="20180822 00:33:18.396" starttime="20180822 00:33:16.395"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:18.397" starttime="20180822 00:33:15.554"></status>
+</kw>
+<test id="s1-t1" name="Exclude parameters">
+<kw type="setup" name="Test Case Setup">
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:33:18.403" starttime="20180822 00:33:18.398"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:33:18.414" starttime="20180822 00:33:18.403"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:18.460" starttime="20180822 00:33:18.414"></status>
+</kw>
+<kw name="Add Path" library="webhook">
+<doc>Method to add a path to handle POST or GET</doc>
+<arguments>
+<arg>${webhook}</arg>
+<arg>200 ok</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:18.461" starttime="20180822 00:33:18.461"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:18.461" starttime="20180822 00:33:18.398"></status>
+</kw>
+<kw name="Create Rule">
+<arguments>
+<arg>int2;int3;int4;int5;int6;int7</arg>
+<arg>${1}</arg>
+<arg>${1}</arg>
+</arguments>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=activationdate,${activeTime}|cancellationdate,${cancelTime}|url,http://testhost${webhook}|minFloorItems,${2}|minRequiredStock,${5}|excludeItemList,${excludelist}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:18.481" starttime="20180822 00:33:18.463"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20180822 00:33:19.481" level="INFO">Slept 1 second</msg>
+<status status="PASS" endtime="20180822 00:33:19.482" starttime="20180822 00:33:18.481"></status>
+</kw>
+<kw name="Stock ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:21.497" starttime="20180822 00:33:19.484"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:21.497" starttime="20180822 00:33:19.483"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:21.498" starttime="20180822 00:33:19.482"></status>
+</kw>
+<kw name="Stock ${6} item starting 303402662C3A5F904C000000 on BACKSTOCK">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:23.514" starttime="20180822 00:33:21.500"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:23.514" starttime="20180822 00:33:21.499"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:23.515" starttime="20180822 00:33:21.498"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${webhook_timeout}</arg>
+</arguments>
+<msg timestamp="20180822 00:33:27.516" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" endtime="20180822 00:33:27.516" starttime="20180822 00:33:23.515"></status>
+</kw>
+<kw name="Sell ${4} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags departed starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:29.537" starttime="20180822 00:33:27.518"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:29.537" starttime="20180822 00:33:27.517"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:29.538" starttime="20180822 00:33:27.516"></status>
+</kw>
+<kw name="Expect ${first_results} POST">
+<kw name="Expect ${numcall} POST with id ns1_context1 from webhook ${webhook}">
+<kw name="Wait For POST" library="webhook">
+<doc>Method to wait for POST on the specified path</doc>
+<arguments>
+<arg>${wh}</arg>
+<arg>expectedPOSTCount=${numcall}</arg>
+<arg>expectedTimeout=${webhook_timeout}</arg>
+<arg>expectedId=${id}</arg>
+</arguments>
+<assign>
+<var>${results}</var>
+</assign>
+<msg timestamp="20180822 00:33:29.541" level="INFO">${results} = True</msg>
+<status status="PASS" endtime="20180822 00:33:29.541" starttime="20180822 00:33:29.540"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} == ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:29.542" starttime="20180822 00:33:29.542"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} != ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:29.543" starttime="20180822 00:33:29.543"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:29.543" starttime="20180822 00:33:29.542"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:29.543" starttime="20180822 00:33:29.539"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:29.544" starttime="20180822 00:33:29.538"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:33:29.548" starttime="20180822 00:33:29.544"></status>
+</kw>
+<kw name="Stock ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:31.563" starttime="20180822 00:33:29.549"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:31.563" starttime="20180822 00:33:29.549"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:31.563" starttime="20180822 00:33:29.548"></status>
+</kw>
+<kw name="Stock ${1} item starting 305402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:33.580" starttime="20180822 00:33:31.565"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:33.580" starttime="20180822 00:33:31.564"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:33.580" starttime="20180822 00:33:31.564"></status>
+</kw>
+<kw name="Stock ${1} item starting 307402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:35.595" starttime="20180822 00:33:33.583"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:35.595" starttime="20180822 00:33:33.581"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:35.596" starttime="20180822 00:33:33.581"></status>
+</kw>
+<kw name="Stock ${1} item starting 309402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:37.612" starttime="20180822 00:33:35.598"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:37.612" starttime="20180822 00:33:35.597"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:37.613" starttime="20180822 00:33:35.596"></status>
+</kw>
+<kw name="Stock ${1} item starting 30B402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:39.628" starttime="20180822 00:33:37.615"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:39.628" starttime="20180822 00:33:37.614"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:39.628" starttime="20180822 00:33:37.613"></status>
+</kw>
+<kw name="Stock ${1} item starting 30D402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:41.644" starttime="20180822 00:33:39.630"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:41.644" starttime="20180822 00:33:39.629"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:41.645" starttime="20180822 00:33:39.628"></status>
+</kw>
+<kw name="Stock ${1} item starting 30F402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:43.662" starttime="20180822 00:33:41.647"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:43.662" starttime="20180822 00:33:41.646"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:43.662" starttime="20180822 00:33:41.645"></status>
+</kw>
+<kw name="Stock ${6} item starting 303402662C3A5F904C000000 on BACKSTOCK">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:45.677" starttime="20180822 00:33:43.664"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:45.677" starttime="20180822 00:33:43.663"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:45.677" starttime="20180822 00:33:43.663"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${webhook_timeout}</arg>
+</arguments>
+<msg timestamp="20180822 00:33:49.678" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" endtime="20180822 00:33:49.679" starttime="20180822 00:33:45.678"></status>
+</kw>
+<kw name="Sell ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags departed starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:51.701" starttime="20180822 00:33:49.681"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:51.701" starttime="20180822 00:33:49.680"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:51.702" starttime="20180822 00:33:49.679"></status>
+</kw>
+<kw name="Expect ${second_results} POST">
+<kw name="Expect ${numcall} POST with id ns1_context1 from webhook ${webhook}">
+<kw name="Wait For POST" library="webhook">
+<doc>Method to wait for POST on the specified path</doc>
+<arguments>
+<arg>${wh}</arg>
+<arg>expectedPOSTCount=${numcall}</arg>
+<arg>expectedTimeout=${webhook_timeout}</arg>
+<arg>expectedId=${id}</arg>
+</arguments>
+<assign>
+<var>${results}</var>
+</assign>
+<msg timestamp="20180822 00:33:51.705" level="INFO">${results} = True</msg>
+<status status="PASS" endtime="20180822 00:33:51.705" starttime="20180822 00:33:51.703"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} == ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:51.706" starttime="20180822 00:33:51.705"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} != ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:51.707" starttime="20180822 00:33:51.707"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:51.707" starttime="20180822 00:33:51.706"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:51.708" starttime="20180822 00:33:51.703"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:51.708" starttime="20180822 00:33:51.702"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:51.708" starttime="20180822 00:33:18.462"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>exclude</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:33:51.708" critical="yes" starttime="20180822 00:33:18.397"></status>
+</test>
+<test id="s1-t2" name="2796 Functionality-Notification with empty excludedItemList-while required microservices are running">
+<kw type="setup" name="Test Case Setup">
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:33:51.713" starttime="20180822 00:33:51.709"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:33:51.722" starttime="20180822 00:33:51.714"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:51.788" starttime="20180822 00:33:51.722"></status>
+</kw>
+<kw name="Add Path" library="webhook">
+<doc>Method to add a path to handle POST or GET</doc>
+<arguments>
+<arg>${webhook}</arg>
+<arg>200 ok</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:51.789" starttime="20180822 00:33:51.789"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:51.790" starttime="20180822 00:33:51.709"></status>
+</kw>
+<kw name="Create Rule">
+<arguments>
+<arg>null</arg>
+<arg>${1}</arg>
+<arg>${0}</arg>
+</arguments>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=activationdate,${activeTime}|cancellationdate,${cancelTime}|url,http://testhost${webhook}|minFloorItems,${2}|minRequiredStock,${5}|excludeItemList,${excludelist}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:51.807" starttime="20180822 00:33:51.791"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20180822 00:33:52.807" level="INFO">Slept 1 second</msg>
+<status status="PASS" endtime="20180822 00:33:52.808" starttime="20180822 00:33:51.807"></status>
+</kw>
+<kw name="Stock ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:54.826" starttime="20180822 00:33:52.810"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:54.826" starttime="20180822 00:33:52.809"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:54.826" starttime="20180822 00:33:52.808"></status>
+</kw>
+<kw name="Stock ${6} item starting 303402662C3A5F904C000000 on BACKSTOCK">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:33:56.840" starttime="20180822 00:33:54.828"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:56.840" starttime="20180822 00:33:54.827"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:33:56.841" starttime="20180822 00:33:54.827"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${webhook_timeout}</arg>
+</arguments>
+<msg timestamp="20180822 00:34:00.842" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" endtime="20180822 00:34:00.842" starttime="20180822 00:33:56.841"></status>
+</kw>
+<kw name="Sell ${4} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags departed starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:02.863" starttime="20180822 00:34:00.844"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:02.863" starttime="20180822 00:34:00.843"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:02.863" starttime="20180822 00:34:00.842"></status>
+</kw>
+<kw name="Expect ${first_results} POST">
+<kw name="Expect ${numcall} POST with id ns1_context1 from webhook ${webhook}">
+<kw name="Wait For POST" library="webhook">
+<doc>Method to wait for POST on the specified path</doc>
+<arguments>
+<arg>${wh}</arg>
+<arg>expectedPOSTCount=${numcall}</arg>
+<arg>expectedTimeout=${webhook_timeout}</arg>
+<arg>expectedId=${id}</arg>
+</arguments>
+<assign>
+<var>${results}</var>
+</assign>
+<msg timestamp="20180822 00:34:02.867" level="INFO">${results} = True</msg>
+<status status="PASS" endtime="20180822 00:34:02.867" starttime="20180822 00:34:02.865"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} == ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:02.869" starttime="20180822 00:34:02.868"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} != ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:02.870" starttime="20180822 00:34:02.870"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:02.870" starttime="20180822 00:34:02.869"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:02.871" starttime="20180822 00:34:02.864"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:02.871" starttime="20180822 00:34:02.864"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:34:02.875" starttime="20180822 00:34:02.871"></status>
+</kw>
+<kw name="Stock ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:04.890" starttime="20180822 00:34:02.876"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:04.890" starttime="20180822 00:34:02.876"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:04.890" starttime="20180822 00:34:02.875"></status>
+</kw>
+<kw name="Stock ${1} item starting 305402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:06.905" starttime="20180822 00:34:04.892"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:06.905" starttime="20180822 00:34:04.891"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:06.906" starttime="20180822 00:34:04.890"></status>
+</kw>
+<kw name="Stock ${1} item starting 307402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:08.921" starttime="20180822 00:34:06.908"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:08.921" starttime="20180822 00:34:06.907"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:08.921" starttime="20180822 00:34:06.906"></status>
+</kw>
+<kw name="Stock ${1} item starting 309402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:10.938" starttime="20180822 00:34:08.923"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:10.938" starttime="20180822 00:34:08.922"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:10.939" starttime="20180822 00:34:08.921"></status>
+</kw>
+<kw name="Stock ${1} item starting 30B402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:12.954" starttime="20180822 00:34:10.940"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:12.954" starttime="20180822 00:34:10.940"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:12.954" starttime="20180822 00:34:10.939"></status>
+</kw>
+<kw name="Stock ${1} item starting 30D402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:14.968" starttime="20180822 00:34:12.956"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:14.969" starttime="20180822 00:34:12.955"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:14.969" starttime="20180822 00:34:12.954"></status>
+</kw>
+<kw name="Stock ${1} item starting 30F402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:16.985" starttime="20180822 00:34:14.971"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:16.985" starttime="20180822 00:34:14.970"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:16.986" starttime="20180822 00:34:14.969"></status>
+</kw>
+<kw name="Stock ${6} item starting 303402662C3A5F904C000000 on BACKSTOCK">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:19.001" starttime="20180822 00:34:16.988"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:19.001" starttime="20180822 00:34:16.987"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:19.001" starttime="20180822 00:34:16.986"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${webhook_timeout}</arg>
+</arguments>
+<msg timestamp="20180822 00:34:23.002" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" endtime="20180822 00:34:23.003" starttime="20180822 00:34:19.002"></status>
+</kw>
+<kw name="Sell ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags departed starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:25.031" starttime="20180822 00:34:23.005"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:25.031" starttime="20180822 00:34:23.004"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:25.032" starttime="20180822 00:34:23.003"></status>
+</kw>
+<kw name="Expect ${second_results} POST">
+<kw name="Expect ${numcall} POST with id ns1_context1 from webhook ${webhook}">
+<kw name="Wait For POST" library="webhook">
+<doc>Method to wait for POST on the specified path</doc>
+<arguments>
+<arg>${wh}</arg>
+<arg>expectedPOSTCount=${numcall}</arg>
+<arg>expectedTimeout=${webhook_timeout}</arg>
+<arg>expectedId=${id}</arg>
+</arguments>
+<assign>
+<var>${results}</var>
+</assign>
+<msg timestamp="20180822 00:34:30.000" level="INFO">${results} = True</msg>
+<status status="PASS" endtime="20180822 00:34:30.000" starttime="20180822 00:34:25.033"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} == ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:30.001" starttime="20180822 00:34:30.001"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:30.001" starttime="20180822 00:34:30.000"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} != ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:30.001" starttime="20180822 00:34:30.001"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:30.001" starttime="20180822 00:34:25.033"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:30.001" starttime="20180822 00:34:25.032"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:30.002" starttime="20180822 00:33:51.790"></status>
+</kw>
+<tags>
+<tag>2796</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:34:30.002" critical="yes" starttime="20180822 00:33:51.708"></status>
+</test>
+<test id="s1-t3" name="2797 Functionality-Notification with excludedItemList not in valid 0 through 7 range-while required microservices are running">
+<kw type="setup" name="Test Case Setup">
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:34:30.009" starttime="20180822 00:34:30.003"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:34:30.019" starttime="20180822 00:34:30.009"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:30.105" starttime="20180822 00:34:30.019"></status>
+</kw>
+<kw name="Add Path" library="webhook">
+<doc>Method to add a path to handle POST or GET</doc>
+<arguments>
+<arg>${webhook}</arg>
+<arg>200 ok</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:30.106" starttime="20180822 00:34:30.106"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:30.106" starttime="20180822 00:34:30.002"></status>
+</kw>
+<kw name="Create Rule">
+<arguments>
+<arg>int0</arg>
+<arg>${1}</arg>
+<arg>${0}</arg>
+</arguments>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=activationdate,${activeTime}|cancellationdate,${cancelTime}|url,http://testhost${webhook}|minFloorItems,${2}|minRequiredStock,${5}|excludeItemList,${excludelist}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:30.123" starttime="20180822 00:34:30.108"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20180822 00:34:31.124" level="INFO">Slept 1 second</msg>
+<status status="PASS" endtime="20180822 00:34:31.124" starttime="20180822 00:34:30.123"></status>
+</kw>
+<kw name="Stock ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:33.143" starttime="20180822 00:34:31.126"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:33.144" starttime="20180822 00:34:31.125"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:33.144" starttime="20180822 00:34:31.124"></status>
+</kw>
+<kw name="Stock ${6} item starting 303402662C3A5F904C000000 on BACKSTOCK">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:35.159" starttime="20180822 00:34:33.146"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:35.159" starttime="20180822 00:34:33.145"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:35.160" starttime="20180822 00:34:33.144"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${webhook_timeout}</arg>
+</arguments>
+<msg timestamp="20180822 00:34:39.161" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" endtime="20180822 00:34:39.161" starttime="20180822 00:34:35.160"></status>
+</kw>
+<kw name="Sell ${4} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags departed starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:41.181" starttime="20180822 00:34:39.163"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:41.182" starttime="20180822 00:34:39.162"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:41.182" starttime="20180822 00:34:39.161"></status>
+</kw>
+<kw name="Expect ${first_results} POST">
+<kw name="Expect ${numcall} POST with id ns1_context1 from webhook ${webhook}">
+<kw name="Wait For POST" library="webhook">
+<doc>Method to wait for POST on the specified path</doc>
+<arguments>
+<arg>${wh}</arg>
+<arg>expectedPOSTCount=${numcall}</arg>
+<arg>expectedTimeout=${webhook_timeout}</arg>
+<arg>expectedId=${id}</arg>
+</arguments>
+<assign>
+<var>${results}</var>
+</assign>
+<msg timestamp="20180822 00:34:41.185" level="INFO">${results} = True</msg>
+<status status="PASS" endtime="20180822 00:34:41.185" starttime="20180822 00:34:41.184"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} == ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:41.186" starttime="20180822 00:34:41.186"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} != ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:41.187" starttime="20180822 00:34:41.187"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:41.187" starttime="20180822 00:34:41.186"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:41.187" starttime="20180822 00:34:41.183"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:41.187" starttime="20180822 00:34:41.182"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:34:41.192" starttime="20180822 00:34:41.187"></status>
+</kw>
+<kw name="Stock ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:43.209" starttime="20180822 00:34:41.193"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:43.209" starttime="20180822 00:34:41.193"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:43.209" starttime="20180822 00:34:41.192"></status>
+</kw>
+<kw name="Stock ${1} item starting 305402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:45.224" starttime="20180822 00:34:43.211"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:45.224" starttime="20180822 00:34:43.210"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:45.224" starttime="20180822 00:34:43.209"></status>
+</kw>
+<kw name="Stock ${1} item starting 307402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:47.239" starttime="20180822 00:34:45.226"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:47.240" starttime="20180822 00:34:45.226"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:47.240" starttime="20180822 00:34:45.225"></status>
+</kw>
+<kw name="Stock ${1} item starting 309402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:49.256" starttime="20180822 00:34:47.242"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:49.256" starttime="20180822 00:34:47.241"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:49.256" starttime="20180822 00:34:47.240"></status>
+</kw>
+<kw name="Stock ${1} item starting 30B402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:51.272" starttime="20180822 00:34:49.258"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:51.272" starttime="20180822 00:34:49.258"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:51.272" starttime="20180822 00:34:49.257"></status>
+</kw>
+<kw name="Stock ${1} item starting 30D402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:53.287" starttime="20180822 00:34:51.274"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:53.287" starttime="20180822 00:34:51.273"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:53.288" starttime="20180822 00:34:51.273"></status>
+</kw>
+<kw name="Stock ${1} item starting 30F402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:55.304" starttime="20180822 00:34:53.289"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:55.304" starttime="20180822 00:34:53.289"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:55.304" starttime="20180822 00:34:53.288"></status>
+</kw>
+<kw name="Stock ${6} item starting 303402662C3A5F904C000000 on BACKSTOCK">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:34:57.320" starttime="20180822 00:34:55.306"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:57.320" starttime="20180822 00:34:55.305"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:34:57.320" starttime="20180822 00:34:55.305"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${webhook_timeout}</arg>
+</arguments>
+<msg timestamp="20180822 00:35:01.321" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" endtime="20180822 00:35:01.321" starttime="20180822 00:34:57.320"></status>
+</kw>
+<kw name="Sell ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags departed starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:03.349" starttime="20180822 00:35:01.324"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:03.349" starttime="20180822 00:35:01.323"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:03.349" starttime="20180822 00:35:01.322"></status>
+</kw>
+<kw name="Expect ${second_results} POST">
+<kw name="Expect ${numcall} POST with id ns1_context1 from webhook ${webhook}">
+<kw name="Wait For POST" library="webhook">
+<doc>Method to wait for POST on the specified path</doc>
+<arguments>
+<arg>${wh}</arg>
+<arg>expectedPOSTCount=${numcall}</arg>
+<arg>expectedTimeout=${webhook_timeout}</arg>
+<arg>expectedId=${id}</arg>
+</arguments>
+<assign>
+<var>${results}</var>
+</assign>
+<msg timestamp="20180822 00:35:08.000" level="INFO">${results} = True</msg>
+<status status="PASS" endtime="20180822 00:35:08.000" starttime="20180822 00:35:03.351"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} == ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:08.001" starttime="20180822 00:35:08.001"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:08.001" starttime="20180822 00:35:08.000"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} != ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:08.001" starttime="20180822 00:35:08.001"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:08.001" starttime="20180822 00:35:03.350"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:08.001" starttime="20180822 00:35:03.349"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:08.002" starttime="20180822 00:34:30.107"></status>
+</kw>
+<tags>
+<tag>2797</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:35:08.002" critical="yes" starttime="20180822 00:34:30.002"></status>
+</test>
+<test id="s1-t4" name="2797 Functionality-Notification with excludedItemList not in valid 0 through 7 range-while required microservices are running1">
+<kw type="setup" name="Test Case Setup">
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:35:08.007" starttime="20180822 00:35:08.003"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:35:08.016" starttime="20180822 00:35:08.007"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:08.085" starttime="20180822 00:35:08.016"></status>
+</kw>
+<kw name="Add Path" library="webhook">
+<doc>Method to add a path to handle POST or GET</doc>
+<arguments>
+<arg>${webhook}</arg>
+<arg>200 ok</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:08.086" starttime="20180822 00:35:08.086"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:08.087" starttime="20180822 00:35:08.002"></status>
+</kw>
+<kw name="Create Rule">
+<arguments>
+<arg>int8</arg>
+<arg>${1}</arg>
+<arg>${0}</arg>
+</arguments>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=activationdate,${activeTime}|cancellationdate,${cancelTime}|url,http://testhost${webhook}|minFloorItems,${2}|minRequiredStock,${5}|excludeItemList,${excludelist}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:08.104" starttime="20180822 00:35:08.088"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20180822 00:35:09.104" level="INFO">Slept 1 second</msg>
+<status status="PASS" endtime="20180822 00:35:09.104" starttime="20180822 00:35:08.104"></status>
+</kw>
+<kw name="Stock ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:11.123" starttime="20180822 00:35:09.106"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:11.123" starttime="20180822 00:35:09.105"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:11.123" starttime="20180822 00:35:09.105"></status>
+</kw>
+<kw name="Stock ${6} item starting 303402662C3A5F904C000000 on BACKSTOCK">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:13.139" starttime="20180822 00:35:11.125"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:13.139" starttime="20180822 00:35:11.124"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:13.140" starttime="20180822 00:35:11.123"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${webhook_timeout}</arg>
+</arguments>
+<msg timestamp="20180822 00:35:17.141" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" endtime="20180822 00:35:17.141" starttime="20180822 00:35:13.140"></status>
+</kw>
+<kw name="Sell ${4} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags departed starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:19.162" starttime="20180822 00:35:17.143"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:19.162" starttime="20180822 00:35:17.142"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:19.162" starttime="20180822 00:35:17.141"></status>
+</kw>
+<kw name="Expect ${first_results} POST">
+<kw name="Expect ${numcall} POST with id ns1_context1 from webhook ${webhook}">
+<kw name="Wait For POST" library="webhook">
+<doc>Method to wait for POST on the specified path</doc>
+<arguments>
+<arg>${wh}</arg>
+<arg>expectedPOSTCount=${numcall}</arg>
+<arg>expectedTimeout=${webhook_timeout}</arg>
+<arg>expectedId=${id}</arg>
+</arguments>
+<assign>
+<var>${results}</var>
+</assign>
+<msg timestamp="20180822 00:35:19.166" level="INFO">${results} = True</msg>
+<status status="PASS" endtime="20180822 00:35:19.166" starttime="20180822 00:35:19.164"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} == ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:19.167" starttime="20180822 00:35:19.166"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} != ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:19.169" starttime="20180822 00:35:19.168"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:19.169" starttime="20180822 00:35:19.167"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:19.170" starttime="20180822 00:35:19.163"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:19.170" starttime="20180822 00:35:19.163"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:35:19.174" starttime="20180822 00:35:19.170"></status>
+</kw>
+<kw name="Stock ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:21.189" starttime="20180822 00:35:19.175"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:21.189" starttime="20180822 00:35:19.175"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:21.189" starttime="20180822 00:35:19.174"></status>
+</kw>
+<kw name="Stock ${1} item starting 305402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:23.204" starttime="20180822 00:35:21.191"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:23.204" starttime="20180822 00:35:21.190"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:23.204" starttime="20180822 00:35:21.190"></status>
+</kw>
+<kw name="Stock ${1} item starting 307402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:25.219" starttime="20180822 00:35:23.206"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:25.220" starttime="20180822 00:35:23.205"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:25.220" starttime="20180822 00:35:23.205"></status>
+</kw>
+<kw name="Stock ${1} item starting 309402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:27.236" starttime="20180822 00:35:25.222"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:27.236" starttime="20180822 00:35:25.221"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:27.236" starttime="20180822 00:35:25.220"></status>
+</kw>
+<kw name="Stock ${1} item starting 30B402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:29.251" starttime="20180822 00:35:27.238"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:29.251" starttime="20180822 00:35:27.237"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:29.252" starttime="20180822 00:35:27.237"></status>
+</kw>
+<kw name="Stock ${1} item starting 30D402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:31.267" starttime="20180822 00:35:29.254"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:31.267" starttime="20180822 00:35:29.253"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:31.267" starttime="20180822 00:35:29.252"></status>
+</kw>
+<kw name="Stock ${1} item starting 30F402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:33.283" starttime="20180822 00:35:31.269"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:33.283" starttime="20180822 00:35:31.268"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:33.284" starttime="20180822 00:35:31.268"></status>
+</kw>
+<kw name="Stock ${6} item starting 303402662C3A5F904C000000 on BACKSTOCK">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:35.299" starttime="20180822 00:35:33.286"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:35.299" starttime="20180822 00:35:33.285"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:35.299" starttime="20180822 00:35:33.284"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${webhook_timeout}</arg>
+</arguments>
+<msg timestamp="20180822 00:35:39.300" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" endtime="20180822 00:35:39.300" starttime="20180822 00:35:35.299"></status>
+</kw>
+<kw name="Sell ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags departed starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:41.321" starttime="20180822 00:35:39.302"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:41.321" starttime="20180822 00:35:39.301"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:41.321" starttime="20180822 00:35:39.301"></status>
+</kw>
+<kw name="Expect ${second_results} POST">
+<kw name="Expect ${numcall} POST with id ns1_context1 from webhook ${webhook}">
+<kw name="Wait For POST" library="webhook">
+<doc>Method to wait for POST on the specified path</doc>
+<arguments>
+<arg>${wh}</arg>
+<arg>expectedPOSTCount=${numcall}</arg>
+<arg>expectedTimeout=${webhook_timeout}</arg>
+<arg>expectedId=${id}</arg>
+</arguments>
+<assign>
+<var>${results}</var>
+</assign>
+<msg timestamp="20180822 00:35:46.000" level="INFO">${results} = True</msg>
+<status status="PASS" endtime="20180822 00:35:46.000" starttime="20180822 00:35:41.323"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} == ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:46.001" starttime="20180822 00:35:46.001"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:46.001" starttime="20180822 00:35:46.000"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} != ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:46.001" starttime="20180822 00:35:46.001"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:46.001" starttime="20180822 00:35:41.322"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:46.001" starttime="20180822 00:35:41.321"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:46.001" starttime="20180822 00:35:08.087"></status>
+</kw>
+<tags>
+<tag>2797A</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:35:46.002" critical="yes" starttime="20180822 00:35:08.002"></status>
+</test>
+<test id="s1-t5" name="2798 Negative-Notification with excludedItemList containing a float-while required microservices are running">
+<kw type="setup" name="Test Case Setup">
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:35:46.008" starttime="20180822 00:35:46.002"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:35:46.017" starttime="20180822 00:35:46.008"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:46.083" starttime="20180822 00:35:46.017"></status>
+</kw>
+<kw name="Add Path" library="webhook">
+<doc>Method to add a path to handle POST or GET</doc>
+<arguments>
+<arg>${webhook}</arg>
+<arg>200 ok</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:46.084" starttime="20180822 00:35:46.083"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:46.084" starttime="20180822 00:35:46.002"></status>
+</kw>
+<kw name="Create Rule">
+<arguments>
+<arg>float2.1;float3.1;float4.1;float5.1;float6.1;float7.1</arg>
+<arg>${1}</arg>
+<arg>${1}</arg>
+</arguments>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=activationdate,${activeTime}|cancellationdate,${cancelTime}|url,http://testhost${webhook}|minFloorItems,${2}|minRequiredStock,${5}|excludeItemList,${excludelist}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:46.101" starttime="20180822 00:35:46.085"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20180822 00:35:47.102" level="INFO">Slept 1 second</msg>
+<status status="PASS" endtime="20180822 00:35:47.102" starttime="20180822 00:35:46.101"></status>
+</kw>
+<kw name="Stock ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:49.119" starttime="20180822 00:35:47.104"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:49.119" starttime="20180822 00:35:47.103"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:49.120" starttime="20180822 00:35:47.102"></status>
+</kw>
+<kw name="Stock ${6} item starting 303402662C3A5F904C000000 on BACKSTOCK">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:51.135" starttime="20180822 00:35:49.122"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:51.135" starttime="20180822 00:35:49.121"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:51.136" starttime="20180822 00:35:49.120"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${webhook_timeout}</arg>
+</arguments>
+<msg timestamp="20180822 00:35:55.137" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" endtime="20180822 00:35:55.137" starttime="20180822 00:35:51.136"></status>
+</kw>
+<kw name="Sell ${4} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags departed starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:57.158" starttime="20180822 00:35:55.139"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:57.158" starttime="20180822 00:35:55.138"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:57.158" starttime="20180822 00:35:55.137"></status>
+</kw>
+<kw name="Expect ${first_results} POST">
+<kw name="Expect ${numcall} POST with id ns1_context1 from webhook ${webhook}">
+<kw name="Wait For POST" library="webhook">
+<doc>Method to wait for POST on the specified path</doc>
+<arguments>
+<arg>${wh}</arg>
+<arg>expectedPOSTCount=${numcall}</arg>
+<arg>expectedTimeout=${webhook_timeout}</arg>
+<arg>expectedId=${id}</arg>
+</arguments>
+<assign>
+<var>${results}</var>
+</assign>
+<msg timestamp="20180822 00:35:57.162" level="INFO">${results} = True</msg>
+<status status="PASS" endtime="20180822 00:35:57.162" starttime="20180822 00:35:57.160"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} == ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:57.163" starttime="20180822 00:35:57.162"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} != ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:57.165" starttime="20180822 00:35:57.164"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:57.165" starttime="20180822 00:35:57.163"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:57.165" starttime="20180822 00:35:57.159"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:57.165" starttime="20180822 00:35:57.159"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:35:57.170" starttime="20180822 00:35:57.166"></status>
+</kw>
+<kw name="Stock ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:35:59.185" starttime="20180822 00:35:57.171"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:59.186" starttime="20180822 00:35:57.171"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:35:59.186" starttime="20180822 00:35:57.171"></status>
+</kw>
+<kw name="Stock ${1} item starting 305402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:01.203" starttime="20180822 00:35:59.188"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:01.203" starttime="20180822 00:35:59.187"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:01.203" starttime="20180822 00:35:59.186"></status>
+</kw>
+<kw name="Stock ${1} item starting 307402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:03.219" starttime="20180822 00:36:01.205"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:03.219" starttime="20180822 00:36:01.204"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:03.219" starttime="20180822 00:36:01.203"></status>
+</kw>
+<kw name="Stock ${1} item starting 309402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:05.239" starttime="20180822 00:36:03.221"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:05.239" starttime="20180822 00:36:03.220"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:05.239" starttime="20180822 00:36:03.220"></status>
+</kw>
+<kw name="Stock ${1} item starting 30B402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:07.253" starttime="20180822 00:36:05.241"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:07.253" starttime="20180822 00:36:05.240"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:07.253" starttime="20180822 00:36:05.240"></status>
+</kw>
+<kw name="Stock ${1} item starting 30D402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:09.267" starttime="20180822 00:36:07.255"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:09.268" starttime="20180822 00:36:07.254"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:09.268" starttime="20180822 00:36:07.253"></status>
+</kw>
+<kw name="Stock ${1} item starting 30F402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:11.285" starttime="20180822 00:36:09.270"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:11.285" starttime="20180822 00:36:09.269"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:11.286" starttime="20180822 00:36:09.268"></status>
+</kw>
+<kw name="Stock ${6} item starting 303402662C3A5F904C000000 on BACKSTOCK">
+<kw name="Send ${num} tags arrival starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:13.300" starttime="20180822 00:36:11.288"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:13.300" starttime="20180822 00:36:11.287"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:13.301" starttime="20180822 00:36:11.286"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${webhook_timeout}</arg>
+</arguments>
+<msg timestamp="20180822 00:36:17.302" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" endtime="20180822 00:36:17.302" starttime="20180822 00:36:13.301"></status>
+</kw>
+<kw name="Sell ${5} item starting 303402662C3A5F904C000010 on SALES_FLOOR">
+<kw name="Send ${num} tags departed starting ${start_tags} for facility ${facility}">
+<kw name="Send Tags" library="Tags">
+<doc>Test to send Tags to Inventory</doc>
+<arguments>
+<arg>start_tags=${start_tags}</arg>
+<arg>event=${event}</arg>
+<arg>num_tags=${num}</arg>
+<arg>facility=${facility}</arg>
+<arg>time=same</arg>
+<arg>waitTags=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:19.323" starttime="20180822 00:36:17.304"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.323" starttime="20180822 00:36:17.303"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.324" starttime="20180822 00:36:17.302"></status>
+</kw>
+<kw name="Expect ${second_results} POST">
+<kw name="Expect ${numcall} POST with id ns1_context1 from webhook ${webhook}">
+<kw name="Wait For POST" library="webhook">
+<doc>Method to wait for POST on the specified path</doc>
+<arguments>
+<arg>${wh}</arg>
+<arg>expectedPOSTCount=${numcall}</arg>
+<arg>expectedTimeout=${webhook_timeout}</arg>
+<arg>expectedId=${id}</arg>
+</arguments>
+<assign>
+<var>${results}</var>
+</assign>
+<msg timestamp="20180822 00:36:19.327" level="INFO">${results} = True</msg>
+<status status="PASS" endtime="20180822 00:36:19.327" starttime="20180822 00:36:19.325"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} == ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} is called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:19.328" starttime="20180822 00:36:19.327"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${numcall} != ${0}</arg>
+<arg>Should Be True</arg>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${results}</arg>
+<arg>Webhook ${wh} not called</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:19.330" starttime="20180822 00:36:19.330"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.330" starttime="20180822 00:36:19.329"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.331" starttime="20180822 00:36:19.325"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.331" starttime="20180822 00:36:19.324"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.331" starttime="20180822 00:35:46.084"></status>
+</kw>
+<tags>
+<tag>2798</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:36:19.331" critical="yes" starttime="20180822 00:35:46.002"></status>
+</test>
+<test id="s1-t6" name="2799 Negative-Notification with excludedItemList containing a string-while required microservices are running">
+<kw type="setup" name="Test Case Setup">
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:36:19.337" starttime="20180822 00:36:19.332"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:36:19.347" starttime="20180822 00:36:19.337"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:19.413" starttime="20180822 00:36:19.347"></status>
+</kw>
+<kw name="Add Path" library="webhook">
+<doc>Method to add a path to handle POST or GET</doc>
+<arguments>
+<arg>${webhook}</arg>
+<arg>200 ok</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:19.414" starttime="20180822 00:36:19.413"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.414" starttime="20180822 00:36:19.332"></status>
+</kw>
+<kw name="Create Neg Rule">
+<arguments>
+<arg>1;2;3</arg>
+<arg>${0}</arg>
+<arg>${0}</arg>
+</arguments>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=activationdate,${activeTime}|cancellationdate,${cancelTime}|url,http://testhost${webhook}|minFloorItems,${5}|minRequiredStock,${5}|excludeItemList,${excludelist}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:36:19.428" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:36:19.428" starttime="20180822 00:36:19.415"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Testing POST</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:19.429" starttime="20180822 00:36:19.429"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.429" starttime="20180822 00:36:19.414"></status>
+</kw>
+<tags>
+<tag>2799</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:36:19.429" critical="yes" starttime="20180822 00:36:19.331"></status>
+</test>
+<test id="s1-t7" name="2800 Negative-Notification with excludedItemList containing a wildcard-while required microservices are running">
+<kw type="setup" name="Test Case Setup">
+<kw name="Empty DB" library="Tags">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:36:19.433" starttime="20180822 00:36:19.430"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:36:19.441" starttime="20180822 00:36:19.433"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:19.453" starttime="20180822 00:36:19.441"></status>
+</kw>
+<kw name="Add Path" library="webhook">
+<doc>Method to add a path to handle POST or GET</doc>
+<arguments>
+<arg>${webhook}</arg>
+<arg>200 ok</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:19.454" starttime="20180822 00:36:19.453"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.454" starttime="20180822 00:36:19.430"></status>
+</kw>
+<kw name="Create Neg Rule">
+<arguments>
+<arg>*</arg>
+<arg>${0}</arg>
+<arg>${0}</arg>
+</arguments>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=activationdate,${activeTime}|cancellationdate,${cancelTime}|url,http://testhost${webhook}|minFloorItems,${5}|minRequiredStock,${5}|excludeItemList,${excludelist}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:36:19.467" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:36:19.467" starttime="20180822 00:36:19.455"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Testing POST</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:19.468" starttime="20180822 00:36:19.467"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.468" starttime="20180822 00:36:19.454"></status>
+</kw>
+<tags>
+<tag>2800</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:36:19.468" critical="yes" starttime="20180822 00:36:19.429"></status>
+</test>
+<kw type="teardown" name="Teardown Server">
+<kw name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:36:19.470" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:36:19.471" starttime="20180822 00:36:19.470"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:36:19.471" starttime="20180822 00:36:19.471"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.471" starttime="20180822 00:36:19.470"></status>
+</kw>
+<kw name="Stop" library="webhook">
+<doc>Method to stop server</doc>
+<status status="PASS" endtime="20180822 00:36:19.950" starttime="20180822 00:36:19.471"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.950" starttime="20180822 00:36:19.469"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:36:19.950" starttime="20180822 00:33:15.256"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="7">Critical Tests</stat>
+<stat fail="0" pass="7">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">2796</stat>
+<stat fail="0" pass="1">2797</stat>
+<stat fail="0" pass="1">2797A</stat>
+<stat fail="0" pass="1">2798</stat>
+<stat fail="0" pass="1">2799</stat>
+<stat fail="0" pass="1">2800</stat>
+<stat fail="0" pass="7">common</stat>
+<stat fail="0" pass="1">exclude</stat>
+<stat fail="0" pass="2">negative</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="notification excludeItemList" pass="7">notification excludeItemList</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

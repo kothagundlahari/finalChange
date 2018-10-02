@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:12:58.072" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/Tag_Event_Matrix.robot" id="s1" name="Tag Event Matrix">
+<kw type="setup" name="Suite Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:12:58.802" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:12:58.802" starttime="20180822 00:12:58.342"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:58.803" starttime="20180822 00:12:58.802"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:12:58.803" starttime="20180822 00:12:58.341"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:12:58.806" starttime="20180822 00:12:58.803"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:12:58.807" starttime="20180822 00:12:58.341"></status>
+</kw>
+<test id="s1-t1" name="Tag Arrived Empty">
+<kw type="setup" name="Clear Tags and Wait">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:12:58.814" starttime="20180822 00:12:58.808"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:12:58.814" starttime="20180822 00:12:58.808"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:12:58.847" starttime="20180822 00:12:58.815"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:00.858" starttime="20180822 00:12:58.847"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:00.870" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:00.870" starttime="20180822 00:13:00.859"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:00.871" starttime="20180822 00:13:00.871"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:00.871" starttime="20180822 00:12:58.814"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:00.881" starttime="20180822 00:13:00.872"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:02.897" starttime="20180822 00:13:00.881"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:02.910" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:02.910" starttime="20180822 00:13:02.897"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:02.911" starttime="20180822 00:13:02.911"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:02.911" starttime="20180822 00:13:00.871"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=departed</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room2</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:02.922" starttime="20180822 00:13:02.912"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:04.938" starttime="20180822 00:13:02.922"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:04.949" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:04.949" starttime="20180822 00:13:04.938"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:04.949" starttime="20180822 00:13:04.949"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:04.950" starttime="20180822 00:13:02.911"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room3</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:04.958" starttime="20180822 00:13:04.950"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:06.973" starttime="20180822 00:13:04.958"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:06.985" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:06.985" starttime="20180822 00:13:06.973"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:06.986" starttime="20180822 00:13:06.986"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:06.986" starttime="20180822 00:13:04.950"></status>
+</kw>
+<tags>
+<tag>arrival</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:13:06.986" critical="yes" starttime="20180822 00:12:58.807"></status>
+</test>
+<test id="s1-t2" name="Tag Moved on Empty">
+<kw type="setup" name="Clear Tags and Wait">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:13:06.994" starttime="20180822 00:13:06.988"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:06.994" starttime="20180822 00:13:06.988"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=moved</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:06.999" starttime="20180822 00:13:06.995"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:09.013" starttime="20180822 00:13:06.999"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:09.025" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:09.025" starttime="20180822 00:13:09.013"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:09.026" starttime="20180822 00:13:09.025"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:09.026" starttime="20180822 00:13:06.994"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=moved</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:09.035" starttime="20180822 00:13:09.027"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:11.051" starttime="20180822 00:13:09.035"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:11.062" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:11.062" starttime="20180822 00:13:11.051"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:11.063" starttime="20180822 00:13:11.062"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:11.063" starttime="20180822 00:13:09.026"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=departed</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room2</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:11.078" starttime="20180822 00:13:11.064"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:13.095" starttime="20180822 00:13:11.079"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:13.108" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:13.108" starttime="20180822 00:13:13.096"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:13.109" starttime="20180822 00:13:13.108"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:13.109" starttime="20180822 00:13:11.063"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=moved</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room3</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:13.118" starttime="20180822 00:13:13.110"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:15.134" starttime="20180822 00:13:13.118"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:15.147" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:15.147" starttime="20180822 00:13:15.134"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:15.148" starttime="20180822 00:13:15.147"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:15.148" starttime="20180822 00:13:13.109"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>moved</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:13:15.148" critical="yes" starttime="20180822 00:13:06.987"></status>
+</test>
+<test id="s1-t3" name="Tag Cycle_Count on Empty">
+<kw type="setup" name="Clear Tags and Wait">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:13:15.156" starttime="20180822 00:13:15.150"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:15.156" starttime="20180822 00:13:15.149"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=cycle_count</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:15.163" starttime="20180822 00:13:15.157"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:17.174" starttime="20180822 00:13:15.163"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:17.185" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:17.185" starttime="20180822 00:13:17.174"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:17.185" starttime="20180822 00:13:17.185"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:17.185" starttime="20180822 00:13:15.156"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=cycle_count</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:17.194" starttime="20180822 00:13:17.186"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:19.208" starttime="20180822 00:13:17.194"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:19.221" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:19.221" starttime="20180822 00:13:19.208"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:19.222" starttime="20180822 00:13:19.221"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:19.222" starttime="20180822 00:13:17.186"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=departed</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room2</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:19.231" starttime="20180822 00:13:19.223"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:21.245" starttime="20180822 00:13:19.232"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:21.258" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:21.258" starttime="20180822 00:13:21.245"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:21.259" starttime="20180822 00:13:21.258"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:21.259" starttime="20180822 00:13:19.222"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=cycle_count</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room3</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:21.268" starttime="20180822 00:13:21.260"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:23.288" starttime="20180822 00:13:21.269"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:23.301" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:23.301" starttime="20180822 00:13:23.288"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:23.301" starttime="20180822 00:13:23.301"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:23.301" starttime="20180822 00:13:21.259"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>cycle_count</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:13:23.302" critical="yes" starttime="20180822 00:13:15.149"></status>
+</test>
+<test id="s1-t4" name="Tag Departed on Empty">
+<kw type="setup" name="Clear Tags and Wait">
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:13:23.309" starttime="20180822 00:13:23.303"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:23.309" starttime="20180822 00:13:23.303"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=departed</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:23.315" starttime="20180822 00:13:23.310"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:25.328" starttime="20180822 00:13:23.315"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:25.340" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:25.340" starttime="20180822 00:13:25.328"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:25.341" starttime="20180822 00:13:25.341"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:25.341" starttime="20180822 00:13:23.309"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=arrival</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:25.351" starttime="20180822 00:13:25.342"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:27.366" starttime="20180822 00:13:25.351"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:27.379" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:27.379" starttime="20180822 00:13:27.367"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:27.379" starttime="20180822 00:13:27.379"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:27.380" starttime="20180822 00:13:25.341"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=departed</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room2</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:27.389" starttime="20180822 00:13:27.381"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:29.404" starttime="20180822 00:13:27.389"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:29.416" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:29.416" starttime="20180822 00:13:29.404"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:29.417" starttime="20180822 00:13:29.417"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:29.417" starttime="20180822 00:13:27.380"></status>
+</kw>
+<kw name="Create_Event">
+<arguments>
+<arg>event=departed</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room3</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+<arg>facility=TONY_WILSON</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:29.427" starttime="20180822 00:13:29.418"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:13:31.443" starttime="20180822 00:13:29.427"></status>
+</kw>
+<kw name="Db Validate" library="Tags">
+<doc>Validates both DB have correct values</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:13:31.456" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:31.456" starttime="20180822 00:13:31.443"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail to validate values</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:31.456" starttime="20180822 00:13:31.456"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:31.457" starttime="20180822 00:13:29.417"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>departed</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:13:31.457" critical="yes" starttime="20180822 00:13:23.302"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:13:31.459" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:31.459" starttime="20180822 00:13:31.459"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:31.460" starttime="20180822 00:13:31.459"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:31.460" starttime="20180822 00:13:31.458"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:31.460" starttime="20180822 00:12:58.073"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">arrival</stat>
+<stat fail="0" pass="4">common</stat>
+<stat fail="0" pass="1">cycle_count</stat>
+<stat fail="0" pass="1">departed</stat>
+<stat fail="0" pass="1">moved</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Tag Event Matrix" pass="4">Tag Event Matrix</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

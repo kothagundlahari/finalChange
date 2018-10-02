@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:03:48.354" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/Confidence.robot" id="s1" name="Confidence">
+<kw type="setup" name="Suite Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:03:49.089" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:03:49.089" starttime="20180822 00:03:48.625"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:49.090" starttime="20180822 00:03:49.090"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:49.091" starttime="20180822 00:03:48.625"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:03:49.094" starttime="20180822 00:03:49.091"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:03:49.101" starttime="20180822 00:03:49.094"></status>
+</kw>
+<kw name="Empty DB" library="fac">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:03:49.103" starttime="20180822 00:03:49.101"></status>
+</kw>
+<kw name="Init" library="fac">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:03:49.492" starttime="20180822 00:03:49.104"></status>
+</kw>
+<kw name="Test POST" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>names=Fac1,Fac2,Fac3,Fac4</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:49.516" starttime="20180822 00:03:49.493"></status>
+</kw>
+<kw name="Test GET" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expected_count=4</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:49.527" starttime="20180822 00:03:49.516"></status>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${starttime}</var>
+</assign>
+<msg timestamp="20180822 00:03:49.528" level="INFO">${starttime} = 1534921429.53</msg>
+<status status="PASS" endtime="20180822 00:03:49.528" starttime="20180822 00:03:49.527"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>${10}</arg>
+<arg>event=random</arg>
+<arg>time=${starttime}</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0,room1,room2,room3</arg>
+<arg>facility=Fac1,Fac2,Fac3,Fac4</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:49.607" starttime="20180822 00:03:49.530"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:51.618" starttime="20180822 00:03:49.607"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:51.618" starttime="20180822 00:03:49.528"></status>
+</kw>
+<kw name="Subtract Time From Date" library="DateTime">
+<doc>Subtracts time from date and returns the resulting date.</doc>
+<arguments>
+<arg>${starttime}</arg>
+<arg>time=1 day</arg>
+<arg>date_format=epoch</arg>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${starttime2}</var>
+</assign>
+<msg timestamp="20180822 00:03:51.620" level="INFO">${starttime2} = 1534835029.53</msg>
+<status status="PASS" endtime="20180822 00:03:51.620" starttime="20180822 00:03:51.619"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>${20}</arg>
+<arg>event=random</arg>
+<arg>start_tags=continue</arg>
+<arg>time=${starttime2}</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0,room1,room2,room3</arg>
+<arg>facility=Fac1,Fac2,Fac3,Fac4</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:51.660" starttime="20180822 00:03:51.621"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:53.671" starttime="20180822 00:03:51.661"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:53.672" starttime="20180822 00:03:51.620"></status>
+</kw>
+<kw name="Subtract Time From Date" library="DateTime">
+<doc>Subtracts time from date and returns the resulting date.</doc>
+<arguments>
+<arg>${starttime}</arg>
+<arg>time=2 day</arg>
+<arg>date_format=epoch</arg>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${starttime3}</var>
+</assign>
+<msg timestamp="20180822 00:03:53.673" level="INFO">${starttime3} = 1534748629.53</msg>
+<status status="PASS" endtime="20180822 00:03:53.673" starttime="20180822 00:03:53.672"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>${30}</arg>
+<arg>event=random</arg>
+<arg>start_tags=continue</arg>
+<arg>time=${starttime3}</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0,room1,room2,room3</arg>
+<arg>facility=Fac1,Fac2,Fac3,Fac4</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:53.713" starttime="20180822 00:03:53.675"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:55.724" starttime="20180822 00:03:53.713"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:55.724" starttime="20180822 00:03:53.673"></status>
+</kw>
+<kw name="Subtract Time From Date" library="DateTime">
+<doc>Subtracts time from date and returns the resulting date.</doc>
+<arguments>
+<arg>${starttime}</arg>
+<arg>time=30 days</arg>
+<arg>date_format=epoch</arg>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${starttime4}</var>
+</assign>
+<msg timestamp="20180822 00:03:55.725" level="INFO">${starttime4} = 1532329429.53</msg>
+<status status="PASS" endtime="20180822 00:03:55.725" starttime="20180822 00:03:55.724"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>${40}</arg>
+<arg>event=random</arg>
+<arg>start_tags=continue</arg>
+<arg>time=${starttime4}</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0,room1,room2,room3</arg>
+<arg>facility=Fac1,Fac2,Fac3,Fac4</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:55.767" starttime="20180822 00:03:55.727"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:57.779" starttime="20180822 00:03:55.767"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:57.780" starttime="20180822 00:03:55.726"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>${10}</arg>
+<arg>event=random</arg>
+<arg>start_tags=continue</arg>
+<arg>time=${starttime4}</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0,room1,room2,room3</arg>
+<arg>facility=Fac5</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:03:57.823" starttime="20180822 00:03:57.781"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:03:59.833" starttime="20180822 00:03:57.823"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:59.833" starttime="20180822 00:03:57.780"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${starttime}</arg>
+<arg>${starttime}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:59.835" level="INFO">${starttime} = 1534921429.53</msg>
+<status status="PASS" endtime="20180822 00:03:59.835" starttime="20180822 00:03:59.834"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${starttime2}</arg>
+<arg>${starttime2}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:59.836" level="INFO">${starttime2} = 1534835029.53</msg>
+<status status="PASS" endtime="20180822 00:03:59.836" starttime="20180822 00:03:59.835"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${starttime3}</arg>
+<arg>${starttime3}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:59.837" level="INFO">${starttime3} = 1534748629.53</msg>
+<status status="PASS" endtime="20180822 00:03:59.837" starttime="20180822 00:03:59.836"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${starttime4}</arg>
+<arg>${starttime4}</arg>
+</arguments>
+<msg timestamp="20180822 00:03:59.838" level="INFO">${starttime4} = 1532329429.53</msg>
+<status status="PASS" endtime="20180822 00:03:59.838" starttime="20180822 00:03:59.837"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:03:59.839" starttime="20180822 00:03:48.625"></status>
+</kw>
+<test id="s1-t1" name="2834 Functionality - adding event tags with varying timestamp will create correct confidence value.">
+<kw name="Validate Confidence of facility Fac1">
+<kw name="Validate Confidence" library="Tags">
+<arguments>
+<arg>facility_id=${fac}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:04:00.104" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:00.105" starttime="20180822 00:03:59.841"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to validate confidence for tags with facility_id ${fac}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:00.105" starttime="20180822 00:04:00.105"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:00.106" starttime="20180822 00:03:59.840"></status>
+</kw>
+<kw name="Validate Confidence of facility Fac2">
+<kw name="Validate Confidence" library="Tags">
+<arguments>
+<arg>facility_id=${fac}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:04:00.329" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:00.329" starttime="20180822 00:04:00.107"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to validate confidence for tags with facility_id ${fac}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:00.330" starttime="20180822 00:04:00.330"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:00.330" starttime="20180822 00:04:00.106"></status>
+</kw>
+<kw name="Validate Confidence of facility Fac3">
+<kw name="Validate Confidence" library="Tags">
+<arguments>
+<arg>facility_id=${fac}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:04:00.593" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:00.593" starttime="20180822 00:04:00.331"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to validate confidence for tags with facility_id ${fac}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:00.594" starttime="20180822 00:04:00.594"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:00.595" starttime="20180822 00:04:00.330"></status>
+</kw>
+<kw name="Validate Confidence of facility Fac4">
+<kw name="Validate Confidence" library="Tags">
+<arguments>
+<arg>facility_id=${fac}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:04:00.865" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:00.865" starttime="20180822 00:04:00.595"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to validate confidence for tags with facility_id ${fac}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:00.866" starttime="20180822 00:04:00.865"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:00.866" starttime="20180822 00:04:00.595"></status>
+</kw>
+<tags>
+<tag>2834</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:04:00.867" critical="yes" starttime="20180822 00:03:59.839"></status>
+</test>
+<test id="s1-t2" name="2835 Functionality - modifying coefficient will cause confidence value to change.">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>dailyinventorypercentage=${0.03}</arg>
+<arg>probunreadtoread=${0.222}</arg>
+<arg>probinstoreread=${0.122}</arg>
+<arg>probexiterror=${0.22}</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:04:00.870" level="INFO">&amp;{params} = { facility_id=Fac1 | dailyinventorypercentage=0.03 | probunreadtoread=0.222 | probinstoreread=0.122 | probexiterror=0.22 }</msg>
+<status status="PASS" endtime="20180822 00:04:00.870" starttime="20180822 00:04:00.869"></status>
+</kw>
+<kw name="Test Update Coefficients" library="fac">
+<doc>Method to test Update to coefficients</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:00.879" starttime="20180822 00:04:00.870"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.1</arg>
+</arguments>
+<msg timestamp="20180822 00:04:00.980" level="INFO">Slept 100 milliseconds</msg>
+<status status="PASS" endtime="20180822 00:04:00.980" starttime="20180822 00:04:00.879"></status>
+</kw>
+<kw name="Validate Confidence of facility Fac1">
+<kw name="Validate Confidence" library="Tags">
+<arguments>
+<arg>facility_id=${fac}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:04:01.243" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:01.243" starttime="20180822 00:04:00.981"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to validate confidence for tags with facility_id ${fac}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:01.244" starttime="20180822 00:04:01.243"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:01.244" starttime="20180822 00:04:00.980"></status>
+</kw>
+<kw name="Validate Confidence of facility Fac5">
+<kw name="Validate Confidence" library="Tags">
+<arguments>
+<arg>facility_id=${fac}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:04:01.526" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:01.527" starttime="20180822 00:04:01.245"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to validate confidence for tags with facility_id ${fac}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:01.528" starttime="20180822 00:04:01.527"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:01.528" starttime="20180822 00:04:01.244"></status>
+</kw>
+<tags>
+<tag>2835</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:04:01.528" critical="yes" starttime="20180822 00:04:00.867"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:04:01.531" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:04:01.531" starttime="20180822 00:04:01.530"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:04:01.531" starttime="20180822 00:04:01.531"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:01.532" starttime="20180822 00:04:01.529"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:04:01.532" starttime="20180822 00:03:48.356"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">2834</stat>
+<stat fail="0" pass="1">2835</stat>
+<stat fail="0" pass="2">common</stat>
+<stat fail="0" pass="2">dst</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Confidence" pass="2">Confidence</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

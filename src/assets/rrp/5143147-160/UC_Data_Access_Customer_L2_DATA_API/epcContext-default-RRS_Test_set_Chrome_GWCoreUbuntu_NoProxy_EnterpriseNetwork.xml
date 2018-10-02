@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:07:12.454" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/epcContext.robot" id="s1" name="epcContext">
+<kw type="setup" name="Suite Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:07:13.201" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:13.202" starttime="20180822 00:07:12.740"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:13.203" starttime="20180822 00:07:13.202"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:13.203" starttime="20180822 00:07:12.740"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:07:13.206" starttime="20180822 00:07:13.203"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:07:13.258" starttime="20180822 00:07:13.206"></status>
+</kw>
+<kw name="Empty DB" library="fac">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:07:13.262" starttime="20180822 00:07:13.259"></status>
+</kw>
+<kw name="Init" library="fac">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:07:13.546" starttime="20180822 00:07:13.263"></status>
+</kw>
+<kw name="Test POST" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>names=Fac1</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:13.550" starttime="20180822 00:07:13.546"></status>
+</kw>
+<kw name="Test GET" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expected_count=1</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:13.584" starttime="20180822 00:07:13.550"></status>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=epoch</arg>
+</arguments>
+<assign>
+<var>${starttime}</var>
+</assign>
+<msg timestamp="20180822 00:07:13.585" level="INFO">${starttime} = 1534921633.59</msg>
+<status status="PASS" endtime="20180822 00:07:13.585" starttime="20180822 00:07:13.585"></status>
+</kw>
+<kw name="Create Event">
+<arguments>
+<arg>event=random</arg>
+<arg>time=${starttime}</arg>
+<arg>start_tags=${startTag}</arg>
+<arg>num_tags=${tags_to_send}</arg>
+<arg>location=room0,room1,room2,room3</arg>
+<arg>facility=Fac1</arg>
+</arguments>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:13.660" starttime="20180822 00:07:13.588"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:07:15.672" starttime="20180822 00:07:13.660"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:15.673" starttime="20180822 00:07:13.586"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${starttime}</arg>
+<arg>${starttime}</arg>
+</arguments>
+<msg timestamp="20180822 00:07:15.674" level="INFO">${starttime} = 1534921633.59</msg>
+<status status="PASS" endtime="20180822 00:07:15.674" starttime="20180822 00:07:15.673"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:15.674" starttime="20180822 00:07:12.740"></status>
+</kw>
+<test id="s1-t1" name="Changing epcContext to Max">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc_context=rand,${max}</arg>
+<arg>epc=${startTag}</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:07:15.677" level="INFO">&amp;{params} = { facility_id=Fac1 | epc_context=rand,4096 | epc=303402662C3A5F904C000000 }</msg>
+<status status="PASS" endtime="20180822 00:07:15.677" starttime="20180822 00:07:15.676"></status>
+</kw>
+<kw name="Put Epc Context" library="Tags">
+<doc>PUT method for /inventory/update/epccontext</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:07:15.765" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:15.765" starttime="20180822 00:07:15.677"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to PUT epc_context</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:15.766" starttime="20180822 00:07:15.766"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>Max</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:07:15.766" critical="yes" starttime="20180822 00:07:15.674"></status>
+</test>
+<test id="s1-t2" name="Changing epcContext to Max+1">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc_context=rand,${max+1}</arg>
+<arg>epc=${startTag}</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:07:15.769" level="INFO">&amp;{params} = { facility_id=Fac1 | epc_context=rand,4097 | epc=303402662C3A5F904C000000 }</msg>
+<status status="PASS" endtime="20180822 00:07:15.769" starttime="20180822 00:07:15.768"></status>
+</kw>
+<kw name="Put Epc Context" library="Tags">
+<doc>PUT method for /inventory/update/epccontext</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:07:15.856" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:15.856" starttime="20180822 00:07:15.769"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to PUT epc_context</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:15.857" starttime="20180822 00:07:15.856"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>test2</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:07:15.857" critical="yes" starttime="20180822 00:07:15.767"></status>
+</test>
+<test id="s1-t3" name="Deleting epcContext">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc_context=rand,${max+1}</arg>
+<arg>epc=${startTag}</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:07:15.860" level="INFO">&amp;{params} = { facility_id=Fac1 | epc_context=rand,4097 | epc=303402662C3A5F904C000000 }</msg>
+<status status="PASS" endtime="20180822 00:07:15.860" starttime="20180822 00:07:15.858"></status>
+</kw>
+<kw name="Put Epc Context" library="Tags">
+<doc>PUT method for /inventory/update/epccontext</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:07:15.946" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:15.946" starttime="20180822 00:07:15.860"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to PUT epc_context</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:15.947" starttime="20180822 00:07:15.946"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc=${startTag}</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:07:15.948" level="INFO">&amp;{params} = { facility_id=Fac1 | epc=303402662C3A5F904C000000 }</msg>
+<status status="PASS" endtime="20180822 00:07:15.948" starttime="20180822 00:07:15.947"></status>
+</kw>
+<kw name="Delete Epc Context" library="Tags">
+<doc>DELETE method for /inventory/update/epccontext</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.035" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:16.035" starttime="20180822 00:07:15.949"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to PUT epc_context</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:16.035" starttime="20180822 00:07:16.035"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>delete</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:07:16.035" critical="yes" starttime="20180822 00:07:15.857"></status>
+</test>
+<test id="s1-t4" name="Negative Empty epcContext">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc=${startTag}</arg>
+<arg>epc_context=</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.037" level="INFO">&amp;{params} = { facility_id=Fac1 | epc=303402662C3A5F904C000000 | epc_context= }</msg>
+<status status="PASS" endtime="20180822 00:07:16.038" starttime="20180822 00:07:16.037"></status>
+</kw>
+<kw name="Put Epc Context" library="Tags">
+<doc>PUT method for /inventory/update/epccontext</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${200}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.107" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:16.107" starttime="20180822 00:07:16.038"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to PUT epc_context</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:16.108" starttime="20180822 00:07:16.107"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:07:16.108" critical="yes" starttime="20180822 00:07:16.036"></status>
+</test>
+<test id="s1-t5" name="Negative Missing epcContext">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc=${startTag}</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.110" level="INFO">&amp;{params} = { facility_id=Fac1 | epc=303402662C3A5F904C000000 }</msg>
+<status status="PASS" endtime="20180822 00:07:16.110" starttime="20180822 00:07:16.109"></status>
+</kw>
+<kw name="Put Epc Context" library="Tags">
+<doc>PUT method for /inventory/update/epccontext</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.116" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:16.116" starttime="20180822 00:07:16.111"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to PUT epc_context</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:16.116" starttime="20180822 00:07:16.116"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:07:16.117" critical="yes" starttime="20180822 00:07:16.108"></status>
+</test>
+<test id="s1-t6" name="Negative Missing facility_id">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>epc=${startTag}</arg>
+<arg>epc_context=rand,32</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.118" level="INFO">&amp;{params} = { epc=303402662C3A5F904C000000 | epc_context=rand,32 }</msg>
+<status status="PASS" endtime="20180822 00:07:16.118" starttime="20180822 00:07:16.117"></status>
+</kw>
+<kw name="Put Epc Context" library="Tags">
+<doc>PUT method for /inventory/update/epccontext</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.123" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:16.123" starttime="20180822 00:07:16.118"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to PUT epc_context</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:16.124" starttime="20180822 00:07:16.123"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:07:16.124" critical="yes" starttime="20180822 00:07:16.117"></status>
+</test>
+<test id="s1-t7" name="Negative Empty facility_id">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=</arg>
+<arg>epc_context=rand,44</arg>
+<arg>epc=${startTag}</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.125" level="INFO">&amp;{params} = { facility_id= | epc_context=rand,44 | epc=303402662C3A5F904C000000 }</msg>
+<status status="PASS" endtime="20180822 00:07:16.125" starttime="20180822 00:07:16.125"></status>
+</kw>
+<kw name="Put Epc Context" library="Tags">
+<doc>PUT method for /inventory/update/epccontext</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${404}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.131" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:16.131" starttime="20180822 00:07:16.126"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to PUT epc_context</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:16.132" starttime="20180822 00:07:16.131"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:07:16.132" critical="yes" starttime="20180822 00:07:16.124"></status>
+</test>
+<test id="s1-t8" name="Negative Changing epcContext for non-exixting facility">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac11</arg>
+<arg>epc_context=rand,4097</arg>
+<arg>epc=${startTag}</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.133" level="INFO">&amp;{params} = { facility_id=Fac11 | epc_context=rand,4097 | epc=303402662C3A5F904C000000 }</msg>
+<status status="PASS" endtime="20180822 00:07:16.133" starttime="20180822 00:07:16.133"></status>
+</kw>
+<kw name="Put Epc Context" library="Tags">
+<doc>PUT method for /inventory/update/epccontext</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${404}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.141" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:16.141" starttime="20180822 00:07:16.133"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to PUT epc_context</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:16.142" starttime="20180822 00:07:16.141"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:07:16.142" critical="yes" starttime="20180822 00:07:16.132"></status>
+</test>
+<test id="s1-t9" name="Negative Missing epc">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc_context=rand,32</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.143" level="INFO">&amp;{params} = { facility_id=Fac1 | epc_context=rand,32 }</msg>
+<status status="PASS" endtime="20180822 00:07:16.143" starttime="20180822 00:07:16.143"></status>
+</kw>
+<kw name="Put Epc Context" library="Tags">
+<doc>PUT method for /inventory/update/epccontext</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.149" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:16.149" starttime="20180822 00:07:16.144"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to PUT epc_context</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:16.149" starttime="20180822 00:07:16.149"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:07:16.149" critical="yes" starttime="20180822 00:07:16.142"></status>
+</test>
+<test id="s1-t10" name="Negative Empty epc">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>facility_id=Fac1</arg>
+<arg>epc_context=rand,32</arg>
+<arg>epc=</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.151" level="INFO">&amp;{params} = { facility_id=Fac1 | epc_context=rand,32 | epc= }</msg>
+<status status="PASS" endtime="20180822 00:07:16.151" starttime="20180822 00:07:16.150"></status>
+</kw>
+<kw name="Put Epc Context" library="Tags">
+<doc>PUT method for /inventory/update/epccontext</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.157" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:16.157" starttime="20180822 00:07:16.151"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to PUT epc_context</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:16.157" starttime="20180822 00:07:16.157"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:07:16.157" critical="yes" starttime="20180822 00:07:16.150"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:07:16.159" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:16.159" starttime="20180822 00:07:16.159"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:16.159" starttime="20180822 00:07:16.159"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:16.159" starttime="20180822 00:07:16.158"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:16.159" starttime="20180822 00:07:12.456"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="10">Critical Tests</stat>
+<stat fail="0" pass="10">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="10">common</stat>
+<stat fail="0" pass="1">delete</stat>
+<stat fail="0" pass="10">dst</stat>
+<stat fail="0" pass="1">Max</stat>
+<stat fail="0" pass="7">negative</stat>
+<stat fail="0" pass="1">test2</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="epcContext" pass="10">epcContext</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

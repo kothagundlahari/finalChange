@@ -1,0 +1,1241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:30:23.639" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L3_DATA_API/skumapping_odata.robot" id="s1" name="Skumapping Odata">
+<kw type="setup" name="Setup and Populate">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:30:24.323" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:24.323" starttime="20180822 00:30:23.903"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:24.324" starttime="20180822 00:30:24.323"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:24.324" starttime="20180822 00:30:23.903"></status>
+</kw>
+<kw name="Set Logger" library="SkuMapping">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:30:24.325" starttime="20180822 00:30:24.324"></status>
+</kw>
+<kw name="Load D Bfrom File" library="SkuMapping">
+<doc>This method will populate the internal test DB if needed</doc>
+<arguments>
+<arg>${json_file}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:24.390" starttime="20180822 00:30:24.325"></status>
+</kw>
+<kw name="Empty DB" library="SkuMapping">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:30:24.430" starttime="20180822 00:30:24.391"></status>
+</kw>
+<kw name="Test POST" library="SkuMapping">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${PopulateSize}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${PopulateSize}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:24.603" starttime="20180822 00:30:24.430"></status>
+</kw>
+<kw name="Test GET" library="SkuMapping">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expectedCount=${PopulateSize}</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:24.717" starttime="20180822 00:30:24.603"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:24.717" starttime="20180822 00:30:23.902"></status>
+</kw>
+<test id="s1-t1" name="2024 Functionality-$skip with value 1-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$skip=1</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:24.718" level="INFO">&amp;{query} = { $skip=1 }</msg>
+<status status="PASS" endtime="20180822 00:30:24.719" starttime="20180822 00:30:24.718"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:24.890" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:24.890" starttime="20180822 00:30:24.719"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Functionality</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:24.891" starttime="20180822 00:30:24.890"></status>
+</kw>
+<tags>
+<tag>2024</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+<tag>skip</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:24.891" critical="yes" starttime="20180822 00:30:24.717"></status>
+</test>
+<test id="s1-t2" name="2025A Functionality-$top with values between 1 and $count of skuMapping-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$top=1</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:24.892" level="INFO">&amp;{query} = { $top=1 }</msg>
+<status status="PASS" endtime="20180822 00:30:24.892" starttime="20180822 00:30:24.892"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:24.983" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:24.983" starttime="20180822 00:30:24.892"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Functionality</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:24.983" starttime="20180822 00:30:24.983"></status>
+</kw>
+<tags>
+<tag>2025</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+<tag>top</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:24.984" critical="yes" starttime="20180822 00:30:24.891"></status>
+</test>
+<test id="s1-t3" name="2025B Functionality-$top with values between 1 and $count of skuMapping-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$top=${PopulateSize}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:24.985" level="INFO">&amp;{query} = { $top=100 }</msg>
+<status status="PASS" endtime="20180822 00:30:24.985" starttime="20180822 00:30:24.985"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:25.197" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:25.197" starttime="20180822 00:30:24.986"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Functionality</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:25.198" starttime="20180822 00:30:25.198"></status>
+</kw>
+<tags>
+<tag>2025</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+<tag>top</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:25.198" critical="yes" starttime="20180822 00:30:24.984"></status>
+</test>
+<test id="s1-t4" name="2026 Functionality-$count-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$count=${TRUE}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:25.200" level="INFO">&amp;{query} = { $count=True }</msg>
+<status status="PASS" endtime="20180822 00:30:25.200" starttime="20180822 00:30:25.199"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:25.268" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:25.268" starttime="20180822 00:30:25.200"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:25.268" starttime="20180822 00:30:25.268"></status>
+</kw>
+<tags>
+<tag>2026</tag>
+<tag>common</tag>
+<tag>count</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:25.269" critical="yes" starttime="20180822 00:30:25.198"></status>
+</test>
+<test id="s1-t5" name="2027 Functionality-$orderby one item-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$orderby=${Field1}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:25.270" level="INFO">&amp;{query} = { $orderby=sku }</msg>
+<status status="PASS" endtime="20180822 00:30:25.270" starttime="20180822 00:30:25.270"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:25.459" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:25.459" starttime="20180822 00:30:25.271"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:25.460" starttime="20180822 00:30:25.460"></status>
+</kw>
+<tags>
+<tag>2027</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+<tag>orderby</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:25.460" critical="yes" starttime="20180822 00:30:25.269"></status>
+</test>
+<test id="s1-t6" name="2028 Functionality-$orderby one item with asc-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$orderby=${Field1} asc</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:25.461" level="INFO">&amp;{query} = { $orderby=sku asc }</msg>
+<status status="PASS" endtime="20180822 00:30:25.462" starttime="20180822 00:30:25.461"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:25.655" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:25.655" starttime="20180822 00:30:25.462"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:25.655" starttime="20180822 00:30:25.655"></status>
+</kw>
+<tags>
+<tag>2028</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+<tag>orderby</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:25.656" critical="yes" starttime="20180822 00:30:25.460"></status>
+</test>
+<test id="s1-t7" name="2029 Functionality-$orderby one item with desc-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$orderby=${Field2} desc</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:25.657" level="INFO">&amp;{query} = { $orderby=upcList.upc desc }</msg>
+<status status="PASS" endtime="20180822 00:30:25.657" starttime="20180822 00:30:25.656"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:25.872" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:25.872" starttime="20180822 00:30:25.657"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:25.872" starttime="20180822 00:30:25.872"></status>
+</kw>
+<tags>
+<tag>2029</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+<tag>orderby</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:25.872" critical="yes" starttime="20180822 00:30:25.656"></status>
+</test>
+<test id="s1-t8" name="2031 Functionality-$select= with one item-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$select=${index}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:25.874" level="INFO">&amp;{query} = { $select=sku }</msg>
+<status status="PASS" endtime="20180822 00:30:25.874" starttime="20180822 00:30:25.873"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:25.954" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:25.954" starttime="20180822 00:30:25.874"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:25.954" starttime="20180822 00:30:25.954"></status>
+</kw>
+<tags>
+<tag>2031</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+<tag>select</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:25.955" critical="yes" starttime="20180822 00:30:25.873"></status>
+</test>
+<test id="s1-t9" name="2032 Functionality-$select= two items-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$select=${index},${Field1}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:25.957" level="INFO">&amp;{query} = { $select=sku,sku }</msg>
+<status status="PASS" endtime="20180822 00:30:25.957" starttime="20180822 00:30:25.956"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.035" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:26.035" starttime="20180822 00:30:25.957"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:26.035" starttime="20180822 00:30:26.035"></status>
+</kw>
+<tags>
+<tag>2032</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+<tag>select</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:26.036" critical="yes" starttime="20180822 00:30:25.955"></status>
+</test>
+<test id="s1-t10" name="2033 Functionality-$filter(&lt;each column&gt; eq &lt;valid&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${eqfilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.038" level="INFO">&amp;{query} = { $filter=name eq 'skuname_1' }</msg>
+<status status="PASS" endtime="20180822 00:30:26.038" starttime="20180822 00:30:26.037"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.114" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:26.114" starttime="20180822 00:30:26.038"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:26.114" starttime="20180822 00:30:26.114"></status>
+</kw>
+<tags>
+<tag>2033</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:26.114" critical="yes" starttime="20180822 00:30:26.036"></status>
+</test>
+<test id="s1-t11" name="2034 Functionality-$filter(&lt;each column&gt; ne &lt;valid&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${nefilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.116" level="INFO">&amp;{query} = { $filter=name ne 'skuname_2' }</msg>
+<status status="PASS" endtime="20180822 00:30:26.116" starttime="20180822 00:30:26.115"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.313" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:26.313" starttime="20180822 00:30:26.116"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:26.313" starttime="20180822 00:30:26.313"></status>
+</kw>
+<tags>
+<tag>2034</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:26.313" critical="yes" starttime="20180822 00:30:26.115"></status>
+</test>
+<test id="s1-t12" name="2035 Functionality-$filter(&lt;each column&gt; gt &lt;valid&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${gtfilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.315" level="INFO">&amp;{query} = { $filter=name gt 'a' }</msg>
+<status status="PASS" endtime="20180822 00:30:26.315" starttime="20180822 00:30:26.314"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.391" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:26.391" starttime="20180822 00:30:26.315"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:26.391" starttime="20180822 00:30:26.391"></status>
+</kw>
+<tags>
+<tag>2035</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:26.392" critical="yes" starttime="20180822 00:30:26.314"></status>
+</test>
+<test id="s1-t13" name="2036 Functionality-$filter(&lt;each column&gt; lt &lt;valid&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${ltfilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.393" level="INFO">&amp;{query} = { $filter=description lt 'z' }</msg>
+<status status="PASS" endtime="20180822 00:30:26.393" starttime="20180822 00:30:26.393"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+<arg>expected_empty=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.477" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:26.477" starttime="20180822 00:30:26.393"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:26.478" starttime="20180822 00:30:26.477"></status>
+</kw>
+<tags>
+<tag>2036</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:26.478" critical="yes" starttime="20180822 00:30:26.392"></status>
+</test>
+<test id="s1-t14" name="2037 Functionality-$filter(&lt;each column&gt; startswith &lt;valid&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${startswithfilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.480" level="INFO">&amp;{query} = { $filter=startswith(name, 'skuname') }</msg>
+<status status="PASS" endtime="20180822 00:30:26.480" starttime="20180822 00:30:26.479"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.558" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:26.558" starttime="20180822 00:30:26.480"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:26.558" starttime="20180822 00:30:26.558"></status>
+</kw>
+<tags>
+<tag>2037</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:26.558" critical="yes" starttime="20180822 00:30:26.478"></status>
+</test>
+<test id="s1-t15" name="2038 Functionality-$filter(&lt;each column&gt; endswith &lt;valid&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${endswithfilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.560" level="INFO">&amp;{query} = { $filter=endswith(name, '1') }</msg>
+<status status="PASS" endtime="20180822 00:30:26.560" starttime="20180822 00:30:26.559"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.621" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:26.622" starttime="20180822 00:30:26.560"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:26.622" starttime="20180822 00:30:26.622"></status>
+</kw>
+<tags>
+<tag>2038</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:26.622" critical="yes" starttime="20180822 00:30:26.558"></status>
+</test>
+<test id="s1-t16" name="2039 Functionality-$filter(&lt;each column&gt; contains &lt;valid&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${containsfilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.624" level="INFO">&amp;{query} = { $filter=contains(description, 'a') }</msg>
+<status status="PASS" endtime="20180822 00:30:26.624" starttime="20180822 00:30:26.623"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.685" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:26.685" starttime="20180822 00:30:26.624"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:26.685" starttime="20180822 00:30:26.685"></status>
+</kw>
+<tags>
+<tag>2039</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:26.686" critical="yes" starttime="20180822 00:30:26.622"></status>
+</test>
+<test id="s1-t17" name="2041 Functionality-$filter(&lt;each column&gt; and &lt;each column&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${nefilter} and ${ltfilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.687" level="INFO">&amp;{query} = { $filter=name ne 'skuname_2' and description lt 'z' }</msg>
+<status status="PASS" endtime="20180822 00:30:26.687" starttime="20180822 00:30:26.687"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+<arg>expected_empty=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.759" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:26.759" starttime="20180822 00:30:26.687"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:26.759" starttime="20180822 00:30:26.759"></status>
+</kw>
+<tags>
+<tag>2041</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:26.759" critical="yes" starttime="20180822 00:30:26.686"></status>
+</test>
+<test id="s1-t18" name="2042 Functionality-$filter(&lt;invalid column&gt; and &lt;each column&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${invalidfilter1} and ${gtfilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.761" level="INFO">&amp;{query} = { $filter=name1 eq 'comment_number_0' and name gt 'a' }</msg>
+<status status="PASS" endtime="20180822 00:30:26.761" starttime="20180822 00:30:26.760"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+<arg>expected_empty=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.823" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:26.824" starttime="20180822 00:30:26.761"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:26.824" starttime="20180822 00:30:26.824"></status>
+</kw>
+<tags>
+<tag>2042</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:26.824" critical="yes" starttime="20180822 00:30:26.760"></status>
+</test>
+<test id="s1-t19" name="2043 Functionality-$filter(&lt;each column&gt; and &lt;invalid column&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${eqfilter} and ${invalidfilter1}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.826" level="INFO">&amp;{query} = { $filter=name eq 'skuname_1' and name1 eq 'comment_number_0' }</msg>
+<status status="PASS" endtime="20180822 00:30:26.826" starttime="20180822 00:30:26.825"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+<arg>expected_empty=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.884" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:26.884" starttime="20180822 00:30:26.826"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:26.885" starttime="20180822 00:30:26.884"></status>
+</kw>
+<tags>
+<tag>2043</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:26.885" critical="yes" starttime="20180822 00:30:26.824"></status>
+</test>
+<test id="s1-t20" name="2044 Functionality-$filter(&lt;invalid column&gt; and &lt;invalid column&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${invalidfilter1} and ${invalidfilter2}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.886" level="INFO">&amp;{query} = { $filter=name1 eq 'comment_number_0' and description2 ne 'focus' }</msg>
+<status status="PASS" endtime="20180822 00:30:26.886" starttime="20180822 00:30:26.885"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+<arg>expected_empty=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.959" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:26.959" starttime="20180822 00:30:26.886"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:26.960" starttime="20180822 00:30:26.959"></status>
+</kw>
+<tags>
+<tag>2044</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:26.960" critical="yes" starttime="20180822 00:30:26.885"></status>
+</test>
+<test id="s1-t21" name="2045 Functionality-$filter(&lt;each column&gt; or &lt;each column&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${ltfilter} or ${gtfilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:26.961" level="INFO">&amp;{query} = { $filter=description lt 'z' or name gt 'a' }</msg>
+<status status="PASS" endtime="20180822 00:30:26.961" starttime="20180822 00:30:26.961"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.025" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:27.025" starttime="20180822 00:30:26.962"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:27.026" starttime="20180822 00:30:27.025"></status>
+</kw>
+<tags>
+<tag>2045</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:27.026" critical="yes" starttime="20180822 00:30:26.960"></status>
+</test>
+<test id="s1-t22" name="2046 Functionality-$filter(&lt;invalid column&gt; or &lt;each column&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${invalidfilter1} or ${containsfilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.027" level="INFO">&amp;{query} = { $filter=name1 eq 'comment_number_0' or contains(description, 'a') }</msg>
+<status status="PASS" endtime="20180822 00:30:27.027" starttime="20180822 00:30:27.027"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.108" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:27.108" starttime="20180822 00:30:27.028"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:27.108" starttime="20180822 00:30:27.108"></status>
+</kw>
+<tags>
+<tag>2046</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:27.108" critical="yes" starttime="20180822 00:30:27.026"></status>
+</test>
+<test id="s1-t23" name="2047 Functionality-$filter(&lt;each column&gt; or &lt;invalid column&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${startswithfilter} or ${invalidfilter2}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.110" level="INFO">&amp;{query} = { $filter=startswith(name, 'skuname') or description2 ne 'focus' }</msg>
+<status status="PASS" endtime="20180822 00:30:27.110" starttime="20180822 00:30:27.109"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.297" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:27.297" starttime="20180822 00:30:27.110"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:27.297" starttime="20180822 00:30:27.297"></status>
+</kw>
+<tags>
+<tag>2047</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:27.297" critical="yes" starttime="20180822 00:30:27.109"></status>
+</test>
+<test id="s1-t24" name="2048 Functionality-$filter(&lt;invalid column&gt; or &lt;invalid column&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${invalidfilter1} or ${invalidfilter2}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.299" level="INFO">&amp;{query} = { $filter=name1 eq 'comment_number_0' or description2 ne 'focus' }</msg>
+<status status="PASS" endtime="20180822 00:30:27.299" starttime="20180822 00:30:27.298"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.484" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:27.484" starttime="20180822 00:30:27.299"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:27.485" starttime="20180822 00:30:27.485"></status>
+</kw>
+<tags>
+<tag>2048</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:27.485" critical="yes" starttime="20180822 00:30:27.298"></status>
+</test>
+<test id="s1-t25" name="2049 Functionality-$filter(&lt;each column&gt; or &lt;each column&gt; and &lt;each column&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${startswithfilter} or ${containsfilter} and ${nefilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.487" level="INFO">&amp;{query} = { $filter=startswith(name, 'skuname') or contains(description, 'a') and name ne 'skuname_2' }</msg>
+<status status="PASS" endtime="20180822 00:30:27.487" starttime="20180822 00:30:27.486"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.562" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:27.563" starttime="20180822 00:30:27.487"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:27.563" starttime="20180822 00:30:27.563"></status>
+</kw>
+<tags>
+<tag>2049</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:27.563" critical="yes" starttime="20180822 00:30:27.485"></status>
+</test>
+<test id="s1-t26" name="2050 Functionality-$filter(&lt;invalid column&gt; or &lt;each column&gt; and &lt;invalid column&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${invalidfilter1} or ${containsfilter} and ${nefilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.565" level="INFO">&amp;{query} = { $filter=name1 eq 'comment_number_0' or contains(description, 'a') and name ne 'skuname_2' }</msg>
+<status status="PASS" endtime="20180822 00:30:27.565" starttime="20180822 00:30:27.564"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.638" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:27.638" starttime="20180822 00:30:27.565"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:27.638" starttime="20180822 00:30:27.638"></status>
+</kw>
+<tags>
+<tag>2050</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:27.638" critical="yes" starttime="20180822 00:30:27.563"></status>
+</test>
+<test id="s1-t27" name="2051 Functionality-$filter(&lt;invalid column&gt; or &lt;invalid column&gt; and &lt;invalid column&gt;)-No other microservice running">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>$filter=${invalidfilter1} or ${invalidfilter2} and ${nefilter}</arg>
+</arguments>
+<assign>
+<var>&amp;{query}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.640" level="INFO">&amp;{query} = { $filter=name1 eq 'comment_number_0' or description2 ne 'focus' and name ne 'skuname_2' }</msg>
+<status status="PASS" endtime="20180822 00:30:27.640" starttime="20180822 00:30:27.639"></status>
+</kw>
+<kw name="Validate Results" library="SkuMapping">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+<arg>odata=&amp;{query}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.836" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:27.836" starttime="20180822 00:30:27.640"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Count</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:27.836" starttime="20180822 00:30:27.836"></status>
+</kw>
+<tags>
+<tag>2051</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>filter</tag>
+<tag>functionality</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:27.837" critical="yes" starttime="20180822 00:30:27.639"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:30:27.838" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:27.838" starttime="20180822 00:30:27.838"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:27.839" starttime="20180822 00:30:27.838"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:27.839" starttime="20180822 00:30:27.838"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:27.839" starttime="20180822 00:30:23.640"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="27">Critical Tests</stat>
+<stat fail="0" pass="27">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">2024</stat>
+<stat fail="0" pass="2">2025</stat>
+<stat fail="0" pass="1">2026</stat>
+<stat fail="0" pass="1">2027</stat>
+<stat fail="0" pass="1">2028</stat>
+<stat fail="0" pass="1">2029</stat>
+<stat fail="0" pass="1">2031</stat>
+<stat fail="0" pass="1">2032</stat>
+<stat fail="0" pass="1">2033</stat>
+<stat fail="0" pass="1">2034</stat>
+<stat fail="0" pass="1">2035</stat>
+<stat fail="0" pass="1">2036</stat>
+<stat fail="0" pass="1">2037</stat>
+<stat fail="0" pass="1">2038</stat>
+<stat fail="0" pass="1">2039</stat>
+<stat fail="0" pass="1">2041</stat>
+<stat fail="0" pass="1">2042</stat>
+<stat fail="0" pass="1">2043</stat>
+<stat fail="0" pass="1">2044</stat>
+<stat fail="0" pass="1">2045</stat>
+<stat fail="0" pass="1">2046</stat>
+<stat fail="0" pass="1">2047</stat>
+<stat fail="0" pass="1">2048</stat>
+<stat fail="0" pass="1">2049</stat>
+<stat fail="0" pass="1">2050</stat>
+<stat fail="0" pass="1">2051</stat>
+<stat fail="0" pass="27">common</stat>
+<stat fail="0" pass="1">count</stat>
+<stat fail="0" pass="27">dst</stat>
+<stat fail="0" pass="16">filter</stat>
+<stat fail="0" pass="27">functionality</stat>
+<stat fail="0" pass="3">orderby</stat>
+<stat fail="0" pass="2">select</stat>
+<stat fail="0" pass="1">skip</stat>
+<stat fail="0" pass="2">top</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Skumapping Odata" pass="27">Skumapping Odata</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:30:03.307" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L3_DATA_API/rules_noAuth.robot" id="s1" name="rules noAuth">
+<kw type="setup" name="Suite Setup and PopulateDB">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:30:04.022" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:04.022" starttime="20180822 00:30:03.579"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:04.023" starttime="20180822 00:30:04.022"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:04.023" starttime="20180822 00:30:03.578"></status>
+</kw>
+<kw name="Set Logger" library="Rule">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:30:04.024" starttime="20180822 00:30:04.023"></status>
+</kw>
+<kw name="Load D Bfrom File" library="Rule">
+<doc>This method will populate the internal test DB if needed</doc>
+<arguments>
+<arg>${json_file}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:04.090" starttime="20180822 00:30:04.024"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:30:04.093" starttime="20180822 00:30:04.090"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:04.093" starttime="20180822 00:30:03.578"></status>
+</kw>
+<test id="s1-t1" name="Test Rules GET return no AUTH">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:04.105" starttime="20180822 00:30:04.095"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<assign>
+<var>&amp;{dict}</var>
+</assign>
+<msg timestamp="20180822 00:30:04.106" level="INFO">&amp;{dict} = { size=1 | start=0 | mappings_per_payload=1 }</msg>
+<status status="PASS" endtime="20180822 00:30:04.106" starttime="20180822 00:30:04.105"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:04.117" starttime="20180822 00:30:04.106"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:04.131" starttime="20180822 00:30:04.117"></status>
+</kw>
+<kw name="Validate Results" library="Rule">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:04.137" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:04.137" starttime="20180822 00:30:04.132"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed ${1} Rule</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:04.138" starttime="20180822 00:30:04.137"></status>
+</kw>
+<tags>
+<tag>1312</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:04.138" critical="yes" starttime="20180822 00:30:04.094"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:30:04.140" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:04.140" starttime="20180822 00:30:04.140"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:04.141" starttime="20180822 00:30:04.141"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:04.141" starttime="20180822 00:30:04.139"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:04.141" starttime="20180822 00:30:03.309"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">1312</stat>
+<stat fail="0" pass="1">common</stat>
+<stat fail="0" pass="1">dst</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="rules noAuth" pass="1">rules noAuth</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:07:16.413" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/Facilities.robot" id="s1" name="Facilities">
+<kw type="setup" name="Suite Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:07:17.130" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:17.130" starttime="20180822 00:07:16.678"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:17.131" starttime="20180822 00:07:17.131"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:17.131" starttime="20180822 00:07:16.678"></status>
+</kw>
+<kw name="Init" library="fac">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:07:17.465" starttime="20180822 00:07:17.132"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:17.465" starttime="20180822 00:07:16.678"></status>
+</kw>
+<test id="s1-t1" name="Create generic Facilities">
+<kw type="setup" name="TC Init">
+<kw name="Empty DB" library="fac">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:07:17.470" starttime="20180822 00:07:17.467"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:17.470" starttime="20180822 00:07:17.466"></status>
+</kw>
+<kw name="Test POST" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>preFix=wmcrrp</arg>
+<arg>size=${10}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:17.490" starttime="20180822 00:07:17.471"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>generic</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:07:17.490" critical="yes" starttime="20180822 00:07:17.465"></status>
+</test>
+<test id="s1-t2" name="Create Specific Facilities">
+<kw type="setup" name="TC Init">
+<kw name="Empty DB" library="fac">
+<doc>This kw will empty the DB on RRP host</doc>
+<status status="PASS" endtime="20180822 00:07:17.496" starttime="20180822 00:07:17.492"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:17.496" starttime="20180822 00:07:17.491"></status>
+</kw>
+<kw name="Test POST" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>names=weeminchan,somethingelse,toowonffoo</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:17.503" starttime="20180822 00:07:17.496"></status>
+</kw>
+<tags>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:07:17.503" critical="yes" starttime="20180822 00:07:17.490"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:07:17.504" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:17.504" starttime="20180822 00:07:17.504"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:17.504" starttime="20180822 00:07:17.504"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:17.505" starttime="20180822 00:07:17.503"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:17.505" starttime="20180822 00:07:16.415"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="2">common</stat>
+<stat fail="0" pass="1">generic</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Facilities" pass="2">Facilities</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

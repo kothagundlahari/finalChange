@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:28:34.785" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L3_DATA_API/itemFinder.robot" id="s1" name="itemFinder">
+<kw type="setup" name="Suite Setup and PopulateDB">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:28:36.012" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:28:36.013" starttime="20180822 00:28:35.041"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:28:36.014" starttime="20180822 00:28:36.013"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:28:36.014" starttime="20180822 00:28:35.041"></status>
+</kw>
+<kw name="Import Library" library="BuiltIn">
+<doc>Imports a library with the given name and optional arguments.</doc>
+<arguments>
+<arg>${iTAF_DIR}/testCaseApps/HandHeld/itemFinder.py</arg>
+<arg>postfix=${SNAME}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:28:36.033" starttime="20180822 00:28:36.014"></status>
+</kw>
+<kw name="Import Library" library="BuiltIn">
+<doc>Imports a library with the given name and optional arguments.</doc>
+<arguments>
+<arg>${iTAF_DIR}/testCaseApps/SkuMapping/productData.py</arg>
+<arg>postfix=${SNAME}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:28:36.244" starttime="20180822 00:28:36.034"></status>
+</kw>
+<kw name="Import Library" library="BuiltIn">
+<doc>Imports a library with the given name and optional arguments.</doc>
+<arguments>
+<arg>${ITAF_DIR}/testCaseApps/Inventory/Facilities.py</arg>
+<arg>postfix=${SNAME}</arg>
+<arg>WITH NAME</arg>
+<arg>fac</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:28:36.250" starttime="20180822 00:28:36.244"></status>
+</kw>
+<kw name="Init" library="fac">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:28:36.574" starttime="20180822 00:28:36.250"></status>
+</kw>
+<kw name="Test POST" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>names=FAC1,FAC2,FAC3,FAC4,FAC5</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:28:36.590" starttime="20180822 00:28:36.574"></status>
+</kw>
+<kw name="Test GET" library="fac">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>expected_count=2</arg>
+<arg>maybeEmpty=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:28:36.619" starttime="20180822 00:28:36.590"></status>
+</kw>
+<kw name="Init" library="itemFinder">
+<msg timestamp="20180822 00:28:46.624" level="FAIL">IOError</msg>
+<status status="FAIL" endtime="20180822 00:28:46.625" starttime="20180822 00:28:36.620"></status>
+</kw>
+<status status="FAIL" endtime="20180822 00:28:46.625" starttime="20180822 00:28:35.041"></status>
+</kw>
+<test id="s1-t1" name="Functionality-Golang - Send existing UPC to broker, verify item_list is populated with epc, location and confidence-while required microservices are running">
+<tags>
+<tag>2969</tag>
+<tag>2970</tag>
+<tag>2971</tag>
+<tag>2972</tag>
+<tag>2973</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="FAIL" endtime="20180822 00:28:46.627" critical="yes" starttime="20180822 00:28:46.625">Parent suite setup failed:
+IOError</status>
+</test>
+<kw type="teardown" name="Teardown and Close WS">
+<kw name="Close" library="itemFinder">
+<status status="PASS" endtime="20180822 00:28:46.629" starttime="20180822 00:28:46.628"></status>
+</kw>
+<kw name="Close" library="productData">
+<doc>Close connection to broker must be called at end</doc>
+<status status="PASS" endtime="20180822 00:28:46.635" starttime="20180822 00:28:46.629"></status>
+</kw>
+<kw name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:28:46.637" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:28:46.637" starttime="20180822 00:28:46.636"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:28:46.638" starttime="20180822 00:28:46.637"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:28:46.638" starttime="20180822 00:28:46.636"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:28:46.638" starttime="20180822 00:28:46.628"></status>
+</kw>
+<status status="FAIL" endtime="20180822 00:28:46.639" starttime="20180822 00:28:34.786">Suite setup failed:
+IOError</status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+<stat fail="1" pass="0">2969</stat>
+<stat fail="1" pass="0">2970</stat>
+<stat fail="1" pass="0">2971</stat>
+<stat fail="1" pass="0">2972</stat>
+<stat fail="1" pass="0">2973</stat>
+<stat fail="1" pass="0">common</stat>
+<stat fail="1" pass="0">dst</stat>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="itemFinder" pass="0">itemFinder</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

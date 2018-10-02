@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:07:48.876" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/HandHeld_override.robot" id="s1" name="HandHeld override">
+<kw type="setup" name="Setup and Populate">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:07:49.572" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:07:49.573" starttime="20180822 00:07:49.152"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:07:49.574" starttime="20180822 00:07:49.573"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:07:49.574" starttime="20180822 00:07:49.151"></status>
+</kw>
+<kw name="Set Logger" library="Tags">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:07:49.575" starttime="20180822 00:07:49.574"></status>
+</kw>
+<kw name="Init" library="Zebra">
+<msg timestamp="20180822 00:07:59.577" level="FAIL">IOError</msg>
+<status status="FAIL" endtime="20180822 00:07:59.577" starttime="20180822 00:07:49.575"></status>
+</kw>
+<status status="FAIL" endtime="20180822 00:07:59.578" starttime="20180822 00:07:49.151"></status>
+</kw>
+<test id="s1-t1" name="TC656 - Test Override using with Timestamp less than handheld">
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>TC656</tag>
+</tags>
+<status status="FAIL" endtime="20180822 00:07:59.579" critical="yes" starttime="20180822 00:07:59.578">Parent suite setup failed:
+IOError</status>
+</test>
+<kw type="teardown" name="Teardown and close API">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20180822 00:08:00.581" level="INFO">Slept 1 second</msg>
+<status status="PASS" endtime="20180822 00:08:00.581" starttime="20180822 00:07:59.580"></status>
+</kw>
+<kw name="Close" library="Zebra">
+<doc>Close Connection to broker</doc>
+<status status="PASS" endtime="20180822 00:08:00.582" starttime="20180822 00:08:00.582"></status>
+</kw>
+<kw name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:08:00.584" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:08:00.584" starttime="20180822 00:08:00.583"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:08:00.584" starttime="20180822 00:08:00.584"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:08:00.585" starttime="20180822 00:08:00.582"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:08:00.585" starttime="20180822 00:07:59.580"></status>
+</kw>
+<doc>This test suite will test the HandHeld Override</doc>
+<status status="FAIL" endtime="20180822 00:08:00.585" starttime="20180822 00:07:48.877">Suite setup failed:
+IOError</status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+<stat fail="1" pass="0">common</stat>
+<stat fail="1" pass="0">dst</stat>
+<stat fail="1" pass="0">TC656</stat>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="HandHeld override" pass="0">HandHeld override</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

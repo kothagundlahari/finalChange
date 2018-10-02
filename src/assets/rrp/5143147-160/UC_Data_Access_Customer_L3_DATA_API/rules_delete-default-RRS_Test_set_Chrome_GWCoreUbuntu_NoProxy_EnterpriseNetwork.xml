@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:29:57.347" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L3_DATA_API/rules_delete.robot" id="s1" name="Rules Delete">
+<kw type="setup" name="Suite Setup and PopulateDB">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:29:58.046" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:58.046" starttime="20180822 00:29:57.623"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:58.047" starttime="20180822 00:29:58.046"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:58.047" starttime="20180822 00:29:57.623"></status>
+</kw>
+<kw name="Set Logger" library="Rule">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:29:58.048" starttime="20180822 00:29:58.048"></status>
+</kw>
+<kw name="Load D Bfrom File" library="Rule">
+<doc>This method will populate the internal test DB if needed</doc>
+<arguments>
+<arg>${json_file}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:58.298" starttime="20180822 00:29:58.048"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:58.299" starttime="20180822 00:29:57.623"></status>
+</kw>
+<test id="s1-t1" name="Functionality-Delete existing Rule-No other microservice running">
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:29:58.309" starttime="20180822 00:29:58.300"></status>
+</kw>
+<kw name="Test Delete" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${100}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:01.277" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:01.277" starttime="20180822 00:29:58.309"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Delete</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:01.278" starttime="20180822 00:30:01.278"></status>
+</kw>
+<tags>
+<tag>1308</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:01.278" critical="yes" starttime="20180822 00:29:58.299"></status>
+</test>
+<test id="s1-t2" name="Negative-Delete non-existing Rule-No other microservice running">
+<kw name="Test Delete" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>id=asdfasdfaf</arg>
+<arg>expected_response_code=${404}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:01.284" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:01.284" starttime="20180822 00:30:01.280"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Delete</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:01.285" starttime="20180822 00:30:01.285"></status>
+</kw>
+<tags>
+<tag>1309</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:01.285" critical="yes" starttime="20180822 00:30:01.279"></status>
+</test>
+<test id="s1-t3" name="Negative-Delete ruleid of length 0-No other microservice running">
+<kw name="Test Delete" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>id=${empty}</arg>
+<arg>expected_response_code=${404}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:01.290" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:01.290" starttime="20180822 00:30:01.286"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Delete</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:01.291" starttime="20180822 00:30:01.290"></status>
+</kw>
+<tags>
+<tag>1310</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:01.291" critical="yes" starttime="20180822 00:30:01.285"></status>
+</test>
+<test id="s1-t4" name="Negative-Delete ruleid of length &gt; 1024-No other microservice running">
+<kw name="Test Delete" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>id=max,1</arg>
+<arg>expected_response_code=${404}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:01.297" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:01.297" starttime="20180822 00:30:01.291"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Delete</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:01.297" starttime="20180822 00:30:01.297"></status>
+</kw>
+<tags>
+<tag>1311</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:01.297" critical="yes" starttime="20180822 00:30:01.291"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:30:01.299" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:01.299" starttime="20180822 00:30:01.298"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:01.299" starttime="20180822 00:30:01.299"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:01.299" starttime="20180822 00:30:01.298"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:01.299" starttime="20180822 00:29:57.348"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">1308</stat>
+<stat fail="0" pass="1">1309</stat>
+<stat fail="0" pass="1">1310</stat>
+<stat fail="0" pass="1">1311</stat>
+<stat fail="0" pass="4">common</stat>
+<stat fail="0" pass="1">dst</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Rules Delete" pass="4">Rules Delete</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

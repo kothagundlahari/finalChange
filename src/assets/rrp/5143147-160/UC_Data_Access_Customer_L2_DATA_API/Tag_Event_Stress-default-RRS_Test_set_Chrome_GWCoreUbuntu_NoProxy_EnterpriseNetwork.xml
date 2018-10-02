@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:13:55.025" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L2_DATA_API/Tag_Event_Stress.robot" id="s1" name="Tag Event Stress">
+<kw type="setup" name="Suite Init">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:13:55.672" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:13:55.672" starttime="20180822 00:13:55.290"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:13:55.673" starttime="20180822 00:13:55.672"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:55.673" starttime="20180822 00:13:55.289"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:13:55.677" starttime="20180822 00:13:55.673"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:13:55.677" starttime="20180822 00:13:55.288"></status>
+</kw>
+<test id="s1-t1" name="672 Stress Testing-Sense Inventory Flow-GET Tags default-Random_Tag_Arrival-Moved_Event_DifferentTime_Maxpayload">
+<kw name="Acceptance Tag arrival">
+<arguments>
+<arg>random_tags=${TRUE}</arg>
+<arg>facility=a,c,d,e,f,g,h</arg>
+<arg>num_tags=${max_tag}</arg>
+</arguments>
+<kw name="Test Acceptance">
+<arguments>
+<arg>event=arrival</arg>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:13:55.692" starttime="20180822 00:13:55.682"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:17:13.032" starttime="20180822 00:13:55.693"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>60</arg>
+</arguments>
+<msg timestamp="20180822 00:18:13.033" level="INFO">Slept 1 minute</msg>
+<status status="PASS" endtime="20180822 00:18:13.033" starttime="20180822 00:17:13.032"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:18:15.542" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:18:15.542" starttime="20180822 00:18:13.034"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Functionality</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:18:15.542" starttime="20180822 00:18:15.542"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:18:15.543" starttime="20180822 00:13:55.680"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:18:15.543" starttime="20180822 00:13:55.679"></status>
+</kw>
+<tags>
+<tag>672</tag>
+<tag>common</tag>
+<tag>stress</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:18:15.543" critical="yes" starttime="20180822 00:13:55.677"></status>
+</test>
+<test id="s1-t2" name="678 Stress Testing-Sense Inventory Flow-GET Tags default-Random_Tag_Moved-Depart_Event_DifferentTime_MaxPayload_MultiPayload_MixedFacility">
+<kw name="Acceptance Tag moved">
+<arguments>
+<arg>random_tags=${TRUE}</arg>
+<arg>facility=a,c,d,e,f,g,h</arg>
+<arg>num_tags=${max_tag}</arg>
+</arguments>
+<kw name="Test Acceptance">
+<arguments>
+<arg>event=moved</arg>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:18:16.026" starttime="20180822 00:18:15.544"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:21:39.357" starttime="20180822 00:18:16.026"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>60</arg>
+</arguments>
+<msg timestamp="20180822 00:22:39.358" level="INFO">Slept 1 minute</msg>
+<status status="PASS" endtime="20180822 00:22:39.359" starttime="20180822 00:21:39.358"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:22:41.887" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:22:41.887" starttime="20180822 00:22:39.359"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Functionality</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:22:41.888" starttime="20180822 00:22:41.888"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:22:41.888" starttime="20180822 00:18:15.544"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:22:41.888" starttime="20180822 00:18:15.544"></status>
+</kw>
+<tags>
+<tag>678</tag>
+<tag>common</tag>
+<tag>stress</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:22:41.888" critical="yes" starttime="20180822 00:18:15.543"></status>
+</test>
+<test id="s1-t3" name="683 Stress Testing-Sense Inventory Flow-GET Tag with filter params-Random_Tag_Moved-Depart_Event_DifferentTime_MaxPayload_MultiPayload_MixedFacility">
+<kw name="Acceptance Tag departed">
+<arguments>
+<arg>random_tags=${TRUE}</arg>
+<arg>facility=a,c,d,e,f,g,h</arg>
+<arg>num_tags=${max_tag}</arg>
+</arguments>
+<kw name="Test Acceptance">
+<arguments>
+<arg>event=departed</arg>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:22:42.407" starttime="20180822 00:22:41.890"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{kwargs}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:25:55.951" starttime="20180822 00:22:42.408"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>60</arg>
+</arguments>
+<msg timestamp="20180822 00:26:55.952" level="INFO">Slept 1 minute</msg>
+<status status="PASS" endtime="20180822 00:26:55.952" starttime="20180822 00:25:55.951"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useGet=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:26:58.205" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:26:58.205" starttime="20180822 00:26:55.953"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Odata Functionality</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:26:58.206" starttime="20180822 00:26:58.205"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:26:58.206" starttime="20180822 00:22:41.890"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:26:58.206" starttime="20180822 00:22:41.889"></status>
+</kw>
+<tags>
+<tag>683</tag>
+<tag>common</tag>
+<tag>stress</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:26:58.206" critical="yes" starttime="20180822 00:22:41.888"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:26:58.207" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:26:58.207" starttime="20180822 00:26:58.207"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:26:58.208" starttime="20180822 00:26:58.207"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:26:58.208" starttime="20180822 00:26:58.207"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:26:58.208" starttime="20180822 00:13:55.027"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="3">Critical Tests</stat>
+<stat fail="0" pass="3">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">672</stat>
+<stat fail="0" pass="1">678</stat>
+<stat fail="0" pass="1">683</stat>
+<stat fail="0" pass="3">common</stat>
+<stat fail="0" pass="3">stress</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Tag Event Stress" pass="3">Tag Event Stress</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

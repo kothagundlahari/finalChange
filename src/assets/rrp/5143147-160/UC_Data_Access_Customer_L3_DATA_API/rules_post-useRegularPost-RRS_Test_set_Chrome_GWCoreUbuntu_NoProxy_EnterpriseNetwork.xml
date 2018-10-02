@@ -1,0 +1,1327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:30:15.731" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L3_DATA_API/rules_post.robot" id="s1" name="Rules Post">
+<kw type="setup" name="Suite Setup and PopulateDB">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:30:16.438" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:16.438" starttime="20180822 00:30:15.989"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.439" starttime="20180822 00:30:16.439"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:16.439" starttime="20180822 00:30:15.989"></status>
+</kw>
+<kw name="Import Library" library="BuiltIn">
+<doc>Imports a library with the given name and optional arguments.</doc>
+<arguments>
+<arg>${iTAF_DIR}/testCaseApps/Rules/Rule.py</arg>
+<arg>postfix=${SNAME}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.455" starttime="20180822 00:30:16.440"></status>
+</kw>
+<kw name="Import Library" library="BuiltIn">
+<doc>Imports a library with the given name and optional arguments.</doc>
+<arguments>
+<arg>${iTAF_DIR}/testCaseApps/Inventory/integrationTags.py</arg>
+<arg>postfix=${SNAME}</arg>
+<arg>WITH NAME</arg>
+<arg>Tags</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.467" starttime="20180822 00:30:16.455"></status>
+</kw>
+<kw name="Set Logger" library="Rule">
+<doc>Set logger</doc>
+<status status="PASS" endtime="20180822 00:30:16.468" starttime="20180822 00:30:16.467"></status>
+</kw>
+<kw name="Check Service" library="Rule">
+<doc>Function to check if service is available</doc>
+<status status="PASS" endtime="20180822 00:30:16.472" starttime="20180822 00:30:16.468"></status>
+</kw>
+<kw name="Load D Bfrom File" library="Rule">
+<doc>This method will populate the internal test DB if needed</doc>
+<arguments>
+<arg>${json_file}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.476" starttime="20180822 00:30:16.472"></status>
+</kw>
+<kw name="Init" library="Tags">
+<doc>Post init calls</doc>
+<status status="PASS" endtime="20180822 00:30:16.478" starttime="20180822 00:30:16.476"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:16.478" starttime="20180822 00:30:15.989"></status>
+</kw>
+<test id="s1-t1" name="Rule Variable Size Testing">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:16.488" starttime="20180822 00:30:16.479"></status>
+</kw>
+<kw name="Test Rule with size ${1}">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test using ${size}</arg>
+</arguments>
+<msg timestamp="20180822 00:30:16.489" level="INFO">Test using 1</msg>
+<status status="PASS" endtime="20180822 00:30:16.489" starttime="20180822 00:30:16.489"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>size=${size}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<assign>
+<var>&amp;{dict}</var>
+</assign>
+<msg timestamp="20180822 00:30:16.491" level="INFO">&amp;{dict} = { size=1 | start=0 | mappings_per_payload=1 }</msg>
+<status status="PASS" endtime="20180822 00:30:16.491" starttime="20180822 00:30:16.489"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:16.501" starttime="20180822 00:30:16.491"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.517" starttime="20180822 00:30:16.501"></status>
+</kw>
+<kw name="Validate Results" library="Rule">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:16.523" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:16.523" starttime="20180822 00:30:16.517"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed ${size} Rule</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.524" starttime="20180822 00:30:16.523"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:16.524" starttime="20180822 00:30:16.488"></status>
+</kw>
+<kw name="Test Rule with size ${2}">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test using ${size}</arg>
+</arguments>
+<msg timestamp="20180822 00:30:16.525" level="INFO">Test using 2</msg>
+<status status="PASS" endtime="20180822 00:30:16.525" starttime="20180822 00:30:16.525"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>size=${size}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<assign>
+<var>&amp;{dict}</var>
+</assign>
+<msg timestamp="20180822 00:30:16.526" level="INFO">&amp;{dict} = { size=2 | start=0 | mappings_per_payload=1 }</msg>
+<status status="PASS" endtime="20180822 00:30:16.527" starttime="20180822 00:30:16.526"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:16.536" starttime="20180822 00:30:16.527"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.550" starttime="20180822 00:30:16.536"></status>
+</kw>
+<kw name="Validate Results" library="Rule">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:16.555" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:16.555" starttime="20180822 00:30:16.551"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed ${size} Rule</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.556" starttime="20180822 00:30:16.556"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:16.556" starttime="20180822 00:30:16.524"></status>
+</kw>
+<kw name="Test Rule with size ${10}">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test using ${size}</arg>
+</arguments>
+<msg timestamp="20180822 00:30:16.557" level="INFO">Test using 10</msg>
+<status status="PASS" endtime="20180822 00:30:16.557" starttime="20180822 00:30:16.557"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>size=${size}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<assign>
+<var>&amp;{dict}</var>
+</assign>
+<msg timestamp="20180822 00:30:16.559" level="INFO">&amp;{dict} = { size=10 | start=0 | mappings_per_payload=1 }</msg>
+<status status="PASS" endtime="20180822 00:30:16.559" starttime="20180822 00:30:16.558"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:16.568" starttime="20180822 00:30:16.559"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.582" starttime="20180822 00:30:16.569"></status>
+</kw>
+<kw name="Validate Results" library="Rule">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:16.587" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:16.587" starttime="20180822 00:30:16.583"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed ${size} Rule</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.588" starttime="20180822 00:30:16.588"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:16.588" starttime="20180822 00:30:16.556"></status>
+</kw>
+<tags>
+<tag>1312</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:16.589" critical="yes" starttime="20180822 00:30:16.478"></status>
+</test>
+<test id="s1-t2" name="Max Payload">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:16.598" starttime="20180822 00:30:16.590"></status>
+</kw>
+<kw name="Test Rule with size ${10000}">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test using ${size}</arg>
+</arguments>
+<msg timestamp="20180822 00:30:16.599" level="INFO">Test using 10000</msg>
+<status status="PASS" endtime="20180822 00:30:16.599" starttime="20180822 00:30:16.599"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>size=${size}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<assign>
+<var>&amp;{dict}</var>
+</assign>
+<msg timestamp="20180822 00:30:16.600" level="INFO">&amp;{dict} = { size=10000 | start=0 | mappings_per_payload=1 }</msg>
+<status status="PASS" endtime="20180822 00:30:16.600" starttime="20180822 00:30:16.599"></status>
+</kw>
+<kw name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:16.610" starttime="20180822 00:30:16.600"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.623" starttime="20180822 00:30:16.610"></status>
+</kw>
+<kw name="Validate Results" library="Rule">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>&amp;{dict}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:16.628" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:16.628" starttime="20180822 00:30:16.623"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed ${size} Rule</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.629" starttime="20180822 00:30:16.628"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:16.629" starttime="20180822 00:30:16.599"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>max</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:16.629" critical="yes" starttime="20180822 00:30:16.589"></status>
+</test>
+<test id="s1-t3" name="Concurrent_Post">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:16.640" starttime="20180822 00:30:16.630"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1000}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>threadpost=${8}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:16.653" starttime="20180822 00:30:16.640"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20180822 00:30:18.653" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" endtime="20180822 00:30:18.654" starttime="20180822 00:30:16.653"></status>
+</kw>
+<kw name="Validate Results" library="Rule">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>size=${1000}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.660" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.660" starttime="20180822 00:30:18.654"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Rule</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.660" starttime="20180822 00:30:18.660"></status>
+</kw>
+<tags>
+<tag>common</tag>
+<tag>concurrent</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.661" critical="yes" starttime="20180822 00:30:16.630"></status>
+</test>
+<test id="s1-t4" name="Negative-Create Rule with ruleconfigurationid with an invalid length &gt; 1024 -No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.674" starttime="20180822 00:30:18.663"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=ruleconfigurationid,1025</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.683" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.684" starttime="20180822 00:30:18.674"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.684" starttime="20180822 00:30:18.684"></status>
+</kw>
+<tags>
+<tag>1313</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.684" critical="yes" starttime="20180822 00:30:18.661"></status>
+</test>
+<test id="s1-t5" name="Negative-Create Rule with ruleconfigurationid with an invalid length 0-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.695" starttime="20180822 00:30:18.685"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=ruleconfigurationid,0</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.704" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.704" starttime="20180822 00:30:18.696"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.705" starttime="20180822 00:30:18.705"></status>
+</kw>
+<tags>
+<tag>1313</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.705" critical="yes" starttime="20180822 00:30:18.685"></status>
+</test>
+<test id="s1-t6" name="Functionality-Create Rule with no data in comment field-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.717" starttime="20180822 00:30:18.706"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=comment,0</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.732" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.732" starttime="20180822 00:30:18.717"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.732" starttime="20180822 00:30:18.732"></status>
+</kw>
+<tags>
+<tag>1314</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.732" critical="yes" starttime="20180822 00:30:18.706"></status>
+</test>
+<test id="s1-t7" name="Functionality-Create Rule with comment as an invalid length 0-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.744" starttime="20180822 00:30:18.734"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=comment,-1</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.760" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.760" starttime="20180822 00:30:18.745"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.760" starttime="20180822 00:30:18.760"></status>
+</kw>
+<tags>
+<tag>1314</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.761" critical="yes" starttime="20180822 00:30:18.733"></status>
+</test>
+<test id="s1-t8" name="Negative-Create Rule with comment as an invalid length &gt; 1024)-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.772" starttime="20180822 00:30:18.762"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=comment,1025</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.783" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.783" starttime="20180822 00:30:18.772"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.783" starttime="20180822 00:30:18.783"></status>
+</kw>
+<tags>
+<tag>1315</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.784" critical="yes" starttime="20180822 00:30:18.761"></status>
+</test>
+<test id="s1-t9" name="Negative-Create Rule with URL set to an invalid format-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.794" starttime="20180822 00:30:18.785"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=url,fakeurl</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.803" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.803" starttime="20180822 00:30:18.794"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.803" starttime="20180822 00:30:18.803"></status>
+</kw>
+<tags>
+<tag>1316</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.804" critical="yes" starttime="20180822 00:30:18.784"></status>
+</test>
+<test id="s1-t10" name="Negative-Create Rule with URL set to an invalid format-No other microservice running1">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.814" starttime="20180822 00:30:18.804"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=url,/so/</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.823" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.823" starttime="20180822 00:30:18.814"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.824" starttime="20180822 00:30:18.823"></status>
+</kw>
+<tags>
+<tag>1316</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.824" critical="yes" starttime="20180822 00:30:18.804"></status>
+</test>
+<test id="s1-t11" name="Negative-Create Rule with URL set to an invalid format-No other microservice running2">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.834" starttime="20180822 00:30:18.825"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=url,null</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.843" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.844" starttime="20180822 00:30:18.834"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.844" starttime="20180822 00:30:18.844"></status>
+</kw>
+<tags>
+<tag>1316</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.844" critical="yes" starttime="20180822 00:30:18.824"></status>
+</test>
+<test id="s1-t12" name="Negative-Create Rule with URL set to an invalid format-No other microservice running3">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.855" starttime="20180822 00:30:18.846"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=url,${empty}</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.863" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.863" starttime="20180822 00:30:18.855"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.864" starttime="20180822 00:30:18.864"></status>
+</kw>
+<tags>
+<tag>1316</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.864" critical="yes" starttime="20180822 00:30:18.845"></status>
+</test>
+<test id="s1-t13" name="Negative-Create Rule with invalid skuList-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.875" starttime="20180822 00:30:18.866"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=skulist,0</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.884" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.885" starttime="20180822 00:30:18.876"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.885" starttime="20180822 00:30:18.885"></status>
+</kw>
+<tags>
+<tag>1317</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.885" critical="yes" starttime="20180822 00:30:18.865"></status>
+</test>
+<test id="s1-t14" name="Negative-Create Rule with skuList with an invalid length (0, &gt; 1024)-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.896" starttime="20180822 00:30:18.886"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=skulist,1025</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.905" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.905" starttime="20180822 00:30:18.896"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.906" starttime="20180822 00:30:18.906"></status>
+</kw>
+<tags>
+<tag>1318</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.906" critical="yes" starttime="20180822 00:30:18.886"></status>
+</test>
+<test id="s1-t15" name="Negative-Create Rule with invalid locationList-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.916" starttime="20180822 00:30:18.907"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=locationlist,0</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.925" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.925" starttime="20180822 00:30:18.916"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.925" starttime="20180822 00:30:18.925"></status>
+</kw>
+<tags>
+<tag>1319</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.926" critical="yes" starttime="20180822 00:30:18.907"></status>
+</test>
+<test id="s1-t16" name="Negative-Create Rule with locationList with an invalid length (0, &gt; 1024)-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.936" starttime="20180822 00:30:18.927"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=locationlist,1025</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.944" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.945" starttime="20180822 00:30:18.936"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.945" starttime="20180822 00:30:18.945"></status>
+</kw>
+<tags>
+<tag>1320</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.945" critical="yes" starttime="20180822 00:30:18.926"></status>
+</test>
+<test id="s1-t17" name="Negative-Create Rule with invalid ruletype-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.956" starttime="20180822 00:30:18.946"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=ruletype,0</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.964" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.964" starttime="20180822 00:30:18.956"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.965" starttime="20180822 00:30:18.964"></status>
+</kw>
+<tags>
+<tag>1321</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.965" critical="yes" starttime="20180822 00:30:18.945"></status>
+</test>
+<test id="s1-t18" name="Negative-Create Rule with ruletype with an invalid length (0, &gt; 1024)-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.975" starttime="20180822 00:30:18.966"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=ruletype,1025</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:18.985" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:18.985" starttime="20180822 00:30:18.976"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:18.986" starttime="20180822 00:30:18.985"></status>
+</kw>
+<tags>
+<tag>1322</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:18.986" critical="yes" starttime="20180822 00:30:18.965"></status>
+</test>
+<test id="s1-t19" name="Negative-Create Rule with invalid active-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:18.996" starttime="20180822 00:30:18.987"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=active,0</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:19.005" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:19.005" starttime="20180822 00:30:18.996"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:19.006" starttime="20180822 00:30:19.006"></status>
+</kw>
+<tags>
+<tag>1323</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:19.006" critical="yes" starttime="20180822 00:30:18.986"></status>
+</test>
+<test id="s1-t20" name="Negative-Create Rule with invalid active-No other microservice running1">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:19.016" starttime="20180822 00:30:19.007"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=active,3</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:19.024" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:19.024" starttime="20180822 00:30:19.016"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:19.025" starttime="20180822 00:30:19.025"></status>
+</kw>
+<tags>
+<tag>1323</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:19.025" critical="yes" starttime="20180822 00:30:19.006"></status>
+</test>
+<test id="s1-t21" name="Negative-Create Rule with empty context-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:19.035" starttime="20180822 00:30:19.026"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=context,0</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:19.049" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:19.049" starttime="20180822 00:30:19.036"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:19.050" starttime="20180822 00:30:19.049"></status>
+</kw>
+<tags>
+<tag>1325</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:19.050" critical="yes" starttime="20180822 00:30:19.026"></status>
+</test>
+<test id="s1-t22" name="Negative-Create Rule with context with and invalid length (0 &gt; 1024) -No other microservice running1">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:19.062" starttime="20180822 00:30:19.051"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=context,1025</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:19.072" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:19.072" starttime="20180822 00:30:19.062"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:19.072" starttime="20180822 00:30:19.072"></status>
+</kw>
+<tags>
+<tag>1326</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:19.073" critical="yes" starttime="20180822 00:30:19.050"></status>
+</test>
+<test id="s1-t23" name="Negative-Create Rule with invalid activationdate-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:19.084" starttime="20180822 00:30:19.074"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=activationdate,-121</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:19.095" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:19.095" starttime="20180822 00:30:19.084"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:19.096" starttime="20180822 00:30:19.096"></status>
+</kw>
+<tags>
+<tag>1327</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:19.096" critical="yes" starttime="20180822 00:30:19.073"></status>
+</test>
+<test id="s1-t24" name="Negative-Create Rule with invalid activationdate-No other microservice running1">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:19.108" starttime="20180822 00:30:19.097"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=activationdate,null</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:19.117" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:19.117" starttime="20180822 00:30:19.108"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:19.117" starttime="20180822 00:30:19.117"></status>
+</kw>
+<tags>
+<tag>1327</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:19.117" critical="yes" starttime="20180822 00:30:19.097"></status>
+</test>
+<test id="s1-t25" name="Negative-Create Rule with invalid cancellationdate-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:19.126" starttime="20180822 00:30:19.118"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=cancellationdate,-12</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:19.134" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:19.135" starttime="20180822 00:30:19.126"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:19.135" starttime="20180822 00:30:19.135"></status>
+</kw>
+<tags>
+<tag>1328</tag>
+<tag>common</tag>
+<tag>negative</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:19.135" critical="yes" starttime="20180822 00:30:19.118"></status>
+</test>
+<test id="s1-t26" name="Negative-Create Rule with invalid cancellationdate-No other microservice running1">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:19.145" starttime="20180822 00:30:19.136"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=cancellationdate,null</arg>
+<arg>expected_response_code=${400}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:19.154" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:19.154" starttime="20180822 00:30:19.145"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:19.154" starttime="20180822 00:30:19.154"></status>
+</kw>
+<tags>
+<tag>1328</tag>
+<tag>common</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:19.155" critical="yes" starttime="20180822 00:30:19.136"></status>
+</test>
+<test id="s1-t27" name="Functionality-Create Rule with empty Parameters field-No other microservice running">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:19.165" starttime="20180822 00:30:19.156"></status>
+</kw>
+<kw name="Test POST" library="Rule">
+<doc>This will test based on Kwargs</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>adjust=parameters,null</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:19.184" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:19.184" starttime="20180822 00:30:19.165"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:19.184" starttime="20180822 00:30:19.184"></status>
+</kw>
+<tags>
+<tag>1329</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:19.185" critical="yes" starttime="20180822 00:30:19.155"></status>
+</test>
+<test id="s1-t28" name="Updating same Test">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:19.196" starttime="20180822 00:30:19.186"></status>
+</kw>
+<kw name="Test Post Update" library="Rule">
+<doc>This test will test for the update</doc>
+<arguments>
+<arg>size=${1}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:19.220" starttime="20180822 00:30:19.196"></status>
+</kw>
+<kw name="Validate Results" library="Rule">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>size=all</arg>
+<arg>start=${0}</arg>
+<arg>useDB=${TRUE}</arg>
+<arg>useUpdate=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:19.223" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:19.223" starttime="20180822 00:30:19.220"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed Update</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:19.224" starttime="20180822 00:30:19.223"></status>
+</kw>
+<tags>
+<tag>1330</tag>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:19.224" critical="yes" starttime="20180822 00:30:19.185"></status>
+</test>
+<test id="s1-t29" name="Functionality-Create Rule with valid payload-while L2/L3 API calls are being made">
+<kw type="setup" name="Empty DB" library="Rule">
+<doc>Overloaded Method to clear Rule DB</doc>
+<status status="PASS" endtime="20180822 00:30:19.235" starttime="20180822 00:30:19.226"></status>
+</kw>
+<kw name="Empty DB" library="Tags">
+<status status="PASS" endtime="20180822 00:30:19.243" starttime="20180822 00:30:19.235"></status>
+</kw>
+<kw name="Test POST Forever" library="Rule">
+<doc>This will run test_post in a seperate thread</doc>
+<arguments>
+<arg>size=${1000}</arg>
+<arg>start=${0}</arg>
+<arg>mappings_per_payload=${1}</arg>
+<arg>saveResults=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:19.244" starttime="20180822 00:30:19.243"></status>
+</kw>
+<kw name="Test POST" library="Tags">
+<doc>This will test based on Kwargs</doc>
+<status status="PASS" endtime="20180822 00:30:19.418" starttime="20180822 00:30:19.245"></status>
+</kw>
+<kw name="Wait For Complete" library="Tags">
+<doc>Wait for DB to be filled</doc>
+<status status="PASS" endtime="20180822 00:30:21.429" starttime="20180822 00:30:19.418"></status>
+</kw>
+<kw name="Validate Results" library="Tags">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useDB=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:21.442" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:21.442" starttime="20180822 00:30:21.429"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Fail Acceptance</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:21.442" starttime="20180822 00:30:21.442"></status>
+</kw>
+<kw name="Test POST Forever" library="Rule">
+<doc>This will run test_post in a seperate thread</doc>
+<arguments>
+<arg>stop_test=${TRUE}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:21.443" starttime="20180822 00:30:21.443"></status>
+</kw>
+<kw name="Validate Results" library="Rule">
+<doc>This function will validate the results</doc>
+<arguments>
+<arg>useDB=${TRUE}</arg>
+<arg>useUpdate=${TRUE}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20180822 00:30:21.446" level="INFO">${status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:21.446" starttime="20180822 00:30:21.443"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>Failed to verify using DB</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:21.446" starttime="20180822 00:30:21.446"></status>
+</kw>
+<tags>
+<tag>1337</tag>
+<tag>common</tag>
+<tag>dst</tag>
+<tag>regression</tag>
+</tags>
+<status status="PASS" endtime="20180822 00:30:21.446" critical="yes" starttime="20180822 00:30:19.224"></status>
+</test>
+<kw type="teardown" name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:30:21.448" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:30:21.448" starttime="20180822 00:30:21.448"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:30:21.449" starttime="20180822 00:30:21.448"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:21.449" starttime="20180822 00:30:21.448"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:30:21.449" starttime="20180822 00:30:15.732"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="29">Critical Tests</stat>
+<stat fail="0" pass="29">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">1312</stat>
+<stat fail="0" pass="2">1313</stat>
+<stat fail="0" pass="2">1314</stat>
+<stat fail="0" pass="1">1315</stat>
+<stat fail="0" pass="4">1316</stat>
+<stat fail="0" pass="1">1317</stat>
+<stat fail="0" pass="1">1318</stat>
+<stat fail="0" pass="1">1319</stat>
+<stat fail="0" pass="1">1320</stat>
+<stat fail="0" pass="1">1321</stat>
+<stat fail="0" pass="1">1322</stat>
+<stat fail="0" pass="2">1323</stat>
+<stat fail="0" pass="1">1325</stat>
+<stat fail="0" pass="1">1326</stat>
+<stat fail="0" pass="2">1327</stat>
+<stat fail="0" pass="2">1328</stat>
+<stat fail="0" pass="1">1329</stat>
+<stat fail="0" pass="1">1330</stat>
+<stat fail="0" pass="1">1337</stat>
+<stat fail="0" pass="29">common</stat>
+<stat fail="0" pass="1">concurrent</stat>
+<stat fail="0" pass="5">dst</stat>
+<stat fail="0" pass="1">max</stat>
+<stat fail="0" pass="18">negative</stat>
+<stat fail="0" pass="1">regression</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Rules Post" pass="29">Rules Post</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

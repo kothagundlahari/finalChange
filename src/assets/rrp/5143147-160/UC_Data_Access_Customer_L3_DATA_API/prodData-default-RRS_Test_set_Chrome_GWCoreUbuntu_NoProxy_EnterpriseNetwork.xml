@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180822 00:29:25.773" generator="Robot 3.0.4 (Python 2.7.15rc1 on linux2)">
+<suite source="/home/seduser/workspace/5143147-160/rrp-platform/iTAF/testScenarios/UC_Data_Access_Customer_L3_DATA_API/prodData.robot" id="s1" name="prodData">
+<kw type="setup" name="Suite Setup and PopulateDB">
+<kw name="Common Setup" library="common">
+<kw name="Api Testsuite Setup" library="API_TestSuite_setup">
+<doc>setup_basic_api    sets up the objects needed for the test suite</doc>
+<arguments>
+<arg>${api_log}</arg>
+<arg>${PLATCONFIG}</arg>
+<arg>${testcase_cfg}</arg>
+</arguments>
+<assign>
+<var>${setup_status}</var>
+</assign>
+<msg timestamp="20180822 00:29:26.477" level="INFO">${setup_status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:26.477" starttime="20180822 00:29:26.037"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${setup_status}</arg>
+<arg>API Test Suite setup Failed</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:26.478" starttime="20180822 00:29:26.477"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:26.478" starttime="20180822 00:29:26.036"></status>
+</kw>
+<kw name="Import Library" library="BuiltIn">
+<doc>Imports a library with the given name and optional arguments.</doc>
+<arguments>
+<arg>${iTAF_DIR}/testCaseApps/SkuMapping/productData.py</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:26.687" starttime="20180822 00:29:26.478"></status>
+</kw>
+<kw name="Init" library="productData">
+<doc>Override default init from api.py</doc>
+<msg timestamp="20180822 00:29:36.691" level="FAIL">IOError</msg>
+<status status="FAIL" endtime="20180822 00:29:36.692" starttime="20180822 00:29:26.687"></status>
+</kw>
+<status status="FAIL" endtime="20180822 00:29:36.692" starttime="20180822 00:29:26.036"></status>
+</kw>
+<test id="s1-t1" name="Send ProductData Directly to CSDK Broker">
+<tags>
+<tag>common</tag>
+<tag>dst</tag>
+</tags>
+<status status="FAIL" endtime="20180822 00:29:36.693" critical="yes" starttime="20180822 00:29:36.692">Parent suite setup failed:
+IOError</status>
+</test>
+<test id="s1-t2" name="Send Excel Formatted ProductData file via Dropbox">
+<tags>
+<tag>common</tag>
+<tag>dropbox1</tag>
+<tag>dst</tag>
+</tags>
+<status status="FAIL" endtime="20180822 00:29:36.695" critical="yes" starttime="20180822 00:29:36.694">Parent suite setup failed:
+IOError</status>
+</test>
+<test id="s1-t3" name="Send CSV Formatted ProductData file via Dropbox">
+<tags>
+<tag>common</tag>
+<tag>dropbox2</tag>
+<tag>dst</tag>
+</tags>
+<status status="FAIL" endtime="20180822 00:29:36.696" critical="yes" starttime="20180822 00:29:36.695">Parent suite setup failed:
+IOError</status>
+</test>
+<kw type="teardown" name="Teardown and Close WS">
+<kw name="Close" library="productData">
+<doc>Close connection to broker must be called at end</doc>
+<status status="PASS" endtime="20180822 00:29:36.698" starttime="20180822 00:29:36.697"></status>
+</kw>
+<kw name="Teardown" library="common">
+<kw name="API TestSuite Teardown" library="API_TestSuite_teardown">
+<doc>teardown_api tears down the suite, called by robot after all test cases</doc>
+<assign>
+<var>${teardown_status}</var>
+</assign>
+<msg timestamp="20180822 00:29:36.699" level="INFO">${teardown_status} = True</msg>
+<status status="PASS" endtime="20180822 00:29:36.699" starttime="20180822 00:29:36.699"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${teardown_status}</arg>
+</arguments>
+<status status="PASS" endtime="20180822 00:29:36.700" starttime="20180822 00:29:36.699"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:36.700" starttime="20180822 00:29:36.698"></status>
+</kw>
+<status status="PASS" endtime="20180822 00:29:36.700" starttime="20180822 00:29:36.697"></status>
+</kw>
+<status status="FAIL" endtime="20180822 00:29:36.701" starttime="20180822 00:29:25.774">Suite setup failed:
+IOError</status>
+</suite>
+<statistics>
+<total>
+<stat fail="3" pass="0">Critical Tests</stat>
+<stat fail="3" pass="0">All Tests</stat>
+</total>
+<tag>
+<stat fail="3" pass="0">common</stat>
+<stat fail="1" pass="0">dropbox1</stat>
+<stat fail="1" pass="0">dropbox2</stat>
+<stat fail="3" pass="0">dst</stat>
+</tag>
+<suite>
+<stat fail="3" id="s1" name="prodData" pass="0">prodData</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
