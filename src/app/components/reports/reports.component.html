@@ -14,7 +14,7 @@
     </form>
   </mat-card-content>
 </mat-card>
-<mat-grid-list cols="2" rowHeight="2:1">
+<!-- <mat-grid-list cols="2" rowHeight="2:1">
   <mat-grid-tile *ngIf="selectedPrjData">
     <div *ngFor="let obj of selectedPrjData.summary">
       <h5><span>{{obj.title}}:</span><span>{{obj.value}}</span></h5>
@@ -23,10 +23,29 @@
   <mat-grid-tile>
       2
   </mat-grid-tile>
-</mat-grid-list>
+</mat-grid-list> -->
+<mat-divider *ngIf="selectedPrjData"></mat-divider>
+<div class="parent" *ngIf="selectedPrjData">
+  <div class="summary">
+    <mat-card>
+      <mat-card-header></mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let obj of selectedPrjData.summary">
+          <span>{{obj.title}}:</span><span>{{obj.value}}</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
+  </div>
+  <div class="charts">
+    <mat-card>
+      <mat-card-header></mat-card-header>
+      <mat-card-content></mat-card-content>
+    </mat-card>
+  </div>
+</div>
 
-
+<!--
 
 <mat-card class="example-card">
   <mat-card-header>
@@ -57,14 +76,15 @@
             <ng-template mat-tab-label>{{tab.title}}</ng-template>
             <iframe frameborder="0" height="700" src="src/assets/data/rrp/5143147-160/mailText.html"></iframe>
           </mat-tab>
-       <!--   <mat-tab>
-            <ng-template mat-tab-label>{{tab.title}}</ng-template>
-            <iframe frameborder="0" height="700" src="src/assets/data/rrp/5143147-160/mailText.html"></iframe>
-          </mat-tab>-->
+          &lt;!&ndash;   <mat-tab>
+               <ng-template mat-tab-label>{{tab.title}}</ng-template>
+               <iframe frameborder="0" height="700" src="src/assets/data/rrp/5143147-160/mailText.html"></iframe>
+             </mat-tab>&ndash;&gt;
         </mat-tab-group>
       </mat-grid-tile>
     </mat-grid-list>
   </mat-card-content>
 
 </mat-card>
+-->
 
