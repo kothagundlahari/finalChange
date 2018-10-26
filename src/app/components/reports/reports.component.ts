@@ -311,15 +311,11 @@ export class ReportsComponent implements OnInit {
   ];
   prjList = [];
   reportsForm = this.fb.group({
-    selectedPrj: ['', Validators.required]
+    selectedPrj: ['ers', Validators.required]
   });
+  displayedColumns: string[] = ['title', 'value'];
 
   constructor(private fb: FormBuilder) {
-  }
-
-  ngOnInit() {
-    console.log(localStorage.getItem('prjList'));
-    this.prjList = JSON.parse(localStorage.getItem('prjList'));
   }
 
   getPrj() {
@@ -330,5 +326,12 @@ export class ReportsComponent implements OnInit {
     })[0];
     console.log(this.selectedPrjData);
   }
+  
+  ngOnInit() {
+    console.log(localStorage.getItem('prjList'));
+    this.prjList = JSON.parse(localStorage.getItem('prjList'));
+    this.getPrj();
+  }
+  
 }
 
