@@ -16,3 +16,16 @@ mat-tab-group, iframe {
   flex: 1;
   margin-left: 10px;
 }
+
+.myGridList {
+  height: 100%;
+}
+
+.table-container {
+  height: 400px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
