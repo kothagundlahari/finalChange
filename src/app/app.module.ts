@@ -14,6 +14,7 @@ import {HomeRoutingModule} from './components/shared/home/home.routes';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {CommonModule} from '@angular/common';
 import {routes} from './app.routing';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {routes} from './app.routing';
     HttpClientModule,
     MaterialModule,
     HomeRoutingModule,
-    NgxChartsModule
+    NgxChartsModule,
+    ChartsModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]

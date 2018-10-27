@@ -9,15 +9,30 @@ import {FormBuilder, Validators} from '@angular/forms';
 export class ReportsComponent implements OnInit {
   @ViewChild('mySelect')
   selectedPrjData: any;
-  view: any[] = [400, 400];
+  spinner = true;
+  
+  chartOptions = {
+    responsive: true
+  };
 
+  chartData = [
+    { data: [330, 600, 260, 700], label: 'Account A' },
+    { data: [120, 455, 100, 340], label: 'Account B' },
+    { data: [45, 67, 800, 500], label: 'Account C' }
+  ];
+
+  chartLabels = ['January', 'February', 'Mars', 'April'];
+
+  onChartClick(event) {
+    console.log(event);
+  }
+
+  view: any[] = [400, 400];
   // options
   showLegend = true;
-
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
-
   // pie
   showLabels = true;
   explodeSlices = false;
@@ -325,6 +340,10 @@ export class ReportsComponent implements OnInit {
       return obj.projectCode === this.reportsForm.value['selectedPrj'];
     })[0];
     console.log(this.selectedPrjData);
+    setTimeout(()=>{
+      this.spinner = false;
+    }, 2000);
+    
   }
   
   ngOnInit() {
@@ -332,6 +351,6 @@ export class ReportsComponent implements OnInit {
     this.prjList = JSON.parse(localStorage.getItem('prjList'));
     this.getPrj();
   }
-  
+   
 }
 
