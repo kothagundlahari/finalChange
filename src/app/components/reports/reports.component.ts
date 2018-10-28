@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-reports',
@@ -10,7 +11,7 @@ export class ReportsComponent implements OnInit {
   @ViewChild('mySelect')
   selectedPrjData: any;
   spinner = true;
-  
+
   chartOptions = {
     responsive: true
   };
@@ -97,7 +98,7 @@ export class ReportsComponent implements OnInit {
         },
         {
           title: ' Version of context-broker',
-          value:   '93111ed5f1141b23f1c1f20a02911081bff5321e386e381d21e122284445ba49'
+          value: '93111ed5f1141b23f1c1f20a02911081bff5321e386e381d21e122284445ba49'
         },
         {
           title: ' Version of rrs-rfid-provider',
@@ -116,7 +117,7 @@ export class ReportsComponent implements OnInit {
           value: '5cc33682b6aa3e46bbf635f35e40ef2c9451748a957894cf0f6b8b9afa7fa7ec'
         },
         {
-          title:   'Version of eventfilter',
+          title: 'Version of eventfilter',
           value: '5cc33682b6aa3e46bbf635f35e40ef2c9451748a957894cf0f6b8b9afa7fa7ec'
         },
         {
@@ -173,7 +174,7 @@ export class ReportsComponent implements OnInit {
       reportsList: [
         {
           title: 'Reports',
-          link: 'src/assets/data/ers/5143147-160/mailText.html'
+          link: 'src/assets/data/rrp/5143147-160/mailText.html'
         },
         {
           title: 'Tab2',
@@ -239,7 +240,7 @@ export class ReportsComponent implements OnInit {
         },
         {
           title: ' Version of context-broker',
-          value:   '93111ed5f1141b23f1c1f20a02911081bff5321e386e381d21e122284445ba49'
+          value: '93111ed5f1141b23f1c1f20a02911081bff5321e386e381d21e122284445ba49'
         },
         {
           title: ' Version of rrs-rfid-provider',
@@ -258,7 +259,7 @@ export class ReportsComponent implements OnInit {
           value: '5cc33682b6aa3e46bbf635f35e40ef2c9451748a957894cf0f6b8b9afa7fa7ec'
         },
         {
-          title:   'Version of eventfilter',
+          title: 'Version of eventfilter',
           value: '5cc33682b6aa3e46bbf635f35e40ef2c9451748a957894cf0f6b8b9afa7fa7ec'
         },
         {
@@ -330,7 +331,7 @@ export class ReportsComponent implements OnInit {
   });
   displayedColumns: string[] = ['title', 'value'];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private sanitizer: DomSanitizer) {
   }
 
   getPrj() {
@@ -340,17 +341,22 @@ export class ReportsComponent implements OnInit {
       return obj.projectCode === this.reportsForm.value['selectedPrj'];
     })[0];
     console.log(this.selectedPrjData);
-    setTimeout(()=>{
+    setTimeout(() => {
       this.spinner = false;
     }, 2000);
-    
+
   }
-  
+
   ngOnInit() {
     console.log(localStorage.getItem('prjList'));
     this.prjList = JSON.parse(localStorage.getItem('prjList'));
     this.getPrj();
   }
-   
+
+  sanitize(url: string) {
+    url = (url) ? url = '../../' + url : '../../src/assets/404.html';
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
 }
 

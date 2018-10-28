@@ -16,40 +16,75 @@
 
 <mat-divider *ngIf="selectedPrjData"></mat-divider>
 
-<mat-card class="card-demo mat-card">
+<mat-card class="summary">
   <mat-card-title class="mat-card-title"></mat-card-title>
   <mat-card-content class="mat-card-content">
-    <div>
-      <div class="coloredContainerX box" fxflex="" fxlayout="row" fxlayout.sm="column" fxlayout.xs="column" style="flex-direction: row; box-sizing: border-box; display: flex; flex: 1 1 0%;">
-        <div fxflex="" style="flex: 1 1 0%; box-sizing: border-box;">
-          <mat-card-subtitle class="mat-card-subtitle">Summary</mat-card-subtitle>
-          <div class="table-container">
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Summary
+          </mat-panel-title>
+          <!-- <mat-panel-description>
+                Currently I am {{panelOpenState ? 'open' : 'closed'}}
+              </mat-panel-description> -->
+        </mat-expansion-panel-header>
+        <div class="coloredContainerX box" fxflex="" fxlayout="row" fxlayout.sm="column" fxlayout.xs="column" style="flex-direction: row; box-sizing: border-box; display: flex; flex: 1 1 0%;">
+          <div fxflex="" style="flex: 1 1 0%; box-sizing: border-box;">
+            <mat-card-subtitle class="mat-card-subtitle">Summary</mat-card-subtitle>
+            <div class="table-container">
+              <mat-spinner *ngIf="spinner"></mat-spinner>
+              <table mat-table [dataSource]="selectedPrjData.summary" *ngIf="!spinner">
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef style="display:none"></th>
+                  <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                </ng-container>
+                <ng-container matColumnDef="value">
+                  <th mat-header-cell *matHeaderCellDef style="display:none"></th>
+                  <td mat-cell *matCellDef="let element"><strong>{{element.value}}</strong></td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </div>
+          </div>
+          <div fxflex="" style="flex: 1 1 0%; box-sizing: border-box; overflow: scroll;">
+            <mat-card-subtitle class="mat-card-subtitle">chart</mat-card-subtitle>
             <mat-spinner *ngIf="spinner"></mat-spinner>
-            <table mat-table [dataSource]="selectedPrjData.summary" *ngIf="!spinner">
-              <ng-container matColumnDef="title">
-                <th mat-header-cell *matHeaderCellDef style="display:none"></th>
-                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-              </ng-container>
-              <ng-container matColumnDef="value">
-                <th mat-header-cell *matHeaderCellDef style="display:none"></th>
-                <td mat-cell *matCellDef="let element"><strong>{{element.value}}</strong></td>
-              </ng-container>
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
+            <div style="width: auto;" *ngIf="!spinner">
+              <canvas baseChart [chartType]="'pie'" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions"
+                [legend]="true" (chartClick)="onChartClick($event)">
+              </canvas>
+            </div>
           </div>
         </div>
-        <div fxflex="" style="flex: 1 1 0%; box-sizing: border-box; overflow: scroll;">
-          <mat-card-subtitle class="mat-card-subtitle">chart</mat-card-subtitle>
-          <mat-spinner *ngIf="spinner"></mat-spinner>
-          <div style="width: auto;" *ngIf="!spinner">            
-            <canvas baseChart [chartType]="'pie'" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions"
-              [legend]="true" (chartClick)="onChartClick($event)">
-            </canvas>
-          </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Reports List
+          </mat-panel-title>
+          <!-- <mat-panel-description>
+            Currently I am {{panelOpenState ? 'open' : 'closed'}}
+          </mat-panel-description> -->
+        </mat-expansion-panel-header>
+        <div>
+          <mat-tab-group>
+            <mat-tab label="{{val.title}}" *ngFor="let val of selectedPrjData.reportsList">
+              <iframe [src]="sanitize(val.link)" frameBorder="0">
+                <p>Your browser does not support iframes.</p>
+              </iframe>
+            </mat-tab>
+          </mat-tab-group>
+          <!-- <link rel="import" [attr.href]="sanitize(val.link)"/> -->
+          <!-- <object name="foo" type="text/html" [data]="sanitize(val.link)"></object>
+              <embed type="text/html" [src]="sanitize(val.link)"> -->
+          <!-- <iframe width="1000" height="2000" [src]="sanitize(val.link)">
+                <p>Your browser does not support iframes.</p>
+              </iframe> -->
         </div>
-      </div>
-    </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-card-content>
   <mat-card-footer class="mat-card-footer" style="width:95%"></mat-card-footer>
 </mat-card>
