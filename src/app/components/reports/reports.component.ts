@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ReportsService } from './reports.service';
 
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
-  styleUrls: ['./reports.component.css']
+  styleUrls: ['./reports.component.css'],
+  providers: [ReportsService]
 })
 export class ReportsComponent implements OnInit {
   @ViewChild('mySelect')
@@ -174,11 +176,11 @@ export class ReportsComponent implements OnInit {
       reportsList: [
         {
           title: 'Reports',
-          link: 'src/assets/data/rrp/5143147-160/mailText.html'
+          value: 'src/assets/data/rrp/5143147-160/mailText.html'
         },
         {
           title: 'Tab2',
-          link: ''
+          value: ''
         }
       ]
     },
@@ -316,11 +318,11 @@ export class ReportsComponent implements OnInit {
       reportsList: [
         {
           title: 'Reports',
-          link: 'src/assets/data/rrp/5143147-160/mailText.html'
+          value: 'src/assets/data/rrp/5143147-160/mailText.html'
         },
         {
           title: 'Tab2',
-          link: ''
+          value: ''
         }
       ]
     }
@@ -330,8 +332,11 @@ export class ReportsComponent implements OnInit {
     selectedPrj: ['ers', Validators.required]
   });
   displayedColumns: string[] = ['title', 'value'];
+  reportsTab = [];
+  reportsTabTitle = [];
 
-  constructor(private fb: FormBuilder, private sanitizer: DomSanitizer) {
+  constructor(private fb: FormBuilder, private sanitizer: DomSanitizer,
+    private reportsService: ReportsService) {
   }
 
   getPrj() {
@@ -344,13 +349,43 @@ export class ReportsComponent implements OnInit {
     setTimeout(() => {
       this.spinner = false;
     }, 2000);
+  }
 
+  getSampleData() {
+    this.reportsService.getSampleData()
+      .subscribe((data) => {
+        console.log(data);
+        this.reportsTabTitle = Object.keys(data);
+        this.reportsTab.push(data['profile'][0]);
+        this.reportsTab.push(data['status']);
+        this.reportsTab.push(data['testScenario'][0]);
+        this.reportsTab.push(data['testScenarioConfig'][0]);
+        this.reportsTab.push(data['useCase'][0]);
+        this.reportsTab.push(data['wwBuildId'][0]);
+    });    
+  }
+  loadReportTabsData(data){
+    console.log(this.selectedPrjData.reportsList);
+    data.forEach(element => {
+      if(element.value){
+        element.isArray = false;
+      }
+      else{
+        element.value = this.reportsTab
+        element.isArray = true;
+      }
+    });
+    this.selectedPrjData.reportsList = data;
+    setTimeout(() => {
+      console.log(this.selectedPrjData.reportsList);
+    }, 4000);    
   }
 
   ngOnInit() {
     console.log(localStorage.getItem('prjList'));
     this.prjList = JSON.parse(localStorage.getItem('prjList'));
     this.getPrj();
+    this.getSampleData();
   }
 
   sanitize(url: string) {
