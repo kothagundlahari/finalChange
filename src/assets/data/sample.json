@@ -9,6 +9,15 @@
       "TcName": "2834"
     },
     {
+      "WW_BuildID": "34.3-5143147-160",
+      "Profile_Test_Set": "RRS_Test_set_Chrome_GWCoreUbuntu_NoProxy_EnterpriseNetwork",
+      "UseCase": "UC_Data_Access_Customer_L3_DATA_API",
+      "TestScenario": "Confidence",
+      "TestScenarioConfig": "default",
+      "Status": "Fail",
+      "TcName": "2834"
+    },
+    {
       "WW_BuildID": "34.4-5143147-160",
       "Profile_Test_Set": "RRS_Test_set_Chrome_GWCoreUbuntu_NoProxy_EnterpriseNetwork",
       "UseCase": "UC_Data_Access_Customer_L3_DATA_API",

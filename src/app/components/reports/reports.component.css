@@ -29,18 +29,18 @@ mat-tab-group, iframe {
 table {
   width: 100%;
 }
-html {
+/*html {
   overflow: scroll;
   overflow-x: hidden;
-}
+}*/
 ::-webkit-scrollbar {
-  width: 0px;  /* remove scrollbar space */
+  width: 0;  /* remove scrollbar space */
   background: transparent;  /* optional: just make scrollbar invisible */
 }
 
 iframe{ 
-  width: 100%; 
-  height: 280px; 
+  width: 100%;
+  height: 700px;
   overflow-x: hidden; 
   overflow-y: scroll;
 }
@@ -48,4 +48,5 @@ iframe{
 .summary{
   height: 500px;
 }
+
 

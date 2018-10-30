@@ -29,15 +29,16 @@
                 Currently I am {{panelOpenState ? 'open' : 'closed'}}
               </mat-panel-description> -->
         </mat-expansion-panel-header>
-        <div class="coloredContainerX box" fxflex="" fxlayout="row" fxlayout.sm="column" fxlayout.xs="column" style="flex-direction: row; box-sizing: border-box; display: flex; flex: 1 1 0%;">
-          <div fxflex="" style="flex: 1 1 0%; box-sizing: border-box;">
+        <div class="coloredContainerX box" fxflex="" fxlayout="row" fxlayout.sm="column" fxlayout.xs="column"
+             style="flex-direction: row; box-sizing: border-box; display: flex; flex: 1 1 0%;">
+          <div fxflex="" style="flex: 1 1 0; box-sizing: border-box;">
             <mat-card-subtitle class="mat-card-subtitle">Summary</mat-card-subtitle>
             <div class="table-container">
               <mat-spinner *ngIf="spinner"></mat-spinner>
               <table mat-table [dataSource]="selectedPrjData.summary" *ngIf="!spinner">
                 <ng-container matColumnDef="title">
                   <th mat-header-cell *matHeaderCellDef style="display:none"></th>
-                  <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                  <td mat-cell *matCellDef="let element"> {{element.title}}</td>
                 </ng-container>
                 <ng-container matColumnDef="value">
                   <th mat-header-cell *matHeaderCellDef style="display:none"></th>
@@ -48,93 +49,82 @@
               </table>
             </div>
           </div>
-          <div fxflex="" style="flex: 1 1 0%; box-sizing: border-box; overflow: scroll;">
+          <div fxflex="" style="flex: 1 1 0; box-sizing: border-box; overflow: scroll;">
             <mat-card-subtitle class="mat-card-subtitle">chart</mat-card-subtitle>
             <mat-spinner *ngIf="spinner"></mat-spinner>
             <div style="width: auto;" *ngIf="!spinner">
-              <canvas baseChart [chartType]="'pie'" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions"
-                [legend]="true" (chartClick)="onChartClick($event)">
+              <canvas baseChart [chartType]="'pie'" [datasets]="chartData" [labels]="chartLabels"
+                      [options]="chartOptions"
+                      [legend]="true" (chartClick)="onChartClick($event)">
               </canvas>
             </div>
           </div>
         </div>
       </mat-expansion-panel>
-      <mat-expansion-panel (opened)="loadReportTabsData(selectedPrjData.reportsList)" (closed)="panelOpenState=false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Reports List
-          </mat-panel-title>
-          <!-- <mat-panel-description>
-            Currently I am {{panelOpenState ? 'open' : 'closed'}}
-          </mat-panel-description> -->
-        </mat-expansion-panel-header>
-        <div>
-          <mat-tab-group>
-            <mat-tab label="{{val.title}}" *ngFor="let val of selectedPrjData.reportsList">
-              <iframe [src]="sanitize(val.value)" frameBorder="0" *ngIf="!val.isArray">
-                <p>Your browser does not support iframes.</p>
-              </iframe>
-              <div class="table-container" *ngIf="val.isArray">
-                <mat-form-field>
-                  <mat-select placeholder="Report Week" [(value)]="selectedReport" 
-                    (selectionChange)="filterReportsWeek($event.value)">
-                    <mat-option *ngFor="let val of reportValues" [value]="val">
-                      {{val}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-table #table [dataSource]="reportsWeek">
-                  <ng-container matColumnDef="WW_BuildID">
-                    <mat-header-cell *matHeaderCellDef>WW_BuildID</mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element['WW_BuildID']}} </mat-cell>
-                  </ng-container>
-                  <ng-container matColumnDef="Profile_Test_Set">
-                    <mat-header-cell *matHeaderCellDef>Profile_Test_Set</mat-header-cell>
-                    <mat-cell *matCellDef="let element">
-                      <strong>
-                      {{(element.Profile_Test_Set.length > 10) ? (element.Profile_Test_Set | slice:0:10)+'..':(element.Profile_Test_Set)}}
-                    </strong>
-                  </mat-cell>
-                  </ng-container>
-                  <ng-container matColumnDef="UseCase">
-                    <mat-header-cell *matHeaderCellDef>UseCase</mat-header-cell>
-                    <mat-cell *matCellDef="let element">
-                      <strong>
-                        {{(element.UseCase.length > 10) ? (element.UseCase | slice:0:10)+'..':(element.UseCase)}}
-                      </strong>
-                    </mat-cell>
-                  </ng-container>
-                  <ng-container matColumnDef="TestScenario">
-                    <mat-header-cell *matHeaderCellDef>TestScenario</mat-header-cell>
-                    <mat-cell *matCellDef="let element"><strong>{{element.TestScenario}}</strong></mat-cell>
-                  </ng-container>
-                  <ng-container matColumnDef="TestScenarioConfig">
-                    <mat-header-cell *matHeaderCellDef>TestScenarioConfig</mat-header-cell>
-                    <mat-cell *matCellDef="let element"><strong>{{element.TestScenarioConfig}}</strong></mat-cell>
-                  </ng-container>
-                  <ng-container matColumnDef="Status">
-                    <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
-                    <mat-cell *matCellDef="let element"><strong>{{element.Status}}</strong></mat-cell>
-                  </ng-container>
-                  <ng-container matColumnDef="TcName">
-                    <mat-header-cell *matHeaderCellDef style="display:none">TcName</mat-header-cell>
-                    <mat-cell *matCellDef="let element"><strong>{{element.TcName}}</strong></mat-cell>
-                  </ng-container>
-                  <mat-header-row *matHeaderRowDef="reportsWeekColumns"></mat-header-row>
-                  <mat-row *matRowDef="let row; columns: reportsWeekColumns;"></mat-row>
-                </mat-table>
-              </div>
-            </mat-tab>
-          </mat-tab-group>
-          <!-- <link rel="import" [attr.href]="sanitize(val.link)"/> -->
-          <!-- <object name="foo" type="text/html" [data]="sanitize(val.link)"></object>
-              <embed type="text/html" [src]="sanitize(val.link)"> -->
-          <!-- <iframe width="1000" height="2000" [src]="sanitize(val.link)">
-                <p>Your browser does not support iframes.</p>
-              </iframe> -->
-        </div>
-      </mat-expansion-panel>
     </mat-accordion>
   </mat-card-content>
-  <mat-card-footer class="mat-card-footer" style="width:95%"></mat-card-footer>
+  <mat-card>
+    <mat-card-header>Report List</mat-card-header>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="{{val.title}}" *ngFor="let val of selectedPrjData.reportsList">
+          <iframe [src]="sanitize(val.value)" frameBorder="0" *ngIf="!val.isArray">
+            <p>Your browser does not support iframes. </p>
+          </iframe>
+          <div class="table-container" *ngIf="val.isArray">
+            <mat-form-field>
+              <mat-select placeholder="Report Week" [(value)]="selectedReport"
+                          (selectionChange)="filterReportsWeek($event.value)">
+                <mat-option *ngFor="let val of reportValues" [value]="val">
+                  {{val}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-table #table [dataSource]="reportsWeek">
+              <ng-container matColumnDef="WW_BuildID">
+                <mat-header-cell *matHeaderCellDef>WW_BuildID</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element['WW_BuildID']}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Profile_Test_Set">
+                <mat-header-cell *matHeaderCellDef>Profile_Test_Set</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <strong>
+                    {{(element.Profile_Test_Set.length > 10) ? (element.Profile_Test_Set |
+                    slice:0:10)+'..':(element.Profile_Test_Set)}}
+                  </strong>
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="UseCase">
+                <mat-header-cell *matHeaderCellDef>UseCase</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <strong>
+                    {{(element.UseCase.length > 10) ? (element.UseCase | slice:0:10)+'..':(element.UseCase)}}
+                  </strong>
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="TestScenario">
+                <mat-header-cell *matHeaderCellDef>TestScenario</mat-header-cell>
+                <mat-cell *matCellDef="let element"><strong>{{element.TestScenario}}</strong></mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="TestScenarioConfig">
+                <mat-header-cell *matHeaderCellDef>TestScenarioConfig</mat-header-cell>
+                <mat-cell *matCellDef="let element"><strong>{{element.TestScenarioConfig}}</strong></mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Status">
+                <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                <mat-cell *matCellDef="let element"><strong>{{element.Status}}</strong></mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="TcName">
+                <mat-header-cell *matHeaderCellDef style="display:none">TcName</mat-header-cell>
+                <mat-cell *matCellDef="let element"><strong>{{element.TcName}}</strong></mat-cell>
+              </ng-container>
+              <mat-header-row *matHeaderRowDef="reportsWeekColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: reportsWeekColumns;"></mat-row>
+            </mat-table>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
 </mat-card>
+
