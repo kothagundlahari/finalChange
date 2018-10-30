@@ -75,7 +75,54 @@
                 <p>Your browser does not support iframes.</p>
               </iframe>
               <div class="table-container" *ngIf="val.isArray">
-                
+                <mat-form-field>
+                  <mat-select placeholder="Report Week" [(value)]="selectedReport" 
+                    (selectionChange)="filterReportsWeek($event.value)">
+                    <mat-option *ngFor="let val of reportValues" [value]="val">
+                      {{val}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-table #table [dataSource]="reportsWeek">
+                  <ng-container matColumnDef="WW_BuildID">
+                    <mat-header-cell *matHeaderCellDef>WW_BuildID</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element['WW_BuildID']}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Profile_Test_Set">
+                    <mat-header-cell *matHeaderCellDef>Profile_Test_Set</mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <strong>
+                      {{(element.Profile_Test_Set.length > 10) ? (element.Profile_Test_Set | slice:0:10)+'..':(element.Profile_Test_Set)}}
+                    </strong>
+                  </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="UseCase">
+                    <mat-header-cell *matHeaderCellDef>UseCase</mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                      <strong>
+                        {{(element.UseCase.length > 10) ? (element.UseCase | slice:0:10)+'..':(element.UseCase)}}
+                      </strong>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="TestScenario">
+                    <mat-header-cell *matHeaderCellDef>TestScenario</mat-header-cell>
+                    <mat-cell *matCellDef="let element"><strong>{{element.TestScenario}}</strong></mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="TestScenarioConfig">
+                    <mat-header-cell *matHeaderCellDef>TestScenarioConfig</mat-header-cell>
+                    <mat-cell *matCellDef="let element"><strong>{{element.TestScenarioConfig}}</strong></mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Status">
+                    <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                    <mat-cell *matCellDef="let element"><strong>{{element.Status}}</strong></mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="TcName">
+                    <mat-header-cell *matHeaderCellDef style="display:none">TcName</mat-header-cell>
+                    <mat-cell *matCellDef="let element"><strong>{{element.TcName}}</strong></mat-cell>
+                  </ng-container>
+                  <mat-header-row *matHeaderRowDef="reportsWeekColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: reportsWeekColumns;"></mat-row>
+                </mat-table>
               </div>
             </mat-tab>
           </mat-tab-group>
