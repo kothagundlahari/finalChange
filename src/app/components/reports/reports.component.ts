@@ -10,6 +10,10 @@ import { ReportsService } from './reports.service';
   providers: [ReportsService]
 })
 export class ReportsComponent implements OnInit {
+
+  constructor(private fb: FormBuilder, private sanitizer: DomSanitizer,
+    private reportsService: ReportsService) {
+  }
   @ViewChild('mySelect')
   selectedPrjData: any;
   spinner = true;
@@ -19,16 +23,10 @@ export class ReportsComponent implements OnInit {
   };
 
   chartData = [
-    { data: [330, 600, 260, 700], label: 'Account A' },
-    { data: [120, 455, 100, 340], label: 'Account B' },
-    { data: [45, 67, 800, 500], label: 'Account C' }
+    { data: [8, 38], label: 'Test passed' }
   ];
 
-  chartLabels = ['January', 'February', 'Mars', 'April'];
-
-  onChartClick(event) {
-    console.log(event);
-  }
+  chartLabels = ['Test Passed', 'Test failed'];
 
   view: any[] = [400, 400];
   // options
@@ -335,8 +333,8 @@ export class ReportsComponent implements OnInit {
   reportsTab = [];
   reportsTabTitle = [];
 
-  constructor(private fb: FormBuilder, private sanitizer: DomSanitizer,
-    private reportsService: ReportsService) {
+  onChartClick (event) {
+    console.log(event);
   }
 
   getPrj() {
@@ -362,23 +360,22 @@ export class ReportsComponent implements OnInit {
         this.reportsTab.push(data['testScenarioConfig'][0]);
         this.reportsTab.push(data['useCase'][0]);
         this.reportsTab.push(data['wwBuildId'][0]);
-    });    
+    });
   }
-  loadReportTabsData(data){
+  loadReportTabsData(data) {
     console.log(this.selectedPrjData.reportsList);
     data.forEach(element => {
-      if(element.value){
+      if (element.value) {
         element.isArray = false;
-      }
-      else{
-        element.value = this.reportsTab
+      } else {
+        element.value = this.reportsTab;
         element.isArray = true;
       }
     });
     this.selectedPrjData.reportsList = data;
     setTimeout(() => {
       console.log(this.selectedPrjData.reportsList);
-    }, 4000);    
+    }, 4000);
   }
 
   ngOnInit() {
